@@ -16,6 +16,30 @@
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/avaliacao.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- <style>
+        .avaliacao{
+  display: flex;
+ }
+.star-icon{
+  list-style-type: none;
+  border: 1px solid #fff;
+  cursor: pointer;
+  color: #ffe500;
+  font-size: 40px;/* alterar o tamanho das estrelas */
+}
+.star-icon::before{
+  content: "\2605";
+}
+.star-icon.ativo ~ .star-icon::before{
+  content: "\2606";
+}
+.avaliacao:hover .star-icon::before{
+  content: "\2605";
+}
+.star-icon:hover ~ .star-icon::before{
+  content: "\2606";
+}
+    </style> -->
 </head>
 
 <body>
@@ -90,11 +114,11 @@
 
                         ?>
                     <a href="../view/editquestion.php?id=<?=$discursao['ID']?>">Editar</a>
-                    <a href="../php/controller/2excluirDiscursao.php?id=<?=$discursao['ID']?>">Deletar questão</a>
+                    <a href="../php/controller/2excluirDiscursao.php?id=<?=$discursao['ID']?>">Deletar questão</a><br>
 
                     <?php
                         }
-                        echo $discursao["TITULO"], "<br>";
+                        echo "<div class='title-discursao'>",$discursao["TITULO"], "<br>";
                         echo $discursao["DESCRICAO"], "<br>";
                         echo "<img src='../user-image{$discursao["IMAGEM"]}' width='100'><br>";
                         echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $discursao["DATA"] ) ), "</div><br><br>";
@@ -109,31 +133,33 @@
                                 echo "<div class='name'>", $cliente["NOME"], "</div><br>";
                             ?>
                             <!-- Estrelas da Avaliação -->
-                        <div class="estrelas">
+                            
+                        <!-- <div class="estrelas">
                         <form action="../php/controller/avaliacao.php" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="resposta_id" id="resposta_id" autocomplete="off" value="<?php echo $resposta["id"] ?>">
 
-                                <input type="radio" id="cm_star-empty" name="fb" value="" checked />
+                                <input type="radio" id="star_icon ativo" name="fb" value="" checked />
                                 <label for="cm_star-1"><i class="fa"></i></label>
-                                <input type="radio" id="cm_star-1" name="fb" value="1" />
+                                <input type="radio" class="star_icon" id="cm_star-1" name="fb" value="1" />
                                 <label for="cm_star-2"><i class="fa"></i></label>
-                                <input type="radio" id="cm_star-2" name="fb" value="2" />
+                                <input type="radio" class="star_icon" id="cm_star-2" name="fb" value="2" />
                                 <label for="cm_star-3"><i class="fa"></i></label>
-                                <input type="radio" id="cm_star-3" name="fb" value="3" />
+                                <input type="radio" class="star_icon" id="cm_star-3" name="fb" value="3" />
                                 <label for="cm_star-4"><i class="fa"></i></label>
-                                <input type="radio" id="cm_star-4" name="fb" value="4" />
+                                <input type="radio" class="star_icon" id="cm_star-4" name="fb" value="4" />
                                 <label for="cm_star-5"><i class="fa"></i></label>
-                                <input type="radio" id="cm_star-5" name="fb" value="5" />
+                                <input type="radio" class="star_icon" id="cm_star-5" name="fb" value="5" /> -->
                                
-                                <!--<select name="starronie[]">
+                                <select name="starronie[]">
                                     <option value='1'>1</option>
                                     <option value='2'>2</option>
                                     <option value='3'>3</option>
                                     <option value='4'>4</option>
                                     <option value='5'>5</option>
-                                </select>-->
-                                
-                        </form>
+                                </select>
+
+
+                        
                         </div> <hr>
 
                         <?php
@@ -159,6 +185,22 @@
                 </div>
             </section>
         </main>
+
+        <script>
+            var stars = document.querySelectorAll('.star-icon');
+                  
+                  document.addEventListener('click', function(e){
+                    var classStar = e.target.classList;
+                    if(!classStar.contains('ativo')){
+                      stars.forEach(function(star){
+                        star.classList.remove('ativo');
+                      });
+                      classStar.add('ativo');
+                      console.log(e.target.getAttribute('value'));
+                    }
+                  });
+        </script>
+
 </body>
 
 </html>
