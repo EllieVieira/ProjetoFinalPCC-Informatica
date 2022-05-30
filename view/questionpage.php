@@ -14,6 +14,8 @@
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/normalise.css">
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/avaliacao.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -97,15 +99,50 @@
                         echo "<img src='../user-image{$discursao["IMAGEM"]}' width='100'><br>";
                         echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $discursao["DATA"] ) ), "</div><br><br>";
                         echo "<div class='name'>", $nomes['nome'], "</div><br>";
-
-                        echo "<hr>";
+?>
+                        <h1 class="answer-head">Respostas</h1>
+                    <?php
                         if ( !empty( $respostaR ) ) {
                             foreach ( $respostaR as $resposta ) {
                                 echo $resposta['descricao'], "<br>";
+                                echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $resposta["data"] ) ), "</div><br><br>";
+                                echo "<div class='name'>", $cliente["NOME"], "</div><br>";
+                            ?>
+                            <!-- Estrelas da Avaliação -->
+                        <div class="estrelas">
+                        <form action="../php/controller/avaliacao.php" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="resposta_id" id="resposta_id" autocomplete="off" value="<?php echo $resposta["id"] ?>">
 
+                                <input type="radio" id="cm_star-empty" name="fb" value="" checked />
+                                <label for="cm_star-1"><i class="fa"></i></label>
+                                <input type="radio" id="cm_star-1" name="fb" value="1" />
+                                <label for="cm_star-2"><i class="fa"></i></label>
+                                <input type="radio" id="cm_star-2" name="fb" value="2" />
+                                <label for="cm_star-3"><i class="fa"></i></label>
+                                <input type="radio" id="cm_star-3" name="fb" value="3" />
+                                <label for="cm_star-4"><i class="fa"></i></label>
+                                <input type="radio" id="cm_star-4" name="fb" value="4" />
+                                <label for="cm_star-5"><i class="fa"></i></label>
+                                <input type="radio" id="cm_star-5" name="fb" value="5" />
+                               
+                                <!--<select name="starronie[]">
+                                    <option value='1'>1</option>
+                                    <option value='2'>2</option>
+                                    <option value='3'>3</option>
+                                    <option value='4'>4</option>
+                                    <option value='5'>5</option>
+                                </select>-->
+                                
+                        </form>
+                        </div> <hr>
+
+                        <?php
                             }
-                        }
-                    ?>
+                            }
+                        ?>
+            </section>
+        </main>
+                  
                 </div>
             </section>
         </main>
