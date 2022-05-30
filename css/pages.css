@@ -1,0 +1,81 @@
+@font-face {
+    font-family: Lancult;
+    src: url(../fonts/fontlan.otf);
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+
+:root {
+    --color-01: #e3f5fa;
+    --color-02: #e3fffd;
+    --color-03: #d7fafc;
+    --color-04: #95f0e8;
+    --color-05: #02978b;
+    --color-06: #3a4d4bb0;
+    --color-07: #000000;
+
+    
+    --font-lancult: 'Lancult';
+    --font-site: 'Roboto';
+}
+
+html,
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0px;
+    background-image: linear-gradient(45deg, #95f0e8, #7ebfdd, #b9e5fa, #80c0dd, #95f0e8);
+    height: 100%;
+    width: 100%;
+    font-family: var(--font-site);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    grid-template-areas:
+    'header header header header header'
+    'nav main main main sidebar'
+    'nav main main main sidebar'
+    'footer footer footer footer footer';
+}
+
+.header {
+    grid-area: header;
+    background-color: rgb(30, 255, 0);
+    height: 50px;
+}
+
+.nav {
+    grid-area: nav;
+    background-color: rgb(4, 0, 255);
+}
+
+.main {
+    grid-area: main;
+    background-color: rgb(255, 166, 0);
+    height: auto;
+   
+   
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: rgb(225, 0, 255);
+    
+   
+   
+}
+
+.footer {
+    grid-area: footer;
+    font-family: var(--font-lancult);
+    background-color: rgb(255, 0, 0);
+    height: 50px;
+}

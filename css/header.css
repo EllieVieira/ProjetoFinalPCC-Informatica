@@ -1,0 +1,130 @@
+@font-face {
+    font-family: Lancult;
+    src: url(../fonts/fontlan.otf);
+  }
+  
+  @font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto-Regular.ttf);
+  }
+  
+  :root {
+    --color-01: #e3f5fa;
+    --color-02: #e3fffd;
+    --color-03: #d7fafc;
+    --color-04: #95f0e8;
+    --color-05: #02978b;
+    --color-06: #3a4d4bb0;
+    --color-07: #000000;
+  
+    --font-lancult: "Lancult";
+    --font-site: "Roboto";
+  }
+  
+  ::selection {
+    background-color: var(--color-05);
+    color: var(--color-03);
+  }
+  
+  html,
+  body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0px;
+    background-image: linear-gradient(
+      45deg,
+      #95f0e8,
+      #7ebfdd,
+      #b9e5fa,
+      #80c0dd,
+      #95f0e8
+    );
+    width: 100%;
+    font-family: var(--font-site);
+    position: relative;
+    color: #000000;
+  }
+  
+  h1.title a {
+    color: var(--color-03);
+    margin: 20px 100px;
+    text-decoration: none;
+    list-style-type: none;
+  }
+  
+  .header {
+    background-color: var(--color-07);
+    height: auto;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  
+  .mod-session {
+    display: block;
+    margin: 0 100px;
+  }
+  
+  .modify a {
+    color: var(--color-07);
+    background-color: var(--color-04);
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 5px;
+  }
+  
+  .modify a:hover {
+    color: var(--color-05);
+    transition-duration: 0.5s;
+    cursor: pointer;
+  }
+  
+  .session-welcome {
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: right;
+  }
+
+
+
+
+  
+.nav {
+  background-color: rgba(255, 255, 255, 0.5);
+  list-style-type: none;
+  border-radius: 10px;
+  display: flex;
+  width: 20%;
+  margin: 20px;
+  height: 200px;
+}
+
+nav ul {
+  list-style-type: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+nav ul li{
+  height: 20px;
+  color: var(--color-07);
+}
+
+nav ul li:hover{
+  background-color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  color: var(--color-07);
+  width: 100%;
+  border-right: 20px solid var(--color-05);
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  
+}
