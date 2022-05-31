@@ -131,17 +131,30 @@
                                 echo $resposta['descricao'], "<br>";
                                 echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $resposta["data"] ) ), "</div><br><br>";
                                 echo "<div class='name'>", $cliente["NOME"], "</div><br>";
-                            ?>
+
+                            
+                            // var_dump($usuarios_id);
+                            // exit();
+                          
+                          ?>
+
+
                             <!-- Estrelas da Avaliação -->
                             
                         <div class="estrelas">
                         <form action="../php/controller/avaliacao.php" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="resposta_id" id="resposta_id" autocomplete="off" value="<?php echo $resposta["id"] ?>">
-                            <input type="hidden" name="resposta_id" id="resposta_id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
-                            <input type="hidden" name="resposta_id" id="resposta_id" autocomplete="off" value="<?php echo $idCliente ?>">
+                            <input type="hidden" name="discursao_id" id="discursao_id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
+                            <input type="hidden" name="id_cliente" id="id_cliente" autocomplete="off" value="<?php echo $idCliente ?>">
+                            <input type="hidden" name="usuarios_id" id="usuarios_id" autocomplete="off" value="<?php echo $resposta["usuarios_id"] ;
+                            
+                            ?>">
 
-                           
-                       
+                          <?php 
+                    //    var_dump($resposta["usuarios_id"]);
+                    //         EXIT();
+
+                            ?>
                                 <input type="radio" id="star_icon ativo" name="estrela" value="" checked />
                                 <label for="cm_star-1"><i class="fa"></i></label>
                                 <input type="radio" class="star_icon" id="cm_star-1" name="estrela" value="1" />
@@ -154,15 +167,9 @@
                                 <label for="cm_star-5"><i class="fa"></i></label>
                                 <input type="radio" class="star_icon" id="cm_star-5" name="estrela" value="5" />
                                 <input type="submit" value="Avaliar" name="submit-star">
-                                
-                                <?php
-                                if(isset($_SESSION['msg'])){
-                                    echo $_SESSION['msg'];
-                                    unset ($_SESSION['msg']);
-                                }
-                                ?>
-
+                            
                         </form>
+                              
                                
                                 <!-- <select name="starronie[]">
                                     <option value='1'>1</option>
@@ -174,7 +181,14 @@
 
 
                         
-                        </div> <hr>
+                        </div> 
+                          <?php
+                                if(isset($_SESSION['msg'])){
+                                    echo $_SESSION['msg'];
+                                    unset ($_SESSION['msg']);
+                                }
+                                ?>
+                        <hr>
 
                         <?php
                             }
