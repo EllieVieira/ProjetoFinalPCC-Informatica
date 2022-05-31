@@ -1,7 +1,7 @@
 <?php
-    require_once '../php/dao/conexao/classe_cadastro.php';
-    $p = new con( "lancult_bd", "localhost", "root", "" );
-    date_default_timezone_set( 'America/Sao_Paulo' );
+require_once '../php/dao/conexao/classe_cadastro.php';
+$p = new con("lancult_bd", "localhost", "root", "");
+date_default_timezone_set('America/Sao_Paulo');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,24 +45,24 @@
 <body>
 
     <?php
-        // Sessão do cliente para inicializaçao do site
-        session_start();
-        require_once "../php/dao/ClienteDAO.php";
-        $idCliente  = $_SESSION["idlogin"];
-        $clienteDAO = new ClienteDAO();
-        $cliente    = $clienteDAO->findById( $idCliente );
+    // Sessão do cliente para inicializaçao do site
+    session_start();
+    require_once "../php/dao/ClienteDAO.php";
+    $idCliente  = $_SESSION["idlogin"];
+    $clienteDAO = new ClienteDAO();
+    $cliente    = $clienteDAO->findById($idCliente);
     ?>
-<?php require_once "../php/dao/DiscursaoDAO.php";
+    <?php require_once "../php/dao/DiscursaoDAO.php";
     require_once "../php/dao/RespostaDAO.php";
     // Sessao da discursão para iniciá-la de acordo com seu id.
     $idDiscursao  = $_GET['id'];
     $DiscursaoDAO = new DiscursaoDAO();
-    $discursao    = $DiscursaoDAO->findById( $idDiscursao );
-    $nomes        = $DiscursaoDAO->buscarDados( $idDiscursao );
+    $discursao    = $DiscursaoDAO->findById($idDiscursao);
+    $nomes        = $DiscursaoDAO->buscarDados($idDiscursao);
     $respostaDAO  = new RespostaDAO();
-    $respostaR    = $respostaDAO->buscarDadosR( $idDiscursao );
+    $respostaR    = $respostaDAO->buscarDadosR($idDiscursao);
 
-?>
+    ?>
 
     <header class="header">
         <h1 class="title"><a href="../view/home.php">The Lancult Town</a></h1>
@@ -73,15 +73,15 @@
             </div>
             <div class="session-welcome">
                 <?php
-                    if ( !isset( $_SESSION["login"] ) ) {
-                        header( "Location: ../view/signin.php" );
-                    }
-                    echo "Bem Vindo, {$_SESSION["login"]}!";
-                    if ( isset( $_GET['logout'] ) ) {
-                        unset( $_SESSION['login'] );
-                        session_destroy();
-                        header( 'Location: ../view/signin.php' );
-                    }
+                if (!isset($_SESSION["login"])) {
+                    header("Location: ../view/signin.php");
+                }
+                echo "Bem Vindo, {$_SESSION["login"]}!";
+                if (isset($_GET['logout'])) {
+                    unset($_SESSION['login']);
+                    session_destroy();
+                    header('Location: ../view/signin.php');
+                }
 
                 ?>
             </div>
@@ -103,116 +103,108 @@
                 <div class="question-box">
                     <?php
 
-                        /*
+                    /*
                         Array ( [0] => Array ( [titulo] => Titulo [descricao] => Imagem [data] => 2022-05-13 13:05:40 [imagem] => barbie.jpg [nome] => Ellie ) [1] => Array ( [titulo] => Ola [descricao] => Tudo bem [data] => 2022-05-13 13:05:05 [imagem] => [nome] => Ellie ) )
                          */
 
                     ?>
                     <!-- Informações sobre a pergunta postada! -->
                     <?php
-                        if ( $discursao["USUARIOS_ID"] == $idCliente ) {
+                    if ($discursao["USUARIOS_ID"] == $idCliente) {
 
-                        ?>
-                    <a href="../view/editquestion.php?id=<?=$discursao['ID']?>">Editar</a>
-                    <a href="../php/controller/2excluirDiscursao.php?id=<?=$discursao['ID']?>">Deletar questão</a><br>
+                    ?>
+                        <div class="buttons-edit-del">
+                            <a href="../view/editquestion.php?id=<?= $discursao['ID'] ?>">Editar</a>
+                            <a href="../php/controller/2excluirDiscursao.php?id=<?= $discursao['ID'] ?>">Deletar questão</a><br>
+                        </div>
 
                     <?php
-                        }
-                        echo "<div class='title-discursao'>",$discursao["TITULO"], "<br>";
-                        echo $discursao["DESCRICAO"], "<br>";
-                        echo "<img src='../user-image{$discursao["IMAGEM"]}' width='100'><br>";
-                        echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $discursao["DATA"] ) ), "</div><br><br>";
-                        echo "<div class='name'>", $nomes['nome'], "</div><br>";
-?>
-                        <h1 class="answer-head">Respostas</h1>
+                    }
+                    echo "<div class='title-disc'>", $discursao["TITULO"], "</div><br>";
+                    echo $discursao["DESCRICAO"], "<br>";
+                    echo "<img src='../user-image{$discursao["IMAGEM"]}' width='100'><br>";
+                    echo "<div class='date'>", $novaData = date('d/m/Y H:m:s', strtotime($discursao["DATA"])), "</div><br><br>";
+                    echo "<div class='name'>", $nomes['nome'], "</div><br>"; ?>
+
+                    <h1 class="answer-head">Respostas</h1><br>
+
                     <?php
-                        if ( !empty( $respostaR ) ) {
-                            foreach ( $respostaR as $resposta ) {
-                                echo $resposta['descricao'], "<br>";
-                                echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $resposta["data"] ) ), "</div><br><br>";
-                                echo "<div class='name'>", $cliente["NOME"], "</div><br>";
-
-                            
-                            // var_dump($usuarios_id);
-                            // exit();
-                          
-                          ?>
-
+                    if (!empty($respostaR)) {
+                        foreach ($respostaR as $resposta) {
+                            echo $resposta['descricao'], "<br>";
+                            echo "<div class='date'>", $novaData = date('d/m/Y H:m:s', strtotime($resposta["data"])), "</div><br><br>";
+                            echo "<div class='name'>", $nomes['nome'], "</div><br>";
+                    ?>
 
                             <!-- Estrelas da Avaliação -->
-                            
-                        <div class="estrelas">
-                        <form action="../php/controller/avaliacao.php" method="POST" enctype="multipart/form-data">
-                            <input type="hidden" name="resposta_id" id="resposta_id" autocomplete="off" value="<?php echo $resposta["id"] ?>">
-                            <input type="hidden" name="discursao_id" id="discursao_id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
-                            <input type="hidden" name="id_cliente" id="id_cliente" autocomplete="off" value="<?php echo $idCliente ?>">
-                            <input type="hidden" name="usuarios_id" id="usuarios_id" autocomplete="off" value="<?php echo $resposta["usuarios_id"] ;
-                            
-                            ?>">
 
-                          <?php 
-                    //    var_dump($resposta["usuarios_id"]);
-                    //         EXIT();
+                            <div class="estrelas">
+                                <form action="../php/controller/avaliacao.php" method="POST" enctype="multipart/form-data">
+                                    <input type="hidden" name="resposta_id" id="resposta_id" autocomplete="off" value="<?php echo $resposta["id"] ?>">
+                                    <input type="hidden" name="discursao_id" id="discursao_id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
+                                    <input type="hidden" name="id_cliente" id="id_cliente" autocomplete="off" value="<?php echo $idCliente ?>">
+                                    <input type="hidden" name="usuarios_id" id="usuarios_id" autocomplete="off" value="<?php echo $resposta["usuarios_id"] ?>">
 
-                            ?>
-                                <input type="radio" id="star_icon ativo" name="estrela" value="" checked />
-                                <label for="cm_star-1"><i class="fa"></i></label>
-                                <input type="radio" class="star_icon" id="cm_star-1" name="estrela" value="1" />
-                                <label for="cm_star-2"><i class="fa"></i></label>
-                                <input type="radio" class="star_icon" id="cm_star-2" name="estrela" value="2" />
-                                <label for="cm_star-3"><i class="fa"></i></label>
-                                <input type="radio" class="star_icon" id="cm_star-3" name="estrela" value="3" />
-                                <label for="cm_star-4"><i class="fa"></i></label>
-                                <input type="radio" class="star_icon" id="cm_star-4" name="estrela" value="4" />
-                                <label for="cm_star-5"><i class="fa"></i></label>
-                                <input type="radio" class="star_icon" id="cm_star-5" name="estrela" value="5" />
-                                <input type="submit" value="Avaliar" name="submit-star">
-                            
-                        </form>
-                              
-                               
-                                <!-- <select name="starronie[]">
-                                    <option value='1'>1</option>
-                                    <option value='2'>2</option>
-                                    <option value='3'>3</option>
-                                    <option value='4'>4</option>
-                                    <option value='5'>5</option>
-                                </select> -->
-
-
-                        
-                        </div> 
-                          <?php
-                                if(isset($_SESSION['msg'])){
+                                    <input type="radio" id="star_icon ativo" name="estrela" value="" checked />
+                                    <label for="cm_star-1"><i class="fa"></i></label>
+                                    <input type="radio" class="star_icon" id="cm_star-1" name="estrela" value="1" />
+                                    <label for="cm_star-2"><i class="fa"></i></label>
+                                    <input type="radio" class="star_icon" id="cm_star-2" name="estrela" value="2" />
+                                    <label for="cm_star-3"><i class="fa"></i></label>
+                                    <input type="radio" class="star_icon" id="cm_star-3" name="estrela" value="3" />
+                                    <label for="cm_star-4"><i class="fa"></i></label>
+                                    <input type="radio" class="star_icon" id="cm_star-4" name="estrela" value="4" />
+                                    <label for="cm_star-5"><i class="fa"></i></label>
+                                    <input type="radio" class="star_icon" id="cm_star-5" name="estrela" value="5" />
+                                    <input type="submit" value="Avaliar" name="submit-star" class="submit-star">
+                                </form>
+                                <?php
+                                if (isset($_SESSION['msg'])) {
                                     echo $_SESSION['msg'];
-                                    unset ($_SESSION['msg']);
+                                    unset($_SESSION['msg']);
                                 }
                                 ?>
-                        <hr>
+
+                                <!-- <select name="estrela">
+                                    <option value='1' name="estrela">1</option>
+                                    <option value='2' name="estrela">2</option>
+                                    <option value='3' name="estrela">3</option>
+                                    <option value='4' name="estrela">4</option>
+                                    <option value='5' name="estrela">5</option>
+                                </select>
+                                <input type="submit" value="Avaliar" name="submit-star">  -->
+
+                                <?php
+                                if (isset($_SESSION['msg'])) {
+                                    echo $_SESSION['msg'];
+                                    unset($_SESSION['msg']);
+                                }
+                                ?>
+                                <hr>
+
 
                         <?php
-                            }
-                            }
+                        }
+                    }
                         ?>
-            </section>
-        </main>
-                  
+                            </div>
+
                 </div>
             </section>
         </main>
-        <main class="main">
-            <section class="questions">
-                <div class="question-box">
+
+        <sidebar class="sidebar">
+            <section class="answers">
+                <div class="answers-box">
                     <form action="../php/controller/3respostaController.php" method="POST">
-                        <input type="text" name="descricao" id="descricao" placeholder="Descricao" autocomplete="off"
-                            maxlength="100" required>
-                        <input type="hidden" name="discursao_id" id="discursao_id" autocomplete="off"
-                            value="<?php echo $discursao["ID"] ?>">
-                        <input type="submit" value="FAÇA SUA PERGUNTA" class="submit">
+                        <input type="text" name="descricao" id="descricao" placeholder="Resposta! :D" autocomplete="off" maxlength="100" required>
+                        <input type="hidden" name="discursao_id" id="discursao_id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
+                        <input type="submit" value="Responder" class="submit">
                     </form>
                 </div>
             </section>
-        </main>
+        </sidebar>
+
 
         <!-- <script>
             var stars = document.querySelectorAll('.star-icon');

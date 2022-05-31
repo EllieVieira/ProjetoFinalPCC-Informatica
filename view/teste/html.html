@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+    
+    
+    <form action="">
+    <div id="alvo">
+    <select name="opcoes" id="select">
+    <option value=""></option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="outro">outro</option>
+    </select>
+    
+    <select name="estrelas">
+        <option value='1' name="estrela">1</option>
+        <option value='2' name="estrela">2</option>
+        <option value='3' name="estrela">3</option>
+        <option value='4' name="estrela">4</option>
+        <option value='5' name="estrela">5</option>
+    </select>
+    
+    </form>
+
+    <script>$(function() {
+        $('#meuDiv').hide();
+    
+        $('#select').change(function() {
+            if ($(this).val() === 'outro') {
+                $('#meuDiv').show();
+                $('#select').hide();
+            }
+        });
+    
+        $('#cancel').click(function () {
+            $('#select').show();
+            $('#select').val('');
+            $('#meuDiv').hide();
+        });
+    });</script>
+</body>
+</html>

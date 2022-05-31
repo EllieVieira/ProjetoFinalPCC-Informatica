@@ -23,5 +23,6 @@ $error[1] = "Resposta Posta!";
 
 if ( $respostaDAO->salvarR( $respostaDTO ) ) {
     echo "Pergunta Postada!";
-    header( "Location: ../../view/home.php?msg={$error[1]}" );
+    header('Location: ../../view/questionpage.php?id=' . $discursao_id);
+    
 }
