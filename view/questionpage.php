@@ -91,10 +91,10 @@
         <nav class="nav">
             <ul>
                 <li><a href="home.php">Início</a></li>
-                <li><a href="/view/idiomas/portugues.php">Português</a></li>
-                <li><a href="/view/idiomas/ingles.php">Inglês</a></li>
-                <li><a href="/view/idiomas/espanhol.php">Espanhol</a></li>
-                <li><a href="/view/idiomas/frances.php">Francês</a></li>
+                <li><a href="/view/portugues.php">Português</a></li>
+                <li><a href="/view/ingles.php">Inglês</a></li>
+                <li><a href="/view/espanhol.php">Espanhol</a></li>
+                <li><a href="/view/frances.php">Francês</a></li>
                 <li><a href="../view/createquestion.php">Perguntar</a></li>
             </ul>
         </nav>
