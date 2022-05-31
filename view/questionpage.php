@@ -147,15 +147,15 @@ date_default_timezone_set('America/Sao_Paulo');
 
                                     <input type="radio" id="star_icon ativo" name="estrela" value="" checked />
                                     <label for="cm_star-1"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-1" name="estrela" value="1" />
+                                    <input type="radio" class="star_icon" id="cm_star-1" name="estrela" value="1"/>
                                     <label for="cm_star-2"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-2" name="estrela" value="2" />
+                                    <input type="radio" class="star_icon" id="cm_star-2" name="estrela" value="2"/>
                                     <label for="cm_star-3"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-3" name="estrela" value="3" />
+                                    <input type="radio" class="star_icon" id="cm_star-3" name="estrela" value="3"/>
                                     <label for="cm_star-4"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-4" name="estrela" value="4" />
+                                    <input type="radio" class="star_icon" id="cm_star-4" name="estrela" value="4"/>
                                     <label for="cm_star-5"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-5" name="estrela" value="5" />
+                                    <input type="radio" class="star_icon" id="cm_star-5" name="estrela" value="5"/>
                                     <input type="submit" value="Avaliar" name="submit-star" class="submit-star">
                                 </form>
                                 <?php
@@ -172,8 +172,9 @@ date_default_timezone_set('America/Sao_Paulo');
                                     <option value='4' name="estrela">4</option>
                                     <option value='5' name="estrela">5</option>
                                 </select>
-                                <input type="submit" value="Avaliar" name="submit-star">  -->
-
+                                <input type="submit" value="Avaliar" name="submit-star"> 
+                                </form> -->
+                                
                                 <?php
                                 if (isset($_SESSION['msg'])) {
                                     echo $_SESSION['msg'];
