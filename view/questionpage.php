@@ -134,29 +134,43 @@
                             ?>
                             <!-- Estrelas da Avaliação -->
                             
-                        <!-- <div class="estrelas">
+                        <div class="estrelas">
                         <form action="../php/controller/avaliacao.php" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="resposta_id" id="resposta_id" autocomplete="off" value="<?php echo $resposta["id"] ?>">
+                            <input type="hidden" name="resposta_id" id="resposta_id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
+                            <input type="hidden" name="resposta_id" id="resposta_id" autocomplete="off" value="<?php echo $idCliente ?>">
 
-                                <input type="radio" id="star_icon ativo" name="fb" value="" checked />
+                           
+                       
+                                <input type="radio" id="star_icon ativo" name="estrela" value="" checked />
                                 <label for="cm_star-1"><i class="fa"></i></label>
-                                <input type="radio" class="star_icon" id="cm_star-1" name="fb" value="1" />
+                                <input type="radio" class="star_icon" id="cm_star-1" name="estrela" value="1" />
                                 <label for="cm_star-2"><i class="fa"></i></label>
-                                <input type="radio" class="star_icon" id="cm_star-2" name="fb" value="2" />
+                                <input type="radio" class="star_icon" id="cm_star-2" name="estrela" value="2" />
                                 <label for="cm_star-3"><i class="fa"></i></label>
-                                <input type="radio" class="star_icon" id="cm_star-3" name="fb" value="3" />
+                                <input type="radio" class="star_icon" id="cm_star-3" name="estrela" value="3" />
                                 <label for="cm_star-4"><i class="fa"></i></label>
-                                <input type="radio" class="star_icon" id="cm_star-4" name="fb" value="4" />
+                                <input type="radio" class="star_icon" id="cm_star-4" name="estrela" value="4" />
                                 <label for="cm_star-5"><i class="fa"></i></label>
-                                <input type="radio" class="star_icon" id="cm_star-5" name="fb" value="5" /> -->
+                                <input type="radio" class="star_icon" id="cm_star-5" name="estrela" value="5" />
+                                <input type="submit" value="Avaliar" name="submit-star">
+                                
+                                <?php
+                                if(isset($_SESSION['msg'])){
+                                    echo $_SESSION['msg'];
+                                    unset ($_SESSION['msg']);
+                                }
+                                ?>
+
+                        </form>
                                
-                                <select name="starronie[]">
+                                <!-- <select name="starronie[]">
                                     <option value='1'>1</option>
                                     <option value='2'>2</option>
                                     <option value='3'>3</option>
                                     <option value='4'>4</option>
                                     <option value='5'>5</option>
-                                </select>
+                                </select> -->
 
 
                         
@@ -186,7 +200,7 @@
             </section>
         </main>
 
-        <script>
+        <!-- <script>
             var stars = document.querySelectorAll('.star-icon');
                   
                   document.addEventListener('click', function(e){
@@ -199,7 +213,7 @@
                       console.log(e.target.getAttribute('value'));
                     }
                   });
-        </script>
+        </script> -->
 
 </body>
 
