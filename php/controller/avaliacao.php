@@ -25,15 +25,15 @@ if (!empty($_POST['estrela'])){
 
     if(isset($conn)){
         $_SESSION['msg'] = "Avaliação cadastrada com sucesso";
-    header('Location: ../../view/questionpage.php?id={$discursao_id}');
+    header('Location: ../../view/questionpage.php?id=' . $discursao_id);
     }else{
         $_SESSION['msg'] = "Erro ao cadastrar avaliação";
-    header('Location: ../../view/questionpage.php?id={$discursao_id}');
+    header('Location: ../../view/questionpage.php?id=' . $discursao_id);
     }
 
 } else{
     $_SESSION['msg'] = "Necessário selecionar pelo menos 1 estrela";
-    header('Location: ../../view/questionpage.php?id={$discursao_id}');
+    header('Location: ../../view/questionpage.php?id=' . $discursao_id);
 }
 
 ?>
