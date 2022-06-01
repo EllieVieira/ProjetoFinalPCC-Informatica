@@ -1,0 +1,16 @@
+$rendimentos = mysqli_query($conexao, "select SUM(valor) from hospedes where dia = $dia");
+$rendimento = mysqli_num_rows($resultado);
+
+<table>
+
+<?php
+while($rendimento = mysqli_fetch_array($resultado)) {
+?>
+
+<tr>
+    <td><?= $rendimento['sum(valor)']; ?></td>
+</tr>
+        <?php
+    }
+?>
+</table>

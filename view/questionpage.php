@@ -130,40 +130,36 @@ date_default_timezone_set('America/Sao_Paulo');
 
                     <?php
                     if (!empty($respostaR)) {
+                        $numEstrela = 1;
                         foreach ($respostaR as $resposta) {
                             echo $resposta['descricao'], "<br>";
                             echo "<div class='date'>", $novaData = date('d/m/Y H:m:s', strtotime($resposta["data"])), "</div><br><br>";
-                            echo "<div class='name'>", $nomes['nome'], "</div><br>";
+                            echo "<div class='name'>", $nomes['nome'], "</div><br>"; 
                     ?>
 
                             <!-- Estrelas da Avaliação -->
 
                             <div class="estrelas">
-                                <form action="../php/controller/avaliacao.php" method="POST" enctype="multipart/form-data">
+                                <form action="../php/controller/avaliacao.php?numEstrela=<?=$numEstrela?>" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" name="resposta_id" id="resposta_id" autocomplete="off" value="<?php echo $resposta["id"] ?>">
                                     <input type="hidden" name="discursao_id" id="discursao_id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
                                     <input type="hidden" name="id_cliente" id="id_cliente" autocomplete="off" value="<?php echo $idCliente ?>">
                                     <input type="hidden" name="usuarios_id" id="usuarios_id" autocomplete="off" value="<?php echo $resposta["usuarios_id"] ?>">
 
-                                    <input type="radio" id="star_icon ativo" name="estrela" value="" checked />
-                                    <label for="cm_star-1"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-1" name="estrela" value="1"/>
-                                    <label for="cm_star-2"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-2" name="estrela" value="2"/>
-                                    <label for="cm_star-3"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-3" name="estrela" value="3"/>
-                                    <label for="cm_star-4"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-4" name="estrela" value="4"/>
-                                    <label for="cm_star-5"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-5" name="estrela" value="5"/>
+                                    <input type="radio" id="star_icon ativo" name="estrela<?=$numEstrela?>" value="" checked />
+                                    <label for="cm_star-1<?=$numEstrela?>"><i class="fa"></i></label>
+                                    <input type="radio" class="star_icon" id="cm_star-1<?=$numEstrela?>" name="estrela<?=$numEstrela?>" value="1"/>
+                                    <label for="cm_star-2<?=$numEstrela?>"><i class="fa"></i></label>
+                                    <input type="radio" class="star_icon" id="cm_star-2<?=$numEstrela?>" name="estrela<?=$numEstrela?>" value="2"/>
+                                    <label for="cm_star-3<?=$numEstrela?>"><i class="fa"></i></label>
+                                    <input type="radio" class="star_icon" id="cm_star-3<?=$numEstrela?>" name="estrela<?=$numEstrela?>" value="3"/>
+                                    <label for="cm_star-4<?=$numEstrela?>"><i class="fa"></i></label>
+                                    <input type="radio" class="star_icon" id="cm_star-4<?=$numEstrela?>" name="estrela<?=$numEstrela?>" value="4"/>
+                                    <label for="cm_star-5<?=$numEstrela?>"><i class="fa"></i></label>
+                                    <input type="radio" class="star_icon" id="cm_star-5<?=$numEstrela?>" name="estrela<?=$numEstrela?>" value="5"/>
                                     <input type="submit" value="Avaliar" name="submit-star" class="submit-star">
                                 </form>
-                                <?php
-                                if (isset($_SESSION['msg'])) {
-                                    echo $_SESSION['msg'];
-                                    unset($_SESSION['msg']);
-                                }
-                                ?>
+
 
                                 <!-- <select name="estrela">
                                     <option value='1' name="estrela">1</option>
@@ -176,19 +172,24 @@ date_default_timezone_set('America/Sao_Paulo');
                                 </form> -->
                                 
                                 <?php
-                                if (isset($_SESSION['msg'])) {
-                                    echo $_SESSION['msg'];
-                                    unset($_SESSION['msg']);
+                                if (isset($_GET['num'])) {
+                                    # code...
+                                    if (isset($_GET['msg']) && $numEstrela == $_GET['num']) {
+                                        echo $_GET['msg'];
+                                        //unset($_SESSION['msg']);
+                                    }
                                 }
+                                
                                 ?>
                                 <hr>
 
-
+                            </div>
                         <?php
+                            $numEstrela+=1;
                         }
                     }
                         ?>
-                            </div>
+                            
 
                 </div>
             </section>
