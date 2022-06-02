@@ -30,7 +30,7 @@
         <h1 class="title"><a href="../view/home.php">The Lancult Town</a></h1>
         <div class="mod-session">
             <div class="modify">
-                <a href="../view/changeprofile.php?id=<?php echo $cliente["ID"] ?>">Editar Perfil</a>
+                <a href="../view/profile.php?id=<?php echo $cliente["ID"] ?>">Perfil</a>
                 <a href="?logout">Sair</a>
             </div>
             <div class="session-welcome">
