@@ -138,7 +138,6 @@ date_default_timezone_set('America/Sao_Paulo');
                     ?>
 
                             <!-- Estrelas da Avaliação -->
-
                             <div class="estrelas">
                                 <form action="../php/controller/avaliacao.php?numEstrela=<?=$numEstrela?>" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" name="resposta_id" id="resposta_id" autocomplete="off" value="<?php echo $resposta["id"] ?>">
@@ -146,17 +145,27 @@ date_default_timezone_set('America/Sao_Paulo');
                                     <input type="hidden" name="id_cliente" id="id_cliente" autocomplete="off" value="<?php echo $idCliente ?>">
                                     <input type="hidden" name="usuarios_id" id="usuarios_id" autocomplete="off" value="<?php echo $resposta["usuarios_id"] ?>">
 
-                                    <input type="radio" id="star_icon ativo" name="estrela<?=$numEstrela?>" value="" checked />
+                                    <input type="radio" id="star_icon ativo" name="avaliacaoselect<?=$numEstrela?>" value="" <?=($resposta['pontuacao'] == '' ? 'checked': '') ?> checked />
                                     <label for="cm_star-1<?=$numEstrela?>"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-1<?=$numEstrela?>" name="estrela<?=$numEstrela?>" value="1"/>
+                                    <input type="radio" class="star_icon" id="cm_star-1<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="1" <?=($resposta['pontuacao'] == '1' ? 'checked': '') ?>/>
                                     <label for="cm_star-2<?=$numEstrela?>"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-2<?=$numEstrela?>" name="estrela<?=$numEstrela?>" value="2"/>
+                                    <input type="radio" class="star_icon" id="cm_star-2<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="2" <?=($resposta['pontuacao'] == '2' ? 'checked': '') ?>/>
                                     <label for="cm_star-3<?=$numEstrela?>"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-3<?=$numEstrela?>" name="estrela<?=$numEstrela?>" value="3"/>
+                                    <input type="radio" class="star_icon" id="cm_star-3<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="3"<?=($resposta['pontuacao'] == '3' ? 'checked': '') ?>/>
                                     <label for="cm_star-4<?=$numEstrela?>"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-4<?=$numEstrela?>" name="estrela<?=$numEstrela?>" value="4"/>
+                                    <input type="radio" class="star_icon" id="cm_star-4<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="4" <?=($resposta['pontuacao'] == '4' ? 'checked': '') ?>/>
                                     <label for="cm_star-5<?=$numEstrela?>"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-5<?=$numEstrela?>" name="estrela<?=$numEstrela?>" value="5"/>
+                                    <input type="radio" class="star_icon" id="cm_star-5<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="5" <?=($resposta['pontuacao'] == '5' ? 'checked': '') ?>/>
+                                    
+                                    
+                                    <!-- <select name="avaliacaoselect" id="avaliacaoselect">
+                                        <option value="1" <?=($resposta['pontuacao'] == '1' ? 'selected': '') ?>>1</option>
+                                        <option value="2"<?=($resposta['pontuacao'] == '2' ? 'selected': '') ?>>2</option>
+                                        <option value="3"<?=($resposta['pontuacao'] == '3' ? 'selected': '') ?>>3</option>
+                                        <option value="4" <?=($resposta['pontuacao'] == '4' ? 'selected': '') ?>>4</option>
+                                        <option value="5"<?=($resposta['pontuacao'] == '5' ? 'selected': '') ?>>5</option>
+
+                                    </select> -->
                                     <input type="submit" value="Avaliar" name="submit-star" class="submit-star">
                                 </form>
 

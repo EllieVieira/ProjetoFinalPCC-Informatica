@@ -8,18 +8,25 @@ $numEstrela = $_GET['numEstrela'];
 $discursao_id = $_POST["discursao_id"];
 $resposta_id = $_POST["resposta_id"];
 $usuarios_id= $_POST["usuarios_id"];
+$valorAvaliacao = $_POST ["avaliacaoselect" . $numEstrela];
+
+// var_dump($_POST);
+// die();
 
 
-    if (isset($_POST['estrela'.$numEstrela])){
-        $estrela = $_POST['estrela'.$numEstrela];
+    if (isset($valorAvaliacao)){
+        // $estrela = $_POST['estrela'.$numEstrela];
         
     // print_r($numEstrela);
     // exit();
 
         //Salvar no banco
 
-        $result_avaliacoes = "update respostas set PONTUACAO='$estrela' where id = '$resposta_id '";
+        $result_avaliacoes = "update respostas set PONTUACAO='$valorAvaliacao' where id = '$resposta_id '";
         $result_avaliacoes = mysqli_query($conn, $result_avaliacoes);
+
+        // $rendimentos = mysqli_query($conexao, "select SUM(PONTUACAO) from respostas where id = $resposta_id ");
+        // $rendimento = mysqli_num_rows($resultado);
 
         
 

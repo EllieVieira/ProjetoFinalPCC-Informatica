@@ -80,7 +80,7 @@ class RespostaDAO {
     }
     public function buscarDadosR( $idDiscursao ) {
         $res = array();
-        $cmd = $this->pdo->prepare( "SELECT respostas.id, respostas.descricao, respostas.data, respostas.usuarios_id, respostas.discursao_id, usuarios.nome FROM usuarios inner join respostas on respostas.usuarios_id = usuarios.id where respostas.discursao_id =:idDiscursao" );
+        $cmd = $this->pdo->prepare( "SELECT respostas.id, respostas.descricao, respostas.data, respostas.usuarios_id, respostas.discursao_id, usuarios.nome, respostas.pontuacao FROM usuarios inner join respostas on respostas.usuarios_id = usuarios.id where respostas.discursao_id =:idDiscursao" );
         $cmd->bindValue( ':idDiscursao', $idDiscursao );
         $cmd->execute();
         $res = $cmd->fetchAll( PDO::FETCH_ASSOC );
