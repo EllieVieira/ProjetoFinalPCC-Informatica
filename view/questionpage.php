@@ -144,18 +144,20 @@ date_default_timezone_set('America/Sao_Paulo');
                                     <input type="hidden" name="discursao_id" id="discursao_id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
                                     <input type="hidden" name="id_cliente" id="id_cliente" autocomplete="off" value="<?php echo $idCliente ?>">
                                     <input type="hidden" name="usuarios_id" id="usuarios_id" autocomplete="off" value="<?php echo $resposta["usuarios_id"] ?>">
+                                    <input type="hidden" name="pontuacao" id="pontuacao" autocomplete="off" value="<?php echo $resposta["pontuacao"] ?>">
+                                   
 
                                     <input type="radio" id="star_icon ativo" name="avaliacaoselect<?=$numEstrela?>" value="" <?=($resposta['pontuacao'] == '' ? 'checked': '') ?> checked />
                                     <label for="cm_star-1<?=$numEstrela?>"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-1<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="1" <?=($resposta['pontuacao'] == '1' ? 'checked': '') ?>/>
+                                    <input type="radio" class="star_icon" id="cm_star-1<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="1.0" <?=($resposta['pontuacao'] >=  '1.0' ? 'checked': '') ?>/>
                                     <label for="cm_star-2<?=$numEstrela?>"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-2<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="2" <?=($resposta['pontuacao'] == '2' ? 'checked': '') ?>/>
+                                    <input type="radio" class="star_icon" id="cm_star-2<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="2.0" <?=($resposta['pontuacao'] >=  '1.9' ? 'checked': '') ?>/>
                                     <label for="cm_star-3<?=$numEstrela?>"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-3<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="3"<?=($resposta['pontuacao'] == '3' ? 'checked': '') ?>/>
+                                    <input type="radio" class="star_icon" id="cm_star-3<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="3.0"<?=($resposta['pontuacao'] >=  '2.9' ? 'checked': '') ?>/>
                                     <label for="cm_star-4<?=$numEstrela?>"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-4<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="4" <?=($resposta['pontuacao'] == '4' ? 'checked': '') ?>/>
+                                    <input type="radio" class="star_icon" id="cm_star-4<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="4.0" <?=($resposta['pontuacao'] >=  '3.9' ? 'checked': '') ?>/>
                                     <label for="cm_star-5<?=$numEstrela?>"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-5<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="5" <?=($resposta['pontuacao'] == '5' ? 'checked': '') ?>/>
+                                    <input type="radio" class="star_icon" id="cm_star-5<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="5.0" <?=($resposta['pontuacao'] >= '4.9' ? 'checked': '') ?>/>
                                     
                                     
                                     <!-- <select name="avaliacaoselect" id="avaliacaoselect">
