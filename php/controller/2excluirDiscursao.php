@@ -5,5 +5,5 @@ $id = $_GET["id"];
 
 $discursaoDAO = new DiscursaoDAO();
 
-$discursaoDAO->deleteById($id);
-header( "Location: ../../view/home.php");
+$discursaoDAO->updateById($id);
+header( "refresh: 0.2.   ../../view/home.php");

@@ -8,7 +8,6 @@ class RespostaDTO
     private $PONTUACAO;
     private $DISCURSAO_ID;
     private $USUARIOS_ID;
-    private $votos;
 
 
 
@@ -128,26 +127,6 @@ class RespostaDTO
     public function setUSUARIOS_ID($USUARIOS_ID)
     {
         $this->USUARIOS_ID = $USUARIOS_ID;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of votos
-     */ 
-    public function getVotos()
-    {
-        return $this->votos;
-    }
-
-    /**
-     * Set the value of votos
-     *
-     * @return  self
-     */ 
-    public function setVotos($votos)
-    {
-        $this->votos = $votos;
 
         return $this;
     }

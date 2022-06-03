@@ -33,7 +33,6 @@ date_default_timezone_set('America/Sao_Paulo');
     $id = $_SESSION['idlogin'];
     $clienteDAO = new ClienteDAO();
     $cliente = $clienteDAO->findById($id);
-
     ?>
 
     <header class="header">
@@ -87,7 +86,7 @@ date_default_timezone_set('America/Sao_Paulo');
             </form>
             </div>
             </div>
-
+        
         </main>
         <footer class="foot">
             <strong>The Lancult Town</strong>

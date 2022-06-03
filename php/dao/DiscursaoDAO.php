@@ -50,6 +50,16 @@ class DiscursaoDAO {
             echo "Erro ao excluir ", $e->getMessage();
         }
     }
+    public function updateById( $id ) {
+        try {
+            $sql  = "UPDATE discursao SET ATIVO = 'INATIVO' where id = ?";
+            $stmt = $this->pdo->prepare( $sql );
+            $stmt->bindValue( 1, $id );
+            return $stmt->execute();
+        } catch ( PDOException $e ) {
+            echo "Erro ao excluir ", $e->getMessage();
+        }
+    }
 
     public function findById( $idd ) {
         try {
@@ -110,28 +120,28 @@ class DiscursaoDAO {
 
     public function buscarEspanhol() {
         $res = array();
-        $cmd = $this->pdo->query( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id WHERE discursao.idiomas_id = 3 ORDER BY discursao.id DESC" );
+        $cmd = $this->pdo->query( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, discursao.ATIVO, usuarios.nome FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id WHERE discursao.idiomas_id = 3 and discursao.ATIVO = 1 ORDER BY discursao.id DESC" );
         $res = $cmd->fetchAll( PDO::FETCH_ASSOC );
         return $res;
 
     }
     public function buscarPortugues() {
         $res = array();
-        $cmd = $this->pdo->query( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id WHERE discursao.idiomas_id = 1 ORDER BY discursao.id DESC" );
+        $cmd = $this->pdo->query( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, discursao.ATIVO, usuarios.nome FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id WHERE discursao.idiomas_id = 1 and discursao.ATIVO = 1 ORDER BY discursao.id DESC" );
         $res = $cmd->fetchAll( PDO::FETCH_ASSOC );
         return $res;
 
     }
     public function buscarIngles() {
         $res = array();
-        $cmd = $this->pdo->query( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id WHERE discursao.idiomas_id = 2 ORDER BY discursao.id DESC" );
+        $cmd = $this->pdo->query( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, discursao.ATIVO, usuarios.nome FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id WHERE discursao.idiomas_id = 2 and discursao.ATIVO = 1 ORDER BY discursao.id DESC" );
         $res = $cmd->fetchAll( PDO::FETCH_ASSOC );
         return $res;
 
     }
     public function buscarFrances() {
         $res = array();
-        $cmd = $this->pdo->query( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id WHERE discursao.idiomas_id = 4 ORDER BY discursao.id DESC" );
+        $cmd = $this->pdo->query( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, discursao.ATIVO, usuarios.nome FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id WHERE discursao.idiomas_id = 4 and discursao.ATIVO = 1 ORDER BY discursao.id DESC" );
         $res = $cmd->fetchAll( PDO::FETCH_ASSOC );
         return $res;
     }
@@ -140,6 +150,14 @@ class DiscursaoDAO {
         $cmd->bindValue( ':idDiscursao', $idDiscursao );
         $cmd->execute();
         $res = $cmd->fetch( PDO::FETCH_ASSOC );
+        return $res;
+    }
+    public function publiUsuario( $idCliente ) {
+        $res = array();
+        $cmd = $this->pdo->prepare( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome, usuarios.id FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id where usuarios.id = :idd;" );
+        $cmd->bindValue( ':idd', $idCliente );
+        $cmd->execute();
+        $res = $cmd->fetchAll( PDO::FETCH_ASSOC );
         return $res;
     }
 
