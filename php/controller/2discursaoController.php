@@ -22,7 +22,7 @@ $discursaoDTO = new DiscursaoDTO();
 $discursaoDTO->setTitulo( $titulo );
 $discursaoDTO->setDescricao( $descrição );
 $discursaoDTO->setData( $data );
-$discursaoDTO->setImagem( isset( $imagem ) && $imagem["error"] == 0 ? $upload->getNome( $imagem ) : null );
+// $discursaoDTO->setImagem( isset( $imagem ) && $imagem["error"] == 0 ? $upload->getNome( $imagem ) : null );
 $discursaoDTO->setUsuarios_Id( $usuarios_id );
 $discursaoDTO->setIdiomas_Id( $idiomas_id );
 

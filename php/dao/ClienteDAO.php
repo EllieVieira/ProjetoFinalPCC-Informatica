@@ -109,11 +109,4 @@ class ClienteDAO
             echo "Erro ao listar o cliente: ", $e->getMessage();
         }
     }
-
-    public function buscarDadosC() {
-        $res = array();
-        $cmd = $this->pdo->query( "SELECT usuarios.id, usuarios.paises_id, usuarios.tipo_id FROM lancult_bd.usuarios  WHERE usuarios.id");
-        $res = $cmd->fetchAll( PDO::FETCH_ASSOC );
-        return $res;
-}
 }
