@@ -18,6 +18,7 @@ class RespostaDAO {
             $stmt->bindValue( ":data", $respostaDTO->getDATA() );
             $stmt->bindValue( ":discursao_id", $respostaDTO->getDISCURSAO_ID() );
             $stmt->bindValue( ":usuarios_id", $respostaDTO->getUSUARIOS_ID() );
+            // $stmt->bindValue( ":votos", $respostaDTO->getVotos() );
             return $stmt->execute();
         } catch ( PDOException $e ) {
             echo "Erro ao cadastrar: ", $e->getMessage();
@@ -57,6 +58,7 @@ class RespostaDAO {
             echo 'Erro ao listar um resposta: ', $e->getMessage();
         }
     }
+
     public function updateById( $id ) {
         try {
             $sql  = "UPDATE respostas SET ATIVO = 'INATIVO' where id = ?";
@@ -67,6 +69,7 @@ class RespostaDAO {
             echo "Erro ao excluir ", $e->getMessage();
         }
     }
+
     public function updateR( RespostaDTO $respostaDTO ) {
         try {
             $sql = "UPDATE respostas SET "
@@ -83,9 +86,10 @@ class RespostaDAO {
             echo 'Erro ao atualizar o resposta: ', $e->getMessage();
         }
     }
+
     public function buscarDadosR( $idDiscursao ) {
         $res = array();
-        $cmd = $this->pdo->prepare( "SELECT respostas.id, respostas.descricao, respostas.data, respostas.ativo, respostas.usuarios_id, respostas.discursao_id, usuarios.nome FROM usuarios inner join respostas on respostas.usuarios_id = usuarios.id where respostas.discursao_id =:idDiscursao and respostas.ativo = 1  " );
+        $cmd = $this->pdo->prepare( "SELECT respostas.id, respostas.descricao, respostas.data, respostas.ativo, respostas.usuarios_id, respostas.discursao_id, usuarios.nome, respostas.pontuacao, respostas.votos FROM usuarios inner join respostas on respostas.usuarios_id = usuarios.id where respostas.discursao_id =:idDiscursao");
         $cmd->bindValue( ':idDiscursao', $idDiscursao );
         $cmd->execute();
         $res = $cmd->fetchAll( PDO::FETCH_ASSOC );

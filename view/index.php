@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css.css">
+    <title>The Lancult Town</title>
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/normalise.css">
+    <link rel="stylesheet" href="../css/index.css">
 </head>
+
 <body>
-        <button class="btnOpenModal" onclick="openModal()">Open Modal</button>
-        <div class= "modal-container">
-            <div class="modal">
-                <h2>Info</h2>
-                <hr>
-                <span>Deseja excluir?</span>
-                <hr>
-                <div class="btns">
-                    <!-- <button class="btnOK" onclick="closeModal()">Sim</button> -->
-                    <!-- <button class="btnClose" onclick="closeModal()">Não</button> -->
-                    <a href="../view/editquestion.php?id=<?=$discursao['ID']?>" class="btnOK" >Editar</a>
-                    <a href="../php/controller/2excluirDiscursao.php?id=<?=$discursao['ID']?>" class="btnClose" onclick="closeModal()">Deletar questão</a>
-                    
-                </div>
-            </div>
+    <header>
+        <h1 id="title">The Lancult Town</h1>
+        <nav>
+            <a href="signin.php">Entrar</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="left">
+            <img src="../images/image-index.png" alt="image-study">
         </div>
-        <script src="js.js"></script>
+        <div class="right">
+            <h1 id="page">Aprenda um novo idioma</h1>
+            <p>Release your questions. Have your answers.</p>
+            <a href="signup.php">Cadastre-se</a>
+        </div>
+    </main>
+
+    <footer class="foot">
+        <strong>The Lancult Town</strong>
+    </footer>
+
 </body>
+
 </html>

@@ -4,10 +4,18 @@ require_once '../dao/RespostaDAO.php';
 date_default_timezone_set('America/Sao_Paulo');
 session_start();
 
+
 $descricao = $_POST["descricao"];
+
 $data = date( 'Y-m-d H:m:s');
+
 $discursao_id = $_POST["discursao_id"];
+
 $usuarios_id = $_SESSION["idlogin"];
+$votos = $_POST["votos"];
+
+// print_r($discursao_id);
+// exit();
 
 
 $respostaDTO = new RespostaDTO();
@@ -15,13 +23,15 @@ $respostaDTO->setDESCRICAO($descricao);
 $respostaDTO->setDATA($data);
 $respostaDTO->setDISCURSAO_ID($discursao_id);
 $respostaDTO->setUSUARIOS_ID($usuarios_id);
+$respostaDTO->setvotos($votos);
 
 
-$RespostaDAO = new RespostaDAO();
+$respostaDAO = new RespostaDAO();
 
-$error[1] = "Resposta Posta!";
+$error[1] = "Resposta Postada!";
 
-if ( $RespostaDAO->salvarR( $respostaDTO ) ) {
+if ( $respostaDAO->salvarR( $respostaDTO ) ) {
     echo "Pergunta Postada!";
-    header( "Location: ../../view/home.php?msg={$error[1]}" );
+    header('Location: ../../view/questionpage.php?id=' . $discursao_id);
+    
 }

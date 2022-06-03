@@ -9,19 +9,18 @@
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/normalise.css">
     <link rel="stylesheet" href="../css/change profile.css">
-    <link rel="stylesheet" href="../css/home.css">
 
 </head>
 
 <body>
     <?php
-        session_start();
-        require_once '../php/dao/ClienteDAO.php'; //excluirClienteController.php
-        $idCliente  = $_SESSION["idlogin"];
-        $clienteDAO = new ClienteDAO();
-        $cliente    = $clienteDAO->findById( $idCliente );
+    session_start();
+    require_once '../php/dao/ClienteDAO.php'; //excluirClienteController.php
+    $idCliente = $_SESSION["idlogin"];
+    $clienteDAO = new ClienteDAO();
+    $cliente = $clienteDAO->findById($idCliente);
 
-        require_once "../php/dao/DiscursaoDAO.php";
+    require_once "../php/dao/DiscursaoDAO.php";
         $DiscursaoDAO = new DiscursaoDAO();
         $sabadao = $DiscursaoDAO->publiUsuario($idCliente); 
         // var_dump($sabadao);
@@ -37,15 +36,15 @@
             </div>
             <div class="session-welcome">
                 <?php
-                    if ( !isset( $_SESSION["login"] ) ) {
-                        header( "Location: ../view/signin.php" );
-                    }
-                    echo "Bem Vindo, {$_SESSION["login"]}!";
-                    if ( isset( $_GET['logout'] ) ) {
-                        unset( $_SESSION['login'] );
-                        session_destroy();
-                        header( 'Location: ../view/signin.php' );
-                    }
+                if (!isset($_SESSION["login"])) {
+                    header("Location: ../view/signin.php");
+                }
+                echo "Bem Vindo, {$_SESSION["login"]}!";
+                if (isset($_GET['logout'])) {
+                    unset($_SESSION['login']);
+                    session_destroy();
+                    header('Location: ../view/signin.php');
+                }
 
                 ?>
             </div>
@@ -60,9 +59,7 @@
             <input type="text" name="nome" id="nome" value="<?php echo $cliente["NOME"] ?>">
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" value="<?php echo $cliente["EMAIL"] ?>">
-            <label for="password">senha atual</label>
-            <input type="password" name="password" id="password" required>
-            <label for="password">senha atual</label>
+            <label for="password">Mudar ou confirmar sua senha:</label>
             <input type="password" name="password" id="password" required>
 
             <div class="selects">
@@ -87,21 +84,6 @@
         </form>
 
     </main>
-    <main class="form">
-        
-        <?php
-        foreach ( $sabadao as $dado ) {?>
-        <a href="../view/questionpage.php?id=<?=$dado['id']?>">
-                        <h2><?php echo $dado['titulo']; ?></h2>
-        </a><?php
-            echo $dado["descricao"], "<br>";
-            echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $dado["data"] ) ), "</div><br><br>";
-            echo "<hr>";}
-
-
-?>
-    </main>
-                
 
     <footer>
         <strong>The Lancult Town</strong>

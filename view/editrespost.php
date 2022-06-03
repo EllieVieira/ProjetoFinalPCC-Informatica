@@ -25,7 +25,8 @@ date_default_timezone_set('America/Sao_Paulo');
     $idd = $_GET['id'];
     $RespostaDAO = new RespostaDAO();
     $resposta = $RespostaDAO->findByIdR($idd);
-    var_dump($resposta);
+    // var_dump($resposta);
+    // exit(); 
     ?>
 
     <?php
@@ -75,8 +76,13 @@ date_default_timezone_set('America/Sao_Paulo');
                 <h2>Editar pergunta</h2>
                 <input type="hidden" name="id" id="id" autocomplete="off" value="<?php echo $resposta["ID"] ?>">
                 <textarea name="descricao" id="descricao" cols="90" rows="4" autocomplete="off" maxlength="500"><?php echo $resposta["DESCRICAO"] ?></textarea>
-                <input type="submit" value="ASK YOUR QUESTION" class="submit">
+               <input type="submit" value="Editar Pergunta" class="submit">
+
+               
             </form>
+            <?php
+                // print_r($resposta);
+                // exit();?> 
             </div>
             </div>
 

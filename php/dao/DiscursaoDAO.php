@@ -50,6 +50,7 @@ class DiscursaoDAO {
             echo "Erro ao excluir ", $e->getMessage();
         }
     }
+
     public function updateById( $id ) {
         try {
             $sql  = "UPDATE discursao SET ATIVO = 'INATIVO' where id = ?";

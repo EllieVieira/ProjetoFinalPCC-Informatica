@@ -34,7 +34,7 @@ CREATE TABLE `discursao` (
   `ID` int(11) NOT NULL,
   `TITULO` varchar(100) NOT NULL,
   `DESCRICAO` varchar(500) NOT NULL,
-  `DATA` datetime,
+  `DATA` datetime DEFAULT current_timestamp(),
   `IMAGEM` varchar(255) DEFAULT NULL,
   `ATIVO` enum('ATIVO','INATIVO') DEFAULT 'ATIVO',
   `USUARIOS_ID` int(11) NOT NULL,
@@ -94,7 +94,7 @@ INSERT INTO `paises` (`ID`, `NOME`) VALUES
 CREATE TABLE `respostas` (
   `ID` int(11) NOT NULL,
   `DESCRICAO` varchar(500) NOT NULL,
-  `DATA` datetime,
+  `DATA` datetime DEFAULT current_timestamp(),
   `PONTUACAO` tinyint(4) NOT NULL DEFAULT 1,
   `DISCURSAO_ID` int(11) NOT NULL,
   `USUARIOS_ID` int(11) NOT NULL
@@ -131,7 +131,7 @@ CREATE TABLE `usuarios` (
   `NOME` varchar(80) NOT NULL,
   `EMAIL` varchar(255) NOT NULL,
   `PASSWORD` varchar(100) NOT NULL,
-  `DATA_CADASTRAMENTO` datetime,
+  `DATA_CADASTRAMENTO` datetime DEFAULT current_timestamp(),
   `PAISES_ID` int(11) NOT NULL,
   `TIPO_ID` int(11) NOT NULL,
   `STATUS` enum('ATIVO','INATIVO') DEFAULT 'ATIVO',
