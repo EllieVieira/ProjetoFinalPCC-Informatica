@@ -1,3 +1,9 @@
+<?php
+    require_once '../php/dao/conexao/classe_cadastro.php';
+    $p = new con( "lancult_bd", "localhost", "root", "" );
+    date_default_timezone_set( 'America/Sao_Paulo' );
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +25,8 @@
     $idCliente = $_SESSION["idlogin"];
     $clienteDAO = new ClienteDAO();
     $cliente = $clienteDAO->findById($idCliente);
+    $perfil = $p->buscarDadosPerfil();
+    
 
     ?>
 
@@ -49,14 +57,23 @@
 
     <main class="form">
         <form action="../php/controller/1alterarClienteController.php" method="POST">
-            <h1 id="page-title">Editar Perfil</h1>
+        <h1 id="page-title">Editar Perfil</h1>
+            <?php
+                    if (!empty($perfil)) {
+                        
+                        foreach ($perfil as $userP);}
+
+
+                        ?>
+
             <p><strong>Nome:</strong> <?php echo $cliente["NOME"] ?></p>
             <p><strong>Email:</strong> <?php echo $cliente["EMAIL"] ?></p>
-            <p><strong>País:</strong> <?php echo $cliente["PAISES_ID"] ?></p>
-            <p><strong>Tipo de usuário:</strong> <?php echo $cliente["TIPO_ID"] ?></p>
-
+            <p><strong>País:</strong> <?php echo $userP["nome"] ?></p>
+            <p><strong>Tipo de usuário:</strong> <?php echo $userP["nomet"] ?></p>
+            
            
     </main>
+
 
     <footer class="foot">
         <strong>The Lancult Town</strong>

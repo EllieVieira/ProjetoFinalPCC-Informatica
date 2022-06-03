@@ -15,7 +15,9 @@ Class Con {
 
     public function buscarDados() {
         $res = array();
-        $cmd = $this->pdo->query( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id ORDER BY discursao.id DESC" );
+        $cmd = $this->pdo->query( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome, idiomas.nome as nomei FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id 
+
+    INNER JOIN idiomas ON idiomas.id = discursao.idiomas_id where discursao.idiomas_id ORDER BY discursao.id DESC" );
         $res = $cmd->fetchAll( PDO::FETCH_ASSOC );
         return $res;
     }
@@ -26,6 +28,15 @@ Class Con {
         $ant = $cmd->fetchAll( PDO::FETCH_LAZY );
         return $ant;
     }
+
+    public function buscarDadosPerfil() {
+        $res = array();
+        $cmd = $this->pdo->query("SELECT usuarios.id, usuarios.paises_id, usuarios.tipo_id, paises.nome, tipo.nome as nomet FROM lancult_bd.usuarios 
+        INNER JOIN paises ON paises.id = usuarios.paises_id 
+        INNER JOIN tipo ON tipo.id = usuarios.tipo_id where usuarios.paises_id and usuarios.tipo_id");
+        $res = $cmd->fetchAll( PDO::FETCH_ASSOC );
+        return $res;
+}
 
     // public function buscarDadosR(){
     // $res = array();

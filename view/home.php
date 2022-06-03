@@ -101,6 +101,7 @@
                                 echo $dado["descricao"], "<br>";
                                 echo "<img src='../user-image{$dado["imagem"]}' width='100'><br>";
                                 echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $dado["data"] ) ), "</div><br><br>";
+                                echo "<div class='name'>", $dado["nomei"], "</div><br>";
                                 echo "<div class='name'>", $dado["nome"], "</div><br>";
 
                                 echo "<hr>";
