@@ -61,6 +61,8 @@ date_default_timezone_set('America/Sao_Paulo');
     $nomes        = $DiscursaoDAO->buscarDados($idDiscursao);
     $respostaDAO  = new RespostaDAO();
     $respostaR    = $respostaDAO->buscarDadosR($idDiscursao);
+    // print_r($respostaR);
+    // exit();
 
     ?>
 
@@ -135,16 +137,21 @@ date_default_timezone_set('America/Sao_Paulo');
                             echo $resposta['descricao'], "<br>";
                             echo "<div class='date'>", $novaData = date('d/m/Y H:m:s', strtotime($resposta["data"])), "</div><br><br>";
                             echo "<div class='name'>", $nomes['nome'], "</div><br>"; 
+                            // echo print_r($resposta['votos']) ;
+                            // exit();
                     ?>
 
                             <!-- Estrelas da Avaliação -->
                             <div class="estrelas">
-                                <form action="../php/controller/avaliacao.php?numEstrela=<?=$numEstrela?>" method="POST" enctype="multipart/form-data">
-                                    <input type="hidden" name="resposta_id" id="resposta_id" autocomplete="off" value="<?php echo $resposta["id"] ?>">
+                                <form action="../php/controller/avaliacao.php" method="POST" enctype="multipart/form-data">
+                                  
+                                <input type="hidden" name="numEstrela" id="resposta_id" autocomplete="off" value="<?php echo $numEstrela ?>">
+                                <input type="hidden" name="resposta_id" id="resposta_id" autocomplete="off" value="<?php echo $resposta["id"] ?>">
                                     <input type="hidden" name="discursao_id" id="discursao_id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
                                     <input type="hidden" name="id_cliente" id="id_cliente" autocomplete="off" value="<?php echo $idCliente ?>">
                                     <input type="hidden" name="usuarios_id" id="usuarios_id" autocomplete="off" value="<?php echo $resposta["usuarios_id"] ?>">
                                     <input type="hidden" name="pontuacao" id="pontuacao" autocomplete="off" value="<?php echo $resposta["pontuacao"] ?>">
+                                    <input type="hidden" name="votos" id="votos" autocomplete="off" value="<?php echo $resposta["votos"] ?>">
                                    
 
                                     <input type="radio" id="star_icon ativo" name="avaliacaoselect<?=$numEstrela?>" value="" <?=($resposta['pontuacao'] == '' ? 'checked': '') ?> checked />

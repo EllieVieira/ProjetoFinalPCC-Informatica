@@ -11,13 +11,14 @@ class RespostaDAO {
     public function salvarR( RespostaDTO $respostaDTO ) {
         try {
             $sql = "INSERT INTO "
-                . "respostas(DESCRICAO, DATA, DISCURSAO_ID, USUARIOS_ID) "
-                . "VALUES(:descricao,:data, :discursao_id, :usuarios_id)";
+                . "respostas(DESCRICAO, DATA, DISCURSAO_ID, USUARIOS_ID, votos) "
+                . "VALUES(:descricao,:data, :discursao_id, :usuarios_id, :votos)";
             $stmt = $this->pdo->prepare( $sql );
             $stmt->bindValue( ":descricao", $respostaDTO->getDESCRICAO() );
             $stmt->bindValue( ":data", $respostaDTO->getDATA() );
             $stmt->bindValue( ":discursao_id", $respostaDTO->getDISCURSAO_ID() );
             $stmt->bindValue( ":usuarios_id", $respostaDTO->getUSUARIOS_ID() );
+            $stmt->bindValue( ":votos", $respostaDTO->getVotos() );
             return $stmt->execute();
         } catch ( PDOException $e ) {
             echo "Erro ao cadastrar: ", $e->getMessage();
@@ -80,7 +81,7 @@ class RespostaDAO {
     }
     public function buscarDadosR( $idDiscursao ) {
         $res = array();
-        $cmd = $this->pdo->prepare( "SELECT respostas.id, respostas.descricao, respostas.data, respostas.usuarios_id, respostas.discursao_id, usuarios.nome, respostas.pontuacao FROM usuarios inner join respostas on respostas.usuarios_id = usuarios.id where respostas.discursao_id =:idDiscursao" );
+        $cmd = $this->pdo->prepare( "SELECT respostas.id, respostas.descricao, respostas.data, respostas.usuarios_id, respostas.discursao_id, usuarios.nome, respostas.pontuacao, respostas.votos FROM usuarios inner join respostas on respostas.usuarios_id = usuarios.id where respostas.discursao_id =:idDiscursao" );
         $cmd->bindValue( ':idDiscursao', $idDiscursao );
         $cmd->execute();
         $res = $cmd->fetchAll( PDO::FETCH_ASSOC );

@@ -1,20 +1,20 @@
 <?php
 
-session_start();
-    require_once '../../php/dao/conexao/avaconexao.php';
+ session_start();
+ require_once '../../php/dao/conexao/avaconexao.php';
    
-$numEstrela = $_GET['numEstrela'];
+ $numEstrela = $_POST['numEstrela'];
     
-$discursao_id = $_POST["discursao_id"];
-$resposta_id = $_POST["resposta_id"];
-$usuarios_id= $_POST["usuarios_id"];
-$valorAvaliacao = $_POST ["avaliacaoselect" . $numEstrela];
-$resposta = $_POST["pontuacao"];
-// $votos= $_POST[$resposta["votos"]];
+ $discursao_id = $_POST["discursao_id"];
+ $resposta_id = $_POST["resposta_id"];
+ $usuarios_id= $_POST["usuarios_id"];
+ $valorAvaliacao = $_POST ["avaliacaoselect". $numEstrela] ;
+ $resposta = $_POST["pontuacao"];
+ $votos= $_POST ["votos"];
 
 
-// print_r($votos);
-// die();
+//  print_r($votos);
+//  die();
 
 
     if (isset($valorAvaliacao)){
@@ -24,8 +24,13 @@ $resposta = $_POST["pontuacao"];
     // exit();
 
         //Salvar no banco
+        //$votos ;
+        // echo ($votos);
+        // exit();
+        $incvotos = "update respostas set votos= $votos + 1  where id = '$resposta_id '";
+        $incvotos = mysqli_query($conn, $incvotos);
 
-        $result_avaliacoes = "update respostas set PONTUACAO= (($resposta + $valorAvaliacao) / 2)where id = '$resposta_id '";
+        $result_avaliacoes = "update respostas set PONTUACAO= (($resposta + $valorAvaliacao) / $votos)where id = '$resposta_id '";
         $result_avaliacoes = mysqli_query($conn, $result_avaliacoes);
 
         // $result_avaliacoes = "update respostas set PONTUACAO= (($resposta + $valorAvaliacao) / 2)where id = '$resposta_id '";

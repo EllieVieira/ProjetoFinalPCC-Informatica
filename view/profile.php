@@ -1,7 +1,7 @@
 <?php
-    require_once '../php/dao/conexao/classe_cadastro.php';
-    $p = new con( "lancult_bd", "localhost", "root", "" );
-    date_default_timezone_set( 'America/Sao_Paulo' );
+require_once '../php/dao/conexao/classe_cadastro.php';
+$p = new con("lancult_bd", "localhost", "root", "");
+date_default_timezone_set('America/Sao_Paulo');
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +26,6 @@
     $clienteDAO = new ClienteDAO();
     $cliente = $clienteDAO->findById($idCliente);
     $perfil = $p->buscarDadosPerfil();
-    
-
     ?>
 
     <header class="header">
@@ -53,25 +51,31 @@
             </div>
         </div>
     </header>
-    
+
 
     <main class="form">
         <form action="../php/controller/1alterarClienteController.php" method="POST">
-        <h1 id="page-title">Editar Perfil</h1>
+            <h1 id="page-title">Editar Perfil</h1>
             <?php
-                    if (!empty($perfil)) {
-                        
-                        foreach ($perfil as $userP);}
+            if (!empty($perfil)) {
 
+                foreach ($perfil as $dado);
 
-                        ?>
+                // echo '<pre>';
+                // var_dump($dado);
+                // '</pre>';
+                // exit();
+                
+            ?>
 
-            <p><strong>Nome:</strong> <?php echo $cliente["NOME"] ?></p>
-            <p><strong>Email:</strong> <?php echo $cliente["EMAIL"] ?></p>
-            <p><strong>País:</strong> <?php echo $userP["nome"] ?></p>
-            <p><strong>Tipo de usuário:</strong> <?php echo $userP["nomet"] ?></p>
-            
-           
+                <p><strong>Nome:</strong> <?php echo $cliente["NOME"] ?></p>
+                <p><strong>Email:</strong> <?php echo $cliente["EMAIL"] ?></p>
+                <p><strong>País:</strong> <?php echo $dado["nome"] ?></p>
+                <p><strong>Tipo de usuário:</strong> <?php echo $dado["nomet"] ?></p>
+            <?php
+            }
+            ?>
+
     </main>
 
 
