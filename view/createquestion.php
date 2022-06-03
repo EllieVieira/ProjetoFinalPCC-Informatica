@@ -68,7 +68,7 @@
                         <h2>Qual a sua pergunta?</h2>
                         <input type="text" name="titulo" id="titulo" placeholder="Título" autocomplete="off" maxlength="100" required>
                         <textarea name="descricao" id="descricao" cols="90" rows="4" autocomplete="off" maxlength="500" value="<?php echo $discursao["DESCRICAO"] ?>" placeholder="Descrição(Opcional)" spellcheck="true"></textarea>
-                        <input type="file" name="imagem" id="imagem" class="imagem">
+                        <!-- <input type="file" name="imagem" id="imagem" class="imagem"> -->
                         <select name="idiomas_id" id="idiomas_id" class="select-idioma" required>
                             <option value="0">Selecionar Idioma:</option>
                             <option value="1">Português</option>

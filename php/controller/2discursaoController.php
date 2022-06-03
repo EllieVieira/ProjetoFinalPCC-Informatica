@@ -1,7 +1,7 @@
 <?php
 require_once '../dto/DiscursaoDTO.php';
 require_once '../dao/DiscursaoDAO.php';
-require_once '../../util/Upload.php';
+// require_once '../../util/Upload.php';
 date_default_timezone_set( 'America/Sao_Paulo' );
 session_start();
 
