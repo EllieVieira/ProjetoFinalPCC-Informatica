@@ -24,7 +24,7 @@
         require_once "../php/dao/DiscursaoDAO.php";
         $DiscursaoDAO = new DiscursaoDAO();
         $sabadao = $DiscursaoDAO->publiUsuario($idCliente); 
-        var_dump($sabadao);
+        // var_dump($sabadao);
 
     ?>
 
@@ -69,10 +69,10 @@
                 <label for="paises_id">País:</label>
                 <select name="paises_id" id="paises_id" required>
                     <option value="1"<?php echo $cliente['PAISES_ID'] == 1 ? 'selected' : ''; ?>>Brazil</option>
-                                <option value="2"                                                                                                                                                                                                                                                                                                                                                                                                                                                          <?php echo $cliente["PAISES_ID"] == 2 ? 'selected' : ''; ?>>UK</option>
-                                <option value="3"                                                                                                                                                                                                                                                                                                                                                                                                                                                          <?php echo $cliente["PAISES_ID"] == 3 ? 'selected' : ''; ?>>USA</option>
-                                <option value="4"                                                                                                                                                                                                                                                                                                                                                                                                                                                          <?php echo $cliente["PAISES_ID"] == 4 ? 'selected' : ''; ?>>SPAIN</option>
-                                <option value="5"                                                                                                                                                                                                                                                                                                                                                                                                                                                          <?php echo $cliente["PAISES_ID"] == 5 ? 'selected' : ''; ?>>FRENCH</option>
+                                <option value="2"                                                                                                                                                                          <?php echo $cliente["PAISES_ID"] == 2 ? 'selected' : ''; ?>>UK</option>
+                                <option value="3"                                                                              <?php echo $cliente["PAISES_ID"] == 3 ? 'selected' : ''; ?>>USA</option>
+                                <option value="4"                                                                                                                                                                        <?php echo $cliente["PAISES_ID"] == 4 ? 'selected' : ''; ?>>SPAIN</option>
+                                <option value="5"                                                                                                                                                                        <?php echo $cliente["PAISES_ID"] == 5 ? 'selected' : ''; ?>>FRENCH</option>
                 </select><br>
                 <label for="tipo_id">Você é?</label>
                 <select name="tipo_id" id="tipo_id" required>
@@ -88,7 +88,7 @@
 
     </main>
     <main class="form">
-        <p>abobora</p>
+        
         <?php
         foreach ( $sabadao as $dado ) {?>
         <a href="../view/questionpage.php?id=<?=$dado['id']?>">
