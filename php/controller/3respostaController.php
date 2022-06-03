@@ -8,6 +8,7 @@ $descricao = $_POST["descricao"];
 $data = date( 'Y-m-d H:m:s');
 $discursao_id = $_POST["discursao_id"];
 $usuarios_id = $_SESSION["idlogin"];
+$votos = $_POST["votos"];
 
 
 $respostaDTO = new RespostaDTO();
@@ -15,13 +16,15 @@ $respostaDTO->setDESCRICAO($descricao);
 $respostaDTO->setDATA($data);
 $respostaDTO->setDISCURSAO_ID($discursao_id);
 $respostaDTO->setUSUARIOS_ID($usuarios_id);
+$respostaDTO->setvotos($votos);
 
 
-$RespostaDAO = new RespostaDAO();
+$respostaDAO = new RespostaDAO();
 
 $error[1] = "Resposta Posta!";
 
-if ( $RespostaDAO->salvarR( $respostaDTO ) ) {
+if ( $respostaDAO->salvarR( $respostaDTO ) ) {
     echo "Pergunta Postada!";
-    header( "Location: ../../view/home.php?msg={$error[1]}" );
+    header('Location: ../../view/questionpage.php?id=' . $discursao_id);
+    
 }

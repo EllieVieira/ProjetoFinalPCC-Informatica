@@ -1,7 +1,7 @@
 <?php
 require_once '../dto/DiscursaoDTO.php';
 require_once '../dao/DiscursaoDAO.php';
-// require_once '../../util/Upload.php';
+require_once '../../util/Upload.php';
 date_default_timezone_set( 'America/Sao_Paulo' );
 session_start();
 
@@ -22,7 +22,7 @@ $discursaoDTO = new DiscursaoDTO();
 $discursaoDTO->setTitulo( $titulo );
 $discursaoDTO->setDescricao( $descrição );
 $discursaoDTO->setData( $data );
-// $discursaoDTO->setImagem( isset( $imagem ) && $imagem["error"] == 0 ? $upload->getNome( $imagem ) : null );
+$discursaoDTO->setImagem( isset( $imagem ) && $imagem["error"] == 0 ? $upload->getNome( $imagem ) : null );
 $discursaoDTO->setUsuarios_Id( $usuarios_id );
 $discursaoDTO->setIdiomas_Id( $idiomas_id );
 

@@ -30,7 +30,7 @@
         <h1 class="title"><a href="../view/home.php">The Lancult Town</a></h1>
         <div class="mod-session">
             <div class="modify">
-                <a href="../view/changeprofile.php?id=<?php echo $cliente["ID"] ?>">Editar Perfil</a>
+                <a href="../view/profile.php?id=<?php echo $cliente["ID"] ?>">Perfil</a>
                 <a href="?logout">Sair</a>
             </div>
             <div class="session-welcome">
@@ -97,16 +97,14 @@
                         <h2><?php echo $dado['titulo'] ?></h2>
                     </a>
                     <?php
-                                echo var_dump($dado);
-                                # code...
-                                //$dado["discursao.ativo = 'ATIVO'"];
+
                                 echo $dado["descricao"], "<br>";
                                 echo "<img src='../user-image{$dado["imagem"]}' width='100'><br>";
                                 echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $dado["data"] ) ), "</div><br><br>";
+                                echo "<div class='name'>", $dado["nomei"], "</div><br>";
                                 echo "<div class='name'>", $dado["nome"], "</div><br>";
 
                                 echo "<hr>";
-
                             }
                         } else {
                         ?>
@@ -118,7 +116,6 @@
                     ?>
 
                 </div>
-
             </section>
         </main>
         <aside class="sidebar"></aside>

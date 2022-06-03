@@ -91,8 +91,8 @@
                                   foreach ( $dados as $dado ) {
                                   ?>
 
-                    <!-- <a href="../view/editquestion.php?id= //$dado['id']?>">Editar</a> -->
-                    <!-- <a href="../php/controller/2excluirDiscursao.php?id= //$dado['id']?>">Deletar questão</a> administrador -->
+                    <a href="../view/editquestion.php?id=<?=$dado['id']?>">Editar</a>
+                    <a href="../php/controller/2excluirDiscursao.php?id=<?=$dado['id']?>">Deletar questão</a>
                     <a href="../view/questionpage.php?id=<?=$dado['id']?>">
                         <h2><?php echo $dado['titulo'] ?></h2>
                     </a>

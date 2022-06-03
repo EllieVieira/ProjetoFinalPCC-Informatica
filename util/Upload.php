@@ -1,4 +1,4 @@
-<?php 
+<?php
 class Upload {
 
     /**
@@ -19,7 +19,7 @@ class Upload {
      * @param string $extensao
      * @return boolean
      */
-    private function Imagem( string $extensao ): bool {
+    private function ehImagem( string $extensao ): bool {
         $extensoes = array( 'gif', 'jpeg', 'jpg', 'png' ); //
         if ( in_array( $extensao, $extensoes ) ) {
             return true;
