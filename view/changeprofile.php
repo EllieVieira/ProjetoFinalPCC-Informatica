@@ -14,15 +14,16 @@
 
 <body>
     <?php
-    session_start();
-    require_once '../php/dao/ClienteDAO.php'; //excluirClienteController.php
-    $idCliente = $_SESSION["idlogin"];
-    $clienteDAO = new ClienteDAO();
-    $cliente = $clienteDAO->findById($idCliente);
+        session_start();
+        require_once '../php/dao/ClienteDAO.php'; //excluirClienteController.php
+        $idCliente  = $_SESSION["idlogin"];
+        $clienteDAO = new ClienteDAO();
+        $cliente    = $clienteDAO->findById( $idCliente ); // $cliente -> id do usuario logado.
 
-    require_once "../php/dao/DiscursaoDAO.php";
+        require_once "../php/dao/DiscursaoDAO.php";
         $DiscursaoDAO = new DiscursaoDAO();
-        $sabadao = $DiscursaoDAO->publiUsuario($idCliente); 
+        $sabadao      = $DiscursaoDAO->publiUsuario( $idCliente ); //$sabadao-> dados sobre as discussões publicadas do usuario.
+
         // var_dump($sabadao);
 
     ?>
@@ -36,15 +37,15 @@
             </div>
             <div class="session-welcome">
                 <?php
-                if (!isset($_SESSION["login"])) {
-                    header("Location: ../view/signin.php");
-                }
-                echo "Bem Vindo, {$_SESSION["login"]}!";
-                if (isset($_GET['logout'])) {
-                    unset($_SESSION['login']);
-                    session_destroy();
-                    header('Location: ../view/signin.php');
-                }
+                    if ( !isset( $_SESSION["login"] ) ) {
+                        header( "Location: ../view/signin.php" );
+                    }
+                    echo "Bem Vindo, {$_SESSION["login"]}!";
+                    if ( isset( $_GET['logout'] ) ) {
+                        unset( $_SESSION['login'] );
+                        session_destroy();
+                        header( 'Location: ../view/signin.php' );
+                    }
 
                 ?>
             </div>
@@ -66,17 +67,17 @@
                 <label for="paises_id">País:</label>
                 <select name="paises_id" id="paises_id" required>
                     <option value="1"<?php echo $cliente['PAISES_ID'] == 1 ? 'selected' : ''; ?>>Brazil</option>
-                                <option value="2"                                                                                                                                                                          <?php echo $cliente["PAISES_ID"] == 2 ? 'selected' : ''; ?>>UK</option>
-                                <option value="3"                                                                              <?php echo $cliente["PAISES_ID"] == 3 ? 'selected' : ''; ?>>USA</option>
-                                <option value="4"                                                                                                                                                                        <?php echo $cliente["PAISES_ID"] == 4 ? 'selected' : ''; ?>>SPAIN</option>
-                                <option value="5"                                                                                                                                                                        <?php echo $cliente["PAISES_ID"] == 5 ? 'selected' : ''; ?>>FRENCH</option>
+                                <option value="2"                                                                                                                                                                                                                           <?php echo $cliente["PAISES_ID"] == 2 ? 'selected' : ''; ?>>UK</option>
+                                <option value="3"                                                                                                                               <?php echo $cliente["PAISES_ID"] == 3 ? 'selected' : ''; ?>>USA</option>
+                                <option value="4"                                                                                                                                                                                                                         <?php echo $cliente["PAISES_ID"] == 4 ? 'selected' : ''; ?>>SPAIN</option>
+                                <option value="5"                                                                                                                                                                                                                         <?php echo $cliente["PAISES_ID"] == 5 ? 'selected' : ''; ?>>FRENCH</option>
                 </select><br>
                 <label for="tipo_id">Você é?</label>
                 <select name="tipo_id" id="tipo_id" required>
                     <option></option>
-                    <option value="1"                                                                                                                                                     <?php echo $cliente['TIPO_ID'] == 1 ? 'selected' : ''; ?>>Estudante</option>
-                    <option value="2"                                                                                                                                                     <?php echo $cliente['TIPO_ID'] == 2 ? 'selected' : ''; ?>>Professor</option>
-                    <option value="3"                                                                                                                                                     <?php echo $cliente['TIPO_ID'] == 3 ? 'selected' : ''; ?>>Nativo</option>
+                    <option value="1"                                                                                                                                                                                          <?php echo $cliente['TIPO_ID'] == 1 ? 'selected' : ''; ?>>Estudante</option>
+                    <option value="2"                                                                                                                                                                                          <?php echo $cliente['TIPO_ID'] == 2 ? 'selected' : ''; ?>>Professor</option>
+                    <option value="3"                                                                                                                                                                                          <?php echo $cliente['TIPO_ID'] == 3 ? 'selected' : ''; ?>>Nativo</option>
                 </select>
             </div>
             <input type="submit" name="alterar" id="alterar" value="Editar Perfil" class="submit">

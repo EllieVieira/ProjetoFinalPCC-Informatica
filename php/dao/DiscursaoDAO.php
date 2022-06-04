@@ -146,6 +146,8 @@ class DiscursaoDAO {
         $res = $cmd->fetchAll( PDO::FETCH_ASSOC );
         return $res;
     }
+
+    // Function BuscarDados -> pega dados das discussões de acordo com seu id.
     public function buscarDados( $idDiscursao ) {
         $cmd = $this->pdo->prepare( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id where discursao.id = :idDiscursao" );
         $cmd->bindValue( ':idDiscursao', $idDiscursao );
@@ -153,6 +155,7 @@ class DiscursaoDAO {
         $res = $cmd->fetch( PDO::FETCH_ASSOC );
         return $res;
     }
+    // Function publiUsuario -> pegar dados de perguntas publicas por usuarios de acordo com seu id.
     public function publiUsuario( $idCliente ) {
         $res = array();
         $cmd = $this->pdo->prepare( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome, usuarios.id FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id where usuarios.id = :idd;" );

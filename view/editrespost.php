@@ -1,7 +1,7 @@
 <?php
-require_once '../php/dao/conexao/classe_cadastro.php';
-$p = new con("lancult_bd", "localhost", "root", "");
-date_default_timezone_set('America/Sao_Paulo');
+    require_once '../php/dao/conexao/classe_cadastro.php';
+    $p = new con( "lancult_bd", "localhost", "root", "" );
+    date_default_timezone_set( 'America/Sao_Paulo' );
 ?>
 
 <!DOCTYPE html>
@@ -20,21 +20,21 @@ date_default_timezone_set('America/Sao_Paulo');
 
 <body>
     <?php
-    session_start();
-    require_once "../php/dao/RespostaDAO.php";
-    $idd = $_GET['id'];
-    $RespostaDAO = new RespostaDAO();
-    $resposta = $RespostaDAO->findByIdR($idd);
-    // var_dump($resposta);
-    // exit(); 
+        session_start();
+        require_once "../php/dao/RespostaDAO.php";
+        $idd         = $_GET['id']; //identificação do usuario
+        $RespostaDAO = new RespostaDAO();
+        $resposta    = $RespostaDAO->findByIdR( $idd ); // dados sobre a resposta selecionada
+        // var_dump($resposta);
+        // exit();
     ?>
 
     <?php
 
-    require_once '../php/dao/ClienteDAO.php';
-    $id = $_SESSION['idlogin'];
-    $clienteDAO = new ClienteDAO();
-    $cliente = $clienteDAO->findById($id);
+        require_once '../php/dao/ClienteDAO.php';
+        $id         = $_SESSION['idlogin'];
+        $clienteDAO = new ClienteDAO();
+        $cliente    = $clienteDAO->findById( $id );
 
     ?>
 
@@ -47,15 +47,15 @@ date_default_timezone_set('America/Sao_Paulo');
             </div>
             <div class="session-welcome">
                 <?php
-                if (!isset($_SESSION["login"])) {
-                    header("Location: ../view/signin.php");
-                }
-                echo "Bem Vindo, {$_SESSION["login"]}!";
-                if (isset($_GET['logout'])) {
-                    unset($_SESSION['login']);
-                    session_destroy();
-                    header('Location: ../view/signin.php');
-                }
+                    if ( !isset( $_SESSION["login"] ) ) {
+                        header( "Location: ../view/signin.php" );
+                    }
+                    echo "Bem Vindo, {$_SESSION["login"]}!";
+                    if ( isset( $_GET['logout'] ) ) {
+                        unset( $_SESSION['login'] );
+                        session_destroy();
+                        header( 'Location: ../view/signin.php' );
+                    }
 
                 ?>
             </div>
@@ -65,9 +65,9 @@ date_default_timezone_set('America/Sao_Paulo');
     <main class="main">
         <div class="question-posted">
             <?php
-            if (isset($_GET['msg'])) {
-                echo $_GET['msg'];
-            }
+                if ( isset( $_GET['msg'] ) ) {
+                    echo $_GET['msg'];
+                }
             ?>
         </div>
 
@@ -78,11 +78,11 @@ date_default_timezone_set('America/Sao_Paulo');
                 <textarea name="descricao" id="descricao" cols="90" rows="4" autocomplete="off" maxlength="500"><?php echo $resposta["DESCRICAO"] ?></textarea>
                <input type="submit" value="Editar Pergunta" class="submit">
 
-               
+
             </form>
             <?php
                 // print_r($resposta);
-                // exit();?> 
+            // exit();?>
             </div>
             </div>
 
