@@ -27,11 +27,11 @@
     ?>
 
     <header class="header">
-        <h1 class="title"><a href="../view/home.php">The Lancult Town</a></h1>
+        <h1 class="title"><a href="../view/home.php"><img src="/images/logotipo.png" alt="Lancult Town" width="200x" height="80px"></a></h1>
         <div class="mod-session">
             <div class="modify">
-                <a href="../view/profile.php?id=<?php echo $cliente["ID"] ?>">Perfil</a>
-                <a href="?logout">Sair</a>
+                <div class="btn-prof"><a href="../view/profile.php?id=<?php echo $cliente["ID"] ?>">Meu Perfil</a></div>
+                <div class="btn-sair"><a href="?logout">Sair</a></div>
             </div>
             <div class="session-welcome">
                 <?php
@@ -49,7 +49,14 @@
             </div>
         </div>
     </header>
-    <div class="container">
+
+    
+    <div class="btn-p">
+        <button class="btn-pergunta"><a href="../view/createquestion.php">Perguntar</a></button>
+    </div>
+    
+        <div class="container">
+    
         <nav class="nav">
             <ul>
                 <li><a href="home.php">Início</a></li>
@@ -57,10 +64,9 @@
                 <li><a href="ingles.php">Inglês</a></li>
                 <li><a href="espanhol.php">Espanhol</a></li>
                 <li><a href="frances.php">Francês</a></li>
-                <li><a href="../view/createquestion.php">Perguntar</a></li>
             </ul>
         </nav>
-        <main class="main">
+        
             <?php if ( isset( $_GET['msg'] ) ) {?>
             <fieldset>
                 <div class="question-posted">
@@ -70,6 +76,9 @@
             </fieldset>
             <?php }?>
             <section class="questions">
+                
+            
+
                 <div class="question-box">
                     <?php
 
@@ -82,33 +91,38 @@
                          */
 
                     if ( !isset( $_SESSION["login"] ) ) {?>
+                </div>
                     <div class="questions-buttons">
                         <a href="../view/editquestion.php?id=<?=$dado['id']?>">Editar</a>
                         <a href="../php/controller/2excluirDiscursao.php?id=<?=$dado['id']?>">Deletar questão</a>
-                    </div><?php
-                              }
-
-                              if ( !empty( $dados ) ) {
-                                  foreach ( $dados as $dado ) {
-                                  ?>
-
-
-                    <a href="../view/questionpage.php?id=<?=$dado['id']?>">
-                        <h2><?php echo $dado['titulo'] ?></h2>
-                    </a>
-                    <?php
-
-                                echo $dado["descricao"], "<br>";
-                                // echo "<img src='../user-image{$dado["imagem"]}' width='100'><br>";
-                                echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $dado["data"] ) ), "</div><br><br>";
-                                echo "<div class='name'>", $dado["nomei"], "</div><br>";
-                                echo "<div class='name'><a href='../view/profileUS.php?id=", $dado["usuid"], "'>",
-                                $dado["nome"], "</div><br>";
-
-                                echo "<hr>";
+                    </div>
+                        <?php
                             }
-                        } else {
-                        ?>
+                            if ( !empty( $dados ) ) {
+                                foreach ( $dados as $dado ) {
+                                ?>
+                        <div class="all">
+                            <div class="title-name">
+                                <a href="../view/questionpage.php?id=<?=$dado['id']?>">
+                                    <h2><?php echo $dado['titulo'] ?></h2>
+                                    <?php echo "<div class='user'><a href='../view/profileUS.php?id=", $dado["usuid"], "'>",
+                                            $dado["nome"], "</div><br>"; ?>
+                                </a>
+                            </div>
+
+                            <div class="date-name">
+                                <?php
+                                    // echo "<img src='../user-image{$dado["imagem"]}' width='100'><br>";
+                                            echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $dado["data"] ) ), "</div><br>";
+                                        echo "<div class='name'>", $dado["nomei"], "</div><br>"; ?>
+
+                            </div>
+                        </div>
+                                    <?php echo "<hr>";
+                                            }
+                                        } else {
+                                        ?>
+
                     <div class="aviso">
                         <h4>Não há questões aqui!</h4>
                     </div>
@@ -118,8 +132,6 @@
 
                 </div>
             </section>
-        </main>
-        <aside class="sidebar"></aside>
 
     </div>
     <footer>

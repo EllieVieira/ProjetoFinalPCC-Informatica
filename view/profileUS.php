@@ -80,10 +80,17 @@
 
            foreach ( $perfilUS as $dado );
 
+        //    print_r($dado);
+        //    exit();
+
        ?>
 
-        <p><strong>Nome:</strong><?php echo $dado["nomeus"] ?></p>
-        <p><strong>Tipo de usuário:</strong><?php echo $dado["nomet"] ?></p>
+        <p><strong>Nome:</strong><?php echo $dado["nomeus"] ?></br></p>
+        <br>
+        <p><strong>País:</strong> <?php echo $dado["nome"] ?></br></p>
+        <br>
+        <p><strong>Tipo de usuário:</strong><?php echo $dado["nomet"] ?></br></p>
+        
 <?php
     }
 ?>
