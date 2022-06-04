@@ -31,29 +31,29 @@
         // echo "<pre>", var_dump( $perfilUS );
     ?>
 
-    <header class="header">
-        <h1 class="title"><a href="../view/home.php">The Lancult Town</a></h1>
-        <div class="mod-session">
-            <div class="modify">
-                <a href="../view/profile.php?id=<?php echo $cliente["ID"] ?>">Perfil</a>
-                <a href="?logout">Sair</a>
-            </div>
-            <div class="session-welcome">
-                <?php
-                    if ( !isset( $_SESSION["login"] ) ) {
-                        header( "Location: ../view/signin.php" );
-                    }
-                    echo "Bem Vindo, {$_SESSION["login"]}!";
-                    if ( isset( $_GET['logout'] ) ) {
-                        unset( $_SESSION['login'] );
-                        session_destroy();
-                        header( 'Location: ../view/signin.php' );
-                    }
-
-                ?>
-            </div>
-        </div>
-    </header>
+<header class="header">
+                <h1 class="title"><a href="../view/home.php"><img src="/images/logotipo.png" alt="Lancult Town" width="200x" height="80px"></a></h1>
+                <div class="mod-session">
+                    <div class="modify">
+                        <div class="btn-prof"><a href="../view/profile.php?id=<?php echo $cliente["ID"] ?>">Meu Perfil</a></div>
+                        <div class="btn-sair"><a href="?logout">Sair</a></div>
+                    </div>
+                    <div class="session-welcome">
+                        <?php
+                            if ( !isset( $_SESSION["login"] ) ) {
+                                header( "Location: ../view/signin.php" );
+                            }
+                            echo "Bem Vindo, {$_SESSION["login"]}!";
+                            if ( isset( $_GET['logout'] ) ) {
+                                unset( $_SESSION['login'] );
+                                session_destroy();
+                                header( 'Location: ../view/signin.php' );
+                            }
+        
+                        ?>
+                    </div>
+                </div>
+            </header>
 <!-- array(1) {
      [0]=>
     array(5) {
