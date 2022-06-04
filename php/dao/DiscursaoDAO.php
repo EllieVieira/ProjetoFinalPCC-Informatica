@@ -158,7 +158,7 @@ class DiscursaoDAO {
     // Function publiUsuario -> pegar dados de perguntas publicas por usuarios de acordo com seu id.
     public function publiUsuario( $idCliente ) {
         $res = array();
-        $cmd = $this->pdo->prepare( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome, usuarios.id FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id where usuarios.id = :idd;" );
+        $cmd = $this->pdo->prepare( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome, usuarios.id FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id where usuarios.id = :idd" );
         $cmd->bindValue( ':idd', $idCliente );
         $cmd->execute();
         $res = $cmd->fetchAll( PDO::FETCH_ASSOC );
