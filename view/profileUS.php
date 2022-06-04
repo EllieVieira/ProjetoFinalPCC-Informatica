@@ -89,13 +89,7 @@
         <br>
         <p><strong>País:</strong>                                                                                                                                                                                                                                                                                 <?php echo $dado["nome"] ?></br></p>
         <br>
-<<<<<<< Updated upstream
         <p><strong>Tipo de usuário:</strong><?php echo $dado["nomet"] ?></br></p>
-
-=======
-       
-        
->>>>>>> Stashed changes
 <?php
     }
 ?>
