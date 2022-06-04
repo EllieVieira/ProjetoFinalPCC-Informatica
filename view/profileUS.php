@@ -80,23 +80,39 @@
 
            foreach ( $perfilUS as $dado );
 
-        //    print_r($dado);
-        //    exit();
+           //    print_r($dado);
+           //    exit();
 
        ?>
 
         <p><strong>Nome:</strong><?php echo $dado["nomeus"] ?></br></p>
         <br>
-        <p><strong>País:</strong> <?php echo $dado["nome"] ?></br></p>
+        <p><strong>País:</strong>                                                                                                                                                                                                                                                                                 <?php echo $dado["nome"] ?></br></p>
         <br>
         <p><strong>Tipo de usuário:</strong><?php echo $dado["nomet"] ?></br></p>
-        
+
 <?php
     }
 ?>
     </main>
+    <main class="form">
+    <?php
+        // publicacçoes do usuario
+        require_once '../php/dao/DiscursaoDAO.php';
+        $discursaoDAO = new DiscursaoDAO();
+        $publicacao   = $discursaoDAO->publicacao( $idUS );
+        if ( !empty( $publicacao ) ) {
+        foreach ( $publicacao as $public ) {?>
+    <a href="../view/questionpage.php?id=<?=$public['idD']?>"><strong>titulo:</strong><?php echo $public["titulo"] ?></br></a>
+     <br>
+    <p><strong>País:</strong>                                                                                                                                                                                                                                                 <?php echo $public["descricao"] ?></br></p>
+    <br>
+    <p><strong>Tipo de usuário:</strong><?php echo $public["nome"] ?></br></p>
 
+    <?php }}
+    ?>
 
+    </main>
     <footer class="foot">
         <strong>The Lancult Town</strong>
     </footer>

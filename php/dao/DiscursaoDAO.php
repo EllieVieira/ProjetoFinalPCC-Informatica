@@ -164,5 +164,13 @@ class DiscursaoDAO {
         $res = $cmd->fetchAll( PDO::FETCH_ASSOC );
         return $res;
     }
+    public function publicacao( $idUS ) {
+        $res = array();
+        $cmd = $this->pdo->prepare( "SELECT discursao.id as idD, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome, usuarios.id FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id where usuarios.id = :idd" );
+        $cmd->bindValue( ':idd', $idUS );
+        $cmd->execute();
+        $res = $cmd->fetchAll( PDO::FETCH_ASSOC );
+        return $res;
+    }
 
 }
