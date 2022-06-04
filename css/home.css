@@ -70,6 +70,31 @@ h1.title a {
   margin: 0 50px;
 }
 
+.modify a:hover , button a:hover{
+  color: var(--color-08);
+  transition-duration: 0.5s;
+  cursor: pointer;
+  width: 200px;
+  height: 30px;
+}
+
+.btn-p{
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 20px 50px 10px;
+}
+
+
+.btn-p a{
+  color: var(--color-01);
+}
+
+.session-welcome {
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: right;
+}
+
 .btn-prof, .btn-sair, button {
   display: inline-block;
   color: var(--color-01);
@@ -90,34 +115,6 @@ h1.title a {
 .btn-prof a, .btn-sair a{
   color: var(--color-01);
   
-}
-
-
-.modify a:hover , button a:hover{
-  color: var(--color-08);
-  transition-duration: 0.5s;
-  cursor: pointer;
-  width: 200px;
-  height: 30px;
-}
-
-.btn-p{
-  display: flex;
-  flex-direction: row-reverse;
-  margin: 20px 50px 10px;
-}
-
-.btn-p a{
-  color: var(--color-01);
-  
-
-}
-
-
-.session-welcome {
-  font-weight: bold;
-  margin-top: 20px;
-  text-align: right;
 }
 
 .container {
@@ -190,7 +187,6 @@ fieldset{
 
 h2{
   font-family: var(--font-lancult);
- 
 }
 
 h2:hover{
@@ -202,6 +198,9 @@ a{
   text-decoration: none;
   color: var(--color-07);
 }
+
+
+
 
 input,
 textarea,
@@ -216,7 +215,6 @@ select {
   resize: none;
 }
 
-
 select {
   padding: 5px;
   border: 1px solid var(--color-05);
@@ -230,7 +228,6 @@ select {
 
 input.submit {
   margin: 30px 0 10px 0;
-  
   background-color: var(--color-07);
   border-radius: 20px;
   font-weight: bold;
@@ -251,12 +248,19 @@ input.submit {
   border: 2px solid var(--color-05);
 }
 
+
+
+
+
+form{
+  width: 100%;
+}
+
 .questions, .answers {
   background-color: var(--color-02);
   margin: 20px 0;
   padding: 10px;
   border-radius: 10px;
-  
   width: 100%;
 }
 
@@ -265,23 +269,6 @@ div.all{
   justify-content: space-between;
   align-items: baseline;
   background-color: var(--color-02);
-}
-
-.title-name{
-  
-}
-
-.date-name{
-  
-
-  
-}
-
-
-
-
-form{
-  width: 100%;
 }
 
 .question-box, .answers-box {

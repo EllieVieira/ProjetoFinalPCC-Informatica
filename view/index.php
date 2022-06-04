@@ -13,7 +13,9 @@
 
 <body>
     <header>
-        <h1 id="title">The Lancult Town</h1>
+    <h1 class="title">
+        <a href="../view/home.php"><img src="/images/logotipo.png" alt="Lancult Town" width="200x" height="80px"></a>
+    </h1>
         <nav>
             <a href="signin.php">Entrar</a>
         </nav>
