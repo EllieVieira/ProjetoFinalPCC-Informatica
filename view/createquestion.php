@@ -57,6 +57,7 @@
     <main class="main">
         <div class="question-posted">
             <?php
+                //Ellie põe uma div na parte superior da caixa pergunta :C
                 if ( isset( $_GET['msg'] ) ) {
                     echo $_GET['msg'];
                 }

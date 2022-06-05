@@ -1,7 +1,7 @@
 <?php
-require_once '../php/dao/conexao/classe_cadastro.php';
-$p = new con("lancult_bd", "localhost", "root", "");
-date_default_timezone_set('America/Sao_Paulo');
+    require_once '../php/dao/conexao/classe_cadastro.php';
+    $p = new con( "lancult_bd", "localhost", "root", "" );
+    date_default_timezone_set( 'America/Sao_Paulo' );
 ?>
 
 <!DOCTYPE html>
@@ -19,19 +19,19 @@ date_default_timezone_set('America/Sao_Paulo');
 
 <body>
     <?php
-    session_start();
-    require_once "../php/dao/DiscursaoDAO.php";
-    $idDiscursao = $_GET['id'];
-    $DiscursaoDAO = new DiscursaoDAO();
-    $discursao = $DiscursaoDAO->findById($idDiscursao);
+        session_start();
+        require_once "../php/dao/DiscursaoDAO.php";
+        $idDiscursao  = $_GET['id'];
+        $DiscursaoDAO = new DiscursaoDAO();
+        $discursao    = $DiscursaoDAO->findById( $idDiscursao );
     ?>
 
     <?php
 
-    require_once '../php/dao/ClienteDAO.php';
-    $id = $_SESSION['idlogin'];
-    $clienteDAO = new ClienteDAO();
-    $cliente = $clienteDAO->findById($id);
+        require_once '../php/dao/ClienteDAO.php';
+        $id         = $_SESSION['idlogin'];
+        $clienteDAO = new ClienteDAO();
+        $cliente    = $clienteDAO->findById( $id );
 
     ?>
 
@@ -62,9 +62,9 @@ date_default_timezone_set('America/Sao_Paulo');
     <main class="main">
         <div class="question-posted">
             <?php
-            if (isset($_GET['msg'])) {
-                echo $_GET['msg'];
-            }
+                if ( isset( $_GET['msg'] ) ) {
+                    echo $_GET['msg'];
+                }
             ?>
         </div>
 
@@ -76,11 +76,10 @@ date_default_timezone_set('America/Sao_Paulo');
                 <textarea name="descricao" id="descricao" cols="90" rows="4" autocomplete="off" maxlength="500"><?php echo $discursao["DESCRICAO"] ?></textarea>
                 <input type="file" name="imagem" id="imagem" value="<?php echo $discursao["IMAGEM"] ?>">
                 <select name="idiomas_id" id="idiomas_id" value="<?php echo $discursao["IDIOMAS_ID"] ?>">
-                    <option value="0">Selecionar Idioma:</option>
-                    <option value="1">Português</option>
-                    <option value="2">Inglês</option>
-                    <option value="3">Espanhol</option>
-                    <option value="4">Francês</option>
+                    <option value="1"<?php echo $discursao["IDIOMAS_ID"] == 1 ? 'selected' : ''; ?>>Português</option>
+                    <option value="2"<?php echo $discursao["IDIOMAS_ID"] == 2 ? 'selected' : ''; ?>>Inglês</option>
+                    <option value="3"<?php echo $discursao["IDIOMAS_ID"] == 3 ? 'selected' : ''; ?>>Espanhol</option>
+                    <option value="4"<?php echo $discursao["IDIOMAS_ID"] == 4 ? 'selected' : ''; ?>>Francês</option>
                 </select>
                 <input type="submit" value="ASK YOUR QUESTION" class="submit">
             </form>

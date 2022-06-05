@@ -26,12 +26,17 @@ $discursaoDTO->setImagem( isset( $imagem ) && $imagem["error"] == 0 ? $upload->g
 $discursaoDTO->setUsuarios_Id( $usuarios_id );
 $discursaoDTO->setIdiomas_Id( $idiomas_id );
 
-$discursaoDAO             = new DiscursaoDAO();
-$discursao["iddiscursao"] = $discursao["ID"];
+$discursaoDAO = new DiscursaoDAO();
+// $discursao["iddiscursao"] = $discursao["ID"];
 
+// var_dump( $idiomas_id );
+// die();
 $error[1] = "Pergunta Postada!";
+$error[2] = "Selecione um idioma";
 
-if ( $discursaoDAO->salvar( $discursaoDTO ) ) {
+if ( $idiomas_id == 0 ) {
+    header( "Location: ../../view/createquestion.php?msg={$error[2]}" );
+} elseif ( $discursaoDAO->salvar( $discursaoDTO ) ) {
     switch ( $idiomas_id ) {
     case 1:
         header( "Location: ../../view/portugues.php?msg={$error[1]}" );
