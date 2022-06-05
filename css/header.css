@@ -9,13 +9,14 @@
   }
   
   :root {
-    --color-01: #e3f5fa;
-    --color-02: #e3fffd;
-    --color-03: #d7fafc;
-    --color-04: #95f0e8;
-    --color-05: #02978b;
-    --color-06: #3a4d4bb0;
-    --color-07: #000000;
+    --color-01: #ffffff;
+  --color-02: #7ebfdd;
+  --color-03: #68D4F6;
+  --color-04: #4c7ac8;
+  --color-05: #cbdddc;
+  --color-06: #3a4d4bb0;
+  --color-07: #000000;
+  --color-08: #1720a0;
   
     --font-lancult: "Lancult";
     --font-site: "Roboto";

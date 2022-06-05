@@ -26,12 +26,12 @@
         $cliente    = $clienteDAO->findById( $idCliente );
     ?>
 
-    <header class="header">
-        <h1 class="title"><a href="../view/home.php">The Lancult Town</a></h1>
+<header class="header">
+        <h1 class="title"><a href="../view/home.php"><img src="/images/logotipo.png" alt="Lancult Town" width="200x" height="80px"></a></h1>
         <div class="mod-session">
             <div class="modify">
-                <a href="../view/changeprofile.php?id=<?php echo $cliente["ID"] ?>">Editar Perfil</a>
-                <a href="?logout">Sair</a>
+                <div class="btn-prof"><a href="../view/profile.php?id=<?php echo $cliente["ID"] ?>">Meu Perfil</a></div>
+                <div class="btn-sair"><a href="?logout">Sair</a></div>
             </div>
             <div class="session-welcome">
                 <?php
@@ -49,6 +49,7 @@
             </div>
         </div>
     </header>
+    
     <div class="container">
         <nav class="nav">
             <ul>

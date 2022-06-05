@@ -18,13 +18,14 @@ body {
 }
 
 :root {
-    --color-01: #e3f5fa;
-    --color-02: #e3fffd;
-    --color-03: #d7fafc;
-    --color-04: #95f0e8;
-    --color-05: #02978b;
-    --color-06: #3a4d4bb0;
-    --color-07: #000000;
+    --color-01: #ffffff;
+  --color-02: #7ebfdd;
+  --color-03: #68D4F6;
+  --color-04: #4c7ac8;
+  --color-05: #cbdddc;
+  --color-06: #3a4d4bb0;
+  --color-07: #000000;
+  --color-08: #1720a0;
 
     --font-lancult: 'Lancult';
     --font-site: 'Roboto';
@@ -48,6 +49,71 @@ body {
     flex-direction: column;
     font-family: var(--font-site);
 }
+
+.header {
+    height: auto;
+    display: flex;
+    align-items: center;
+    color: var(--color-07);
+    width: 100%;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    border-bottom: 2px solid var(--color-04);
+  }
+  
+  .mod-session {
+    display: block;
+    margin: 0 50px;
+  }
+  
+  .modify a:hover , button a:hover{
+    color: var(--color-08);
+    transition-duration: 0.5s;
+    cursor: pointer;
+    width: 200px;
+    height: 30px;
+  }
+  
+  .btn-p{
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 20px 50px 10px;
+  }
+  
+  
+  .btn-p a{
+    color: var(--color-01);
+  }
+  
+  .session-welcome {
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: right;
+  }
+  
+  .btn-prof, .btn-sair, button {
+    display: inline-block;
+    color: var(--color-01);
+    background-color: var(--color-04);
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 5px;
+    width: 200px;
+  }
+  
+  .btn-prof, .btn-sair{
+    width: 100px;
+    height: 20px;
+    text-align: center;
+  }
+  
+  .btn-prof a, .btn-sair a{
+    color: var(--color-01);
+    
+  }
+  
 
 main {
     display: flex;
