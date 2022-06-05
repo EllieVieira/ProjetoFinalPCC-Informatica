@@ -120,7 +120,7 @@ class ClienteDAO {
 
     public function buscarDiscussao( $nome ) {
         // SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome, usuarios.id FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id where discursao.descricao like
-        $cmd = $this->pdo->prepare( " SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome,  usuarios.id as usuid FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id where discursao.descricao like :nome" );
+        $cmd = $this->pdo->prepare( " SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome,  usuarios.id as usuid FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id where discursao.titulo like :nome" );
         $cmd->bindValue( ":nome", $nome );
         $cmd->execute();
         $res = $cmd->fetchAll( PDO::FETCH_ASSOC );
