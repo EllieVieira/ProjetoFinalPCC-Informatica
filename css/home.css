@@ -276,6 +276,12 @@ div.all, .disc-ativo{
   
 }
 
+.desc{
+  width: 100%;
+  float: left;
+
+}
+
 .buttons-edit-del, .questions-buttons, .btn-resposta{
   float: right;
 }
@@ -332,6 +338,7 @@ div.name {
   font-size: 20px;
   font-weight: 600;
   transition: 0.5s;
+  height: 20px;
 }
 
 .questions-buttons a{

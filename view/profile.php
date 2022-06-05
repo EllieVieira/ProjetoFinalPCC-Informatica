@@ -32,7 +32,7 @@ date_default_timezone_set('America/Sao_Paulo');
                 <h1 class="title"><a href="../view/home.php"><img src="/images/logotipo.png" alt="Lancult Town" width="200x" height="80px"></a></h1>
                 <div class="mod-session">
                     <div class="modify">
-                        <div class="btn-prof"><a href="../view/profile.php?id=<?php echo $cliente["ID"] ?>">Meu Perfil</a></div>
+                        <div class="btn-prof"><a href="../view/changeprofile.php?id=<?php echo $cliente["ID"] ?>">Editar Perfil</a></div>
                         <div class="btn-sair"><a href="?logout">Sair</a></div>
                     </div>
                     <div class="session-welcome">

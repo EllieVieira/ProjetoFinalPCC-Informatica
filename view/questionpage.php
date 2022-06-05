@@ -98,7 +98,7 @@
                 <li><a href="../view/createquestion.php">Perguntar</a></li>
             </ul>
         </nav>
-  
+
             <main class="main">
                 <section class="questions">
                     <div class="question-box">
@@ -116,16 +116,16 @@
                                 <a href="../php/controller/2excluirDiscursao.php?id=<?=$discursao['ID']?>">Deletar questão</a><br>
                             </div>
                         <?php
-                            }?>
+                        }?>
                             <div class="disc-ativo"><?php
-                                echo "<div class='title-disc'>", $discursao["TITULO"], "</div><br>";
-                                echo "<div class='ativo'>", $discursao["ATIVO"], "</div><br>";?>
+    echo "<div class='title-disc'>", $discursao["TITULO"], "</div><br>";
+echo "<div class='ativo'>", $discursao["ATIVO"], "</div><br>"; ?>
                             </div>
                             <?php
-                           echo $discursao["DESCRICAO"], "<br>";
-                            // echo "<img src='../user-image{$discursao["IMAGEM"]}' width='100'><br>";
-                            echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $discursao["DATA"] ) ), "</div><br>";
-                        echo "<div class='name'>", $nomes['nome'], "</div><br>";?>
+                                echo $discursao["DESCRICAO"], "<br>";
+                                // echo "<img src='../user-image{$discursao["IMAGEM"]}' width='100'><br>";
+                                echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $discursao["DATA"] ) ), "</div><br>";
+                            echo "<div class='name'>", $nomes['nome'], "</div><br>"; ?>
                 <hr>
                         <h1 class="answer-head">Respostas</h1>
                 <hr>
@@ -134,22 +134,24 @@
                                 $numEstrela = 1;
                                 foreach ( $respostaR as $resposta ) {
                                 ?>
-                                <div class="questions-buttons">
+                    <div class="questions-buttons">
                             <?php if ( $resposta["usuarios_id"] == $idCliente ) {
-                                            # code...
-                            ?></div>
+                                        # code...
+                                        ?>
+                    </div>
                           <div class="btn-resposta">
                               <a href="../view/editrespost.php?id=<?=$resposta['id']?>">Editar</a>
-                              <a href="../php/controller/3excluirResposta.php?id=<?=$resposta['id']?>">Deletar resposta</a>
+                               <a href="../php/controller/3excluirResposta.php?id=<?=$resposta['id']?>">Deletar resposta</a>
                           </div>
                         <?php }
-                    ?>
-                          
-                <?php
-                echo  "<div class='desc'>", $resposta['descricao'], "<br><br>";
-                echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $resposta["data"] ) ), "</div><br>";
-                echo "<div class='name'>", $nomes['nome'], "</div><br>";
-                        ?> 
+                        ?>
+                <div>
+                    <?php
+                        echo "<div class='desc'>", $resposta['descricao'], "<br><br>";
+                                echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $resposta["data"] ) ), "</div><br>";
+                                echo "<div class='name'>", $nomes['nome'], "</div><br>";
+                              ?>
+                </div>
                                 <!-- Estrelas da Avaliação -->
                                 <div class="estrelas">
                                     <form action="../php/controller/avaliacao.php?numEstrela=<?=$numEstrela?>" method="POST" enctype="multipart/form-data">

@@ -55,8 +55,14 @@
        <form action="buscarDiscussao.php">
                         <input type="text" name="discussao" size="50" placeholder="Pesquisar discussão">
                     </form>
-    
     </div>
+
+    <?php if ( isset( $_GET['msg'] ) ) {?>
+            
+            <div class="question-posted">
+                <?php echo $_GET['msg']; ?>
+            </div>
+            <?php }?>
     
     <div class="container">
         <nav class="nav">

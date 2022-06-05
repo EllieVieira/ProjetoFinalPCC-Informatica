@@ -57,7 +57,12 @@
                     </form>
     
     </div>
-    
+    <?php if ( isset( $_GET['msg'] ) ) {?>
+            
+            <div class="question-posted">
+                <?php echo $_GET['msg']; ?>
+            </div>
+            <?php }?>
     <div class="container">
         <nav class="nav">
             <ul>
@@ -70,14 +75,9 @@
             </ul>
         </nav>
         
-            <?php if ( isset( $_GET['msg'] ) ) {?>
-            <fieldset>
-                <div class="question-posted">
-                    <?php echo $_GET['msg']; ?>
-                </div>
+            
 
-            </fieldset>
-            <?php }?>
+            
             <section class="questions">
                 <div class="question-box">
                     <?php
