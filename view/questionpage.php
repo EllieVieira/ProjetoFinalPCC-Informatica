@@ -99,135 +99,123 @@
             </ul>
         </nav>
   
-            <section class="questions">
-                <div class="question-box">
-                    <?php
-
-                        /*
-                        Array ( [0] => Array ( [titulo] => Titulo [descricao] => Imagem [data] => 2022-05-13 13:05:40 [imagem] => barbie.jpg [nome] => Ellie ) [1] => Array ( [titulo] => Ola [descricao] => Tudo bem [data] => 2022-05-13 13:05:05 [imagem] => [nome] => Ellie ) )
-                         */
-
-                    ?>
-                    <!-- Informações sobre a pergunta postada! -->
-                    <?php
-                        if ( $discursao["USUARIOS_ID"] == $idCliente ) {
-
+            <main class="main">
+                <section class="questions">
+                    <div class="question-box">
+                        <?php
+                            /*
+                            Array ( [0] => Array ( [titulo] => Titulo [descricao] => Imagem [data] => 2022-05-13 13:05:40 [imagem] => barbie.jpg [nome] => Ellie ) [1] => Array ( [titulo] => Ola [descricao] => Tudo bem [data] => 2022-05-13 13:05:05 [imagem] => [nome] => Ellie ) )
+                             */
                         ?>
-                        <div class="buttons-edit-del">
-                            <a href="../view/editquestion.php?id=<?=$discursao['ID']?>">Editar</a>
-                            <a href="../php/controller/2excluirDiscursao.php?id=<?=$discursao['ID']?>">Deletar questão</a><br>
-                        </div>
-
-                    <?php
-                        }
-                        echo "<div class='title-disc'>", $discursao["TITULO"], "</div><br>";
-                        echo $discursao["DESCRICAO"], "<br>";
-                        echo $discursao["ATIVO"], "<br>";
-                        // echo "<img src='../user-image{$discursao["IMAGEM"]}' width='100'><br>";
-                        echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $discursao["DATA"] ) ), "</div><br><br>";
-                    echo "<div class='name'>", $nomes['nome'], "</div><br>";?>
-
-                    <h1 class="answer-head">Respostas</h1><br>
-
-                    <?php
-                        if ( !empty( $respostaR ) ) {
-                            $numEstrela = 1;
-
-                            foreach ( $respostaR as $resposta ) {
+                        <!-- Informações sobre a pergunta postada! -->
+                        <?php
+                            if ( $discursao["USUARIOS_ID"] == $idCliente ) {
                             ?>
-
-                            <div class="questions-buttons">
-                        <?php if ( $resposta["usuarios_id"] == $idCliente ) {
-                                        # code...
-                                    ?>
-                      <a href="../view/editrespost.php?id=<?=$resposta['id']?>">Editar</a>
-                    <a href="../php/controller/3excluirResposta.php?id=<?=$resposta['id']?>">Deletar questão</a>
-                    <?php }?>
-                        </div>
-
-<?php
-    echo $resposta['descricao'], "<br>";
-            echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $resposta["data"] ) ), "</div><br><br>";
-            echo "<div class='name'>", $nomes['nome'], "</div><br>";
-        ?>
-
-
-
-                            <!-- Estrelas da Avaliação -->
-                            <div class="estrelas">
-                                <form action="../php/controller/avaliacao.php?numEstrela=<?=$numEstrela?>" method="POST" enctype="multipart/form-data">
-                                    <input type="hidden" name="resposta_id" id="resposta_id" autocomplete="off" value="<?php echo $resposta["id"] ?>">
-                                    <input type="hidden" name="discursao_id" id="discursao_id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
-                                    <input type="hidden" name="id_cliente" id="id_cliente" autocomplete="off" value="<?php echo $idCliente ?>">
-                                    <input type="hidden" name="usuarios_id" id="usuarios_id" autocomplete="off" value="<?php echo $resposta["usuarios_id"] ?>">
-                                    <input type="hidden" name="pontuacao" id="pontuacao" autocomplete="off" value="<?php echo $resposta["pontuacao"] ?>">
-                                    <input type="hidden" name="votos" id="votos" autocomplete="off" value="<?php echo $resposta["votos"] ?>">
-
-
-                                    <input type="radio" id="star_icon ativo" name="avaliacaoselect<?=$numEstrela?>" value="" <?=( $resposta['pontuacao'] == '' ? 'checked' : '' )?> <?=$resposta["votos"]?> checked />
-                                    <label for="cm_star-1<?=$numEstrela?>"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-1<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="1" <?=( $resposta['pontuacao'] >= '1.0' ? 'checked' : '' )?>/>
-                                    <label for="cm_star-2<?=$numEstrela?>"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-2<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="2" <?=( $resposta['pontuacao'] >= '1.9' ? 'checked' : '' )?>/>
-                                    <label for="cm_star-3<?=$numEstrela?>"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-3<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="3"<?=( $resposta['pontuacao'] >= '2.9' ? 'checked' : '' )?>/>
-                                    <label for="cm_star-4<?=$numEstrela?>"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-4<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="4" <?=( $resposta['pontuacao'] >= '3.9' ? 'checked' : '' )?>/>
-                                    <label for="cm_star-5<?=$numEstrela?>"><i class="fa"></i></label>
-                                    <input type="radio" class="star_icon" id="cm_star-5<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="5" <?=( $resposta['pontuacao'] >= '4.9' ? 'checked' : '' )?>/>
-
-
-                                    <!-- <select name="avaliacaoselect" id="avaliacaoselect">
-                                        <option value="1" <?=( $resposta['pontuacao'] == '1' ? 'selected' : '' )?>>1</option>
-                                        <option value="2"<?=( $resposta['pontuacao'] == '2' ? 'selected' : '' )?>>2</option>
-                                        <option value="3"<?=( $resposta['pontuacao'] == '3' ? 'selected' : '' )?>>3</option>
-                                        <option value="4" <?=( $resposta['pontuacao'] == '4' ? 'selected' : '' )?>>4</option>
-                                        <option value="5"<?=( $resposta['pontuacao'] == '5' ? 'selected' : '' )?>>5</option>
-
-                                    </select> -->
-                                    <input type="submit" value="Avaliar" name="submit-star" class="submit-star">
-                                </form>
-
-
-                                <!-- <select name="estrela">
-                                    <option value='1' name="estrela">1</option>
-                                    <option value='2' name="estrela">2</option>
-                                    <option value='3' name="estrela">3</option>
-                                    <option value='4' name="estrela">4</option>
-                                    <option value='5' name="estrela">5</option>
-                                </select>
-                                <input type="submit" value="Avaliar" name="submit-star">
-                                </form> -->
-
-                                <?php
-                                    if ( isset( $_GET['num'] ) ) {
-                                                # code...
-                                                if ( isset( $_GET['msg'] ) && $numEstrela == $_GET['num'] ) {
-                                                    echo $_GET['msg'];
-                                                    //unset($_SESSION['msg']);
-                                                }
-                                            }
-
-                                        ?>
-                                <hr>
-
+                            <div class="buttons-edit-del">
+                                <a href="../view/editquestion.php?id=<?=$discursao['ID']?>">Editar</a>
+                                <a href="../php/controller/2excluirDiscursao.php?id=<?=$discursao['ID']?>">Deletar questão</a><br>
                             </div>
                         <?php
-                            $numEstrela += 1;
+                            }?>
+                            <div class="disc-ativo"><?php
+                                echo "<div class='title-disc'>", $discursao["TITULO"], "</div><br>";
+                                echo "<div class='ativo'>", $discursao["ATIVO"], "</div><br>";?>
+                            </div>
+                            <?php
+                           echo $discursao["DESCRICAO"], "<br>";
+                            // echo "<img src='../user-image{$discursao["IMAGEM"]}' width='100'><br>";
+                            echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $discursao["DATA"] ) ), "</div><br>";
+                        echo "<div class='name'>", $nomes['nome'], "</div><br>";?>
+                <hr>
+                        <h1 class="answer-head">Respostas</h1>
+                <hr>
+                        <?php
+                            if ( !empty( $respostaR ) ) {
+                                $numEstrela = 1;
+                                foreach ( $respostaR as $resposta ) {
+                                ?>
+                                <div class="questions-buttons">
+                            <?php if ( $resposta["usuarios_id"] == $idCliente ) {
+                                            # code...
+                            ?></div>
+                          <div class="btn-resposta">
+                              <a href="../view/editrespost.php?id=<?=$resposta['id']?>">Editar</a>
+                              <a href="../php/controller/3excluirResposta.php?id=<?=$resposta['id']?>">Deletar resposta</a>
+                          </div>
+                        <?php }
+                    ?>
+                          
+                <?php
+                echo  "<div class='desc'>", $resposta['descricao'], "<br><br>";
+                echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $resposta["data"] ) ), "</div><br>";
+                echo "<div class='name'>", $nomes['nome'], "</div><br>";
+                        ?> 
+                                <!-- Estrelas da Avaliação -->
+                                <div class="estrelas">
+                                    <form action="../php/controller/avaliacao.php?numEstrela=<?=$numEstrela?>" method="POST" enctype="multipart/form-data">
+                                        <input type="hidden" name="resposta_id" id="resposta_id" autocomplete="off" value="<?php echo $resposta["id"] ?>">
+                                        <input type="hidden" name="discursao_id" id="discursao_id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
+                                        <input type="hidden" name="id_cliente" id="id_cliente" autocomplete="off" value="<?php echo $idCliente ?>">
+                                        <input type="hidden" name="usuarios_id" id="usuarios_id" autocomplete="off" value="<?php echo $resposta["usuarios_id"] ?>">
+                                        <input type="hidden" name="pontuacao" id="pontuacao" autocomplete="off" value="<?php echo $resposta["pontuacao"] ?>">
+                                        <input type="hidden" name="votos" id="votos" autocomplete="off" value="<?php echo $resposta["votos"] ?>">
+                                        <input type="radio" id="star_icon ativo" name="avaliacaoselect<?=$numEstrela?>" value="" <?=( $resposta['pontuacao'] == '' ? 'checked' : '' )?> <?=$resposta["votos"]?> checked />
+                                        <label for="cm_star-1<?=$numEstrela?>"><i class="fa"></i></label>
+                                        <input type="radio" class="star_icon" id="cm_star-1<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="1" <?=( $resposta['pontuacao'] >= '1.0' ? 'checked' : '' )?>/>
+                                        <label for="cm_star-2<?=$numEstrela?>"><i class="fa"></i></label>
+                                        <input type="radio" class="star_icon" id="cm_star-2<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="2" <?=( $resposta['pontuacao'] >= '1.9' ? 'checked' : '' )?>/>
+                                        <label for="cm_star-3<?=$numEstrela?>"><i class="fa"></i></label>
+                                        <input type="radio" class="star_icon" id="cm_star-3<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="3"<?=( $resposta['pontuacao'] >= '2.9' ? 'checked' : '' )?>/>
+                                        <label for="cm_star-4<?=$numEstrela?>"><i class="fa"></i></label>
+                                        <input type="radio" class="star_icon" id="cm_star-4<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="4" <?=( $resposta['pontuacao'] >= '3.9' ? 'checked' : '' )?>/>
+                                        <label for="cm_star-5<?=$numEstrela?>"><i class="fa"></i></label>
+                                        <input type="radio" class="star_icon" id="cm_star-5<?=$numEstrela?>" name="avaliacaoselect<?=$numEstrela?>" value="5" <?=( $resposta['pontuacao'] >= '4.9' ? 'checked' : '' )?>/>
+                                        <!-- <select name="avaliacaoselect" id="avaliacaoselect">
+                                            <option value="1" <?=( $resposta['pontuacao'] == '1' ? 'selected' : '' )?>>1</option>
+                                            <option value="2"<?=( $resposta['pontuacao'] == '2' ? 'selected' : '' )?>>2</option>
+                                            <option value="3"<?=( $resposta['pontuacao'] == '3' ? 'selected' : '' )?>>3</option>
+                                            <option value="4" <?=( $resposta['pontuacao'] == '4' ? 'selected' : '' )?>>4</option>
+                                            <option value="5"<?=( $resposta['pontuacao'] == '5' ? 'selected' : '' )?>>5</option>
+                                        </select> -->
+                                        <input type="submit" value="Avaliar" name="submit-star" class="submit-star">
+                                    </form>
+                                    <!-- <select name="estrela">
+                                        <option value='1' name="estrela">1</option>
+                                        <option value='2' name="estrela">2</option>
+                                        <option value='3' name="estrela">3</option>
+                                        <option value='4' name="estrela">4</option>
+                                        <option value='5' name="estrela">5</option>
+                                    </select>
+                                    <input type="submit" value="Avaliar" name="submit-star">
+                                    </form> -->
+                                    <div class="msg-aval">
+                                        <?php
+                                            if ( isset( $_GET['num'] ) ) {
+                                                        # code...
+                                                        if ( isset( $_GET['msg'] ) && $numEstrela == $_GET['num'] ) {
+                                                            echo $_GET['msg'];
+                                                            //unset($_SESSION['msg']);
+                                                        }
+                                                    }
+                                                ?>
+                                    </div>
+                                    <hr>
+                                </div>
+                            <?php
+                                $numEstrela += 1;
+                                    }
                                 }
-                            }
-                        ?>
-
-
-                </div>
-            </section>
-       
+                            ?>
+                    </div>
+                </section>
+            </main>
 
         <sidebar class="sidebar">
             <section class="answers">
                 <div class="answers-box">
+                    <h1 class="responder">Responder</h1>
                     <form action="../php/controller/3respostaController.php" method="POST">
-                        <input type="text" name="descricao" id="descricao" placeholder="Resposta! :D" autocomplete="off" maxlength="100" required>
+                        <input type="text" name="descricao" id="descricao" placeholder="Ajude seu colega! :D" autocomplete="off" maxlength="100" required>
                         <input type="hidden" name="discursao_id" id="discursao_id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
                         <input type="submit" value="Responder" class="submit">
                     </form>
@@ -235,21 +223,6 @@
             </section>
         </sidebar>
 
-
-        <!-- <script>
-            var stars = document.querySelectorAll('.star-icon');
-
-                  document.addEventListener('click', function(e){
-                    var classStar = e.target.classList;
-                    if(!classStar.contains('ativo')){
-                      stars.forEach(function(star){
-                        star.classList.remove('ativo');
-                      });
-                      classStar.add('ativo');
-                      console.log(e.target.getAttribute('value'));
-                    }
-                  });
-        </script> -->
 
 </body>
 

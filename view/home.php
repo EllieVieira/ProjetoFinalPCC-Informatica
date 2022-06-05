@@ -80,10 +80,8 @@
 
             </fieldset>
             <?php }?>
+
             <section class="questions">
-
-
-
                 <div class="question-box">
                     <?php
 
@@ -139,10 +137,8 @@
             </section>
 
     </div>
-    <footer>
-        <strong>The Lancult Town</strong>
-    </footer>
-    </div>
+    
+   
 
 </body>
 

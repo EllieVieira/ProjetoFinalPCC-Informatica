@@ -57,9 +57,6 @@
 
     </main>
 
-    <footer>
-        <strong>The Lancult Town</strong>
-    </footer>
 
 </body>
 

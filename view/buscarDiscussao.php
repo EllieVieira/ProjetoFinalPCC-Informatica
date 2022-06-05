@@ -105,9 +105,7 @@
                     <?php
                         }
                     ?>
-    <footer>
-        <strong>The Lancult Town</strong>
-    </footer>
+    
     </div>
 
 </body>

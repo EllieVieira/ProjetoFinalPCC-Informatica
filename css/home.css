@@ -170,9 +170,7 @@ nav a:hover{
   background-color: rgba(255, 255, 255, 0.774);
   height: auto;
   width: 50%;
-  margin: 20px;
   border-radius: 10px;
-  padding: 30px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -210,7 +208,7 @@ select {
   background-color: #ffffff;
   border: 2px solid var(--color-05);
   border-radius: 15px;
-  margin-top: 15px;
+  margin: auto;
   box-shadow: 2px 2px 5px var(--color-06);
   resize: none;
 }
@@ -249,9 +247,6 @@ input.submit {
 }
 
 
-
-
-
 form{
   width: 100%;
 }
@@ -262,21 +257,26 @@ form{
   padding: 10px;
   border-radius: 10px;
   width: 100%;
+  
+
 }
 
-div.all{
+div.all, .disc-ativo{
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   background-color: var(--color-02);
+  width: 100%;
 }
 
 .question-box, .answers-box {
   text-align: left;
-  height: auto;
+  height: 100%;
+  width: 100%;
+  
 }
 
-.buttons-edit-del{
+.buttons-edit-del, .questions-buttons, .btn-resposta{
   float: right;
 }
 
@@ -296,7 +296,7 @@ div.title-disc{
   text-decoration: underline;
 }
 
-div.date {
+div.date, .ativo {
   text-align: right;
   font-size: 12px;
 }
@@ -307,8 +307,21 @@ div.name {
   text-shadow: 2px 2px 2px var(--color-05);
 }
 
+.disc-ativo{
+  display: flex;
+  flex-direction: column;
+
+}
+
+
 .answer-head{
+  background-image: linear-gradient(to left, var(--color-02), var(--color-03), rgb(0, 26, 56));
   font-size: 20px;
+  color: var(--color-01);
+  border-radius: 5px;
+  border-bottom: 5px solid rgb(0, 26, 56);
+  text-indent: 10px;
+
 }
 
 .question-posted {
@@ -325,16 +338,25 @@ div.name {
   text-align: right;
 }
 
-
 .sidebar {
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
-  margin: 20px;
   width: 30%;
-  padding: 10px;
+  padding-left: 20px;
   height: 50%;
   position: sticky;
   top: 20px;
+}
+
+.responder{
+  font-size: 20px;
+}
+
+.msg-aval{
+  color: var(--color-01);
+  background-color: #020b8169;
+  text-align: center;
+  margin: 10px;
 }
 
 footer {
