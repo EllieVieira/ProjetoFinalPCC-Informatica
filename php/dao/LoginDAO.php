@@ -37,4 +37,19 @@ class loginDAO {
             echo "Erro ao buscar o login {$e->getMessage()}";
         }
     }
+    public function update( ClienteDTO $clienteDTO ) {
+        try {
+            $sql = "UPDATE usuarios SET "
+                . "password = ?"
+                . "WHERE id = ?";
+            $stmt = $this->pdo->prepare( $sql );
+            $stmt->bindValue( 1, $clienteDTO->getPassword() );
+            $stmt->bindValue( 2, $clienteDTO->getId() );
+
+            return $stmt->execute();
+        } catch ( PDOException $e ) {
+            echo 'Erro ao atualizar o cliente: ', $e->getMessage();
+        }
+    }
+
 }

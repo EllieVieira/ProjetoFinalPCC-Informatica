@@ -12,12 +12,20 @@
 </head>
 
 <body>
+<?php
+    session_start();
+    require_once '../php/dao/LoginDAO.php'; //excluirClienteController.php
+    $idCliente = $_SESSION["idlogin"];
+    var_dump( $idCliente );
+
+?>
     <main class="form">
 
-        <form action="../php/controller/recuperaController.php" method="post">
+        <form action="../php/controller/confirmarsenhaController.php" method="post">
             <h1>Recuperar senha</h1>
-            <input type="text" name="nome" id="nome" placeholder="Nome">
-            <input type="email" name="email" id="email" placeholder="Email">
+            <input type="hidden" name="id" id="id" placeholder="id" value="<?php echo $idCliente ?>">
+            <input type="password" name="senha" id="senha" placeholder="senha">
+            <input type="password" name="confirmar" id="confirmar" placeholder="confirmar">
             <input type="submit" name="signin" id="signin" value="Entrar" class="submit">
 
         </form>

@@ -1,4 +1,4 @@
-<?php
+7<?php
     require_once '../php/dao/conexao/classe_cadastro.php';
     $p = new con( "lancult_bd", "localhost", "root", "" );
     date_default_timezone_set( 'America/Sao_Paulo' );
