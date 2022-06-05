@@ -46,7 +46,11 @@
                         header( 'Location: ../view/home.php' );
                         exit;
                     }
-                    $nome = "%" . trim( $_GET( 'discussao' ) ) . "%";
+                    $nome = "%" . trim( $_GET['discussao'] ) . "%";
+
+                    $clienteDAO = new ClienteDAO();
+                    $resultados = $clienteDAO->buscarDiscussao( $nome );
+                    // var_dump( $resultados );
                 ?>
             </div>
         </div>
@@ -70,6 +74,37 @@
         </nav>
 
     </div>
+    <!-- dados encontrados  -->
+        <?php if ( !empty( $resultados ) ) {
+                foreach ( $resultados as $res ) {
+
+                ?><div class="all">
+                            <div class="title-name">
+                                <a href="../view/questionpage.php?id=<?=$res['id']?>">
+                                    <h2><?php echo $res['titulo'] ?></h2>
+                                    <?php echo "<div class='user'><a href='../view/profileUS.php?id=", $res["usuid"], "'>",
+                                            $res["nome"], "</div><br>"; ?>
+                                </a>
+                            </div>
+
+                            <div class="date-name">
+                                <?php
+                                    // echo "<img src='../user-image{$dado["imagem"]}' width='100'><br>";
+                                        echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $res["data"] ) ), "</div><br>"; ?>
+
+                            </div>
+                        </div>
+                                    <?php echo "<hr>";
+                                            }
+                                        } else {
+                                        ?>
+
+                    <div class="aviso">
+                        <h4>Não há questões aqui!</h4>
+                    </div>
+                    <?php
+                        }
+                    ?>
     <footer>
         <strong>The Lancult Town</strong>
     </footer>
