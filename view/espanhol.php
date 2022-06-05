@@ -57,6 +57,13 @@
                     </form>
     
     </div>
+
+    <?php if ( isset( $_GET['msg'] ) ) {?>
+            
+            <div class="question-posted">
+                <?php echo $_GET['msg']; ?>
+            </div>
+            <?php }?>
     
     <div class="container">
         <nav class="nav">
@@ -66,18 +73,9 @@
                 <li><a href="ingles.php">Inglês</a></li>
                 <li><a href="espanhol.php">Espanhol</a></li>
                 <li><a href="frances.php">Francês</a></li>
-                <li><a href="../view/createquestion.php">Perguntar</a></li>
             </ul>
         </nav>
         
-            <?php if ( isset( $_GET['msg'] ) ) {?>
-            <fieldset>
-                <div class="question-posted">
-                    <?php echo $_GET['msg']; ?>
-                </div>
-
-            </fieldset>
-            <?php }?>
             <section class="questions">
                 <div class="question-box">
                     <?php
@@ -94,28 +92,31 @@
                         <a href="../view/editquestion.php?id=<?=$dado['id']?>">Editar</a>
                         <a href="../php/controller/2excluirDiscursao.php?id=<?=$dado['id']?>">Deletar questão</a>
                     </div><?php
-                              }
-
-                              if ( !empty( $dados ) ) {
-                                  foreach ( $dados as $dado ) {
-                                  ?>
-
-                    <!-- <a href="../view/editquestion.php?id=*//$dado['id']/">Editar</a> -->
-                    <!-- <a href="../php/controller/2excluirDiscursao.php?id=*$dado['id']*">Deletar questão</a> -->
-                    <a href="../view/questionpage.php?id=<?=$dado['id']?>">
-                        <h2><?php echo $dado['titulo'] ?></h2>
-                    </a>
-                    <?php
-
-                                echo $dado["descricao"], "<br>";
-                                echo "<img src='../user-image{$dado["imagem"]}' width='100'><br>";
-                                echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $dado["data"] ) ), "</div><br><br>";
-                                echo "<div class='name'>", $dado["nome"], "</div><br>";
-
-                                echo "<hr>";
                             }
-                        } else {
-                        ?>
+                            if ( !empty( $dados ) ) {
+                                foreach ( $dados as $dado ) {
+                                ?>
+                        <div class="all">
+                            <div class="title-name">
+                                <a href="../view/questionpage.php?id=<?=$dado['id']?>">
+                                    <h2><?php echo $dado['titulo'] ?></h2>
+                                    <?php echo "<div class='user'><a href='../view/profileUS.php?id=", $dado["usuid"], "'>",
+                                            $dado["nome"], "</div><br>"; ?>
+                                </a>
+                            </div>
+
+                            <div class="date-name">
+                                <?php
+                                    // echo "<img src='../user-image{$dado["imagem"]}' width='100'><br>";
+                                            echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $dado["data"] ) ), "</div><br>";
+                                         ?>
+
+                            </div>
+                        </div>
+                                    <?php echo "<hr>";
+                                            }
+                                        } else {
+                                        ?>
                     <div class="aviso">
                         <h4>Não há questões aqui!</h4>
                     </div>
@@ -129,10 +130,8 @@
         <aside class="sidebar"></aside>
 
     </div>
-    <footer>
-        <strong>The Lancult Town</strong>
-    </footer>
-    </div>
+    
+   
 
 </body>
 

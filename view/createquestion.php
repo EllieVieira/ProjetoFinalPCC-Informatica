@@ -83,9 +83,7 @@
             </div>
 
         </main>
-        <footer class="foot">
-            <strong>The Lancult Town</strong>
-        </footer>
+        
 
 </body>
 
