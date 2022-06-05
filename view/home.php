@@ -53,11 +53,11 @@
 
 
     <div class="btn-p">
-                    <form action="buscarDiscussao.php">
-                        <input type="text" name="discussao" size="50" placeholder="Pesquisar discussao">
+       <button class="btn-pergunta"><a href="../view/createquestion.php">Perguntar</a></button>
+       <form action="buscarDiscussao.php">
+                        <input type="text" name="discussao" size="50" placeholder="Pesquisar discussão">
                     </form>
-
-        <button class="btn-pergunta"><a href="../view/createquestion.php">Perguntar</a></button>
+    
     </div>
 
         <div class="container">
