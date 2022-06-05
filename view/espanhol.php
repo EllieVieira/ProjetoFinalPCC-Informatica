@@ -50,6 +50,14 @@
         </div>
     </header>
 
+    <div class="btn-p">
+       <button class="btn-pergunta"><a href="../view/createquestion.php">Perguntar</a></button>
+       <form action="buscarDiscussao.php">
+                        <input type="text" name="discussao" size="50" placeholder="Pesquisar discussão">
+                    </form>
+    
+    </div>
+    
     <div class="container">
         <nav class="nav">
             <ul>
@@ -61,7 +69,7 @@
                 <li><a href="../view/createquestion.php">Perguntar</a></li>
             </ul>
         </nav>
-        <main class="main">
+        
             <?php if ( isset( $_GET['msg'] ) ) {?>
             <fieldset>
                 <div class="question-posted">
@@ -117,7 +125,7 @@
 
                 </div>
             </section>
-        </main>
+     
         <aside class="sidebar"></aside>
 
     </div>
