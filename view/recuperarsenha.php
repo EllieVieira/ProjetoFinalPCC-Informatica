@@ -15,12 +15,11 @@
     <main class="form">
 
         <form action="../php/controller/loginController.php" method="post">
-            <h1>Entrar</h1>
+            <h1>Recuperar senha</h1>
+            <input type="text" name="nome" id="nome" placeholder="Nome">
             <input type="email" name="email" id="email" placeholder="Email">
-            <input type="password" name="password" id="password" placeholder="Senha">
             <input type="submit" name="signin" id="signin" value="Entrar" class="submit">
-            <p><a href="signup.php">Não é um membro? Cadastre-se!</a></p>
-            <p><a href="recuperarsenha.php">Esqueceu a senha?</a></p>
+
         </form>
 
     </main>

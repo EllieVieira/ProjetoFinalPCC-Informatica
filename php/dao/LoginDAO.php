@@ -22,5 +22,19 @@ class loginDAO {
             echo "Erro ao buscar o login {$e->getMessage()}";
         }
     }
+    public function findByNomeEmail( $nome, $email ) {
+        try {
+            $sql = "SELECT * FROM usuarios " .
+                "WHERE nome = ? and email = ?";
+            $stmt = $this->pdo->prepare( $sql );
+            $stmt->bindValue( 1, $nome );
+            $stmt->bindValue( 2, $email );
+            $stmt->execute();
+            $login = $stmt->fetch( PDO::FETCH_ASSOC );
+            return $login;
 
+        } catch ( PDOException $e ) {
+            echo "Erro ao buscar o login {$e->getMessage()}";
+        }
+    }
 }
