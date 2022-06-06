@@ -14,7 +14,7 @@
     <title>Change Profile</title>
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/normalise.css">
-    <link rel="stylesheet" href="../css/change profile.css">
+    <link rel="stylesheet" href="../css/home.css">
 
 </head>
 
@@ -32,28 +32,42 @@
     ?>
 
 <header class="header">
-                <h1 class="title"><a href="../view/home.php"><img src="/images/logotipo.png" alt="Lancult Town" width="200x" height="80px"></a></h1>
-                <div class="mod-session">
-                    <div class="modify">
-                        <div class="btn-prof"><a href="../view/profile.php?id=<?php echo $cliente["ID"] ?>">Meu Perfil</a></div>
-                        <div class="btn-sair"><a href="?logout">Sair</a></div>
-                    </div>
-                    <div class="session-welcome">
-                        <?php
-                            if ( !isset( $_SESSION["login"] ) ) {
-                                header( "Location: ../view/signin.php" );
-                            }
-                            echo "Bem Vindo, {$_SESSION["login"]}!";
-                            if ( isset( $_GET['logout'] ) ) {
-                                unset( $_SESSION['login'] );
-                                session_destroy();
-                                header( 'Location: ../view/signin.php' );
-                            }
-        
-                        ?>
-                    </div>
-                </div>
-            </header>
+        <h1 class="title"><a href="../view/home.php"><img src="/images/logotipo.png" alt="Lancult Town" width="200x" height="80px"></a></h1>
+        <div class="mod-session">
+            <div class="modify">
+                <div class="btn-prof"><a href="../view/profile.php?id=<?php echo $cliente["ID"] ?>">Meu Perfil</a></div>
+                <div class="btn-sair"><a href="?logout">Sair</a></div>
+            </div>
+            <div class="session-welcome">
+                <?php
+                    if ( !isset( $_SESSION["login"] ) ) {
+                        header( "Location: ../view/signin.php" );
+                    }
+                    echo "Bem Vindo, {$_SESSION["login"]}!";
+                    if ( isset( $_GET['logout'] ) ) {
+                        unset( $_SESSION['login'] );
+                        session_destroy();
+                        header( 'Location: ../view/signin.php' );
+                    }
+
+                ?>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="container">
+        <nav class="nav">
+            <ul>
+                <li><a href="home.php">Início</a></li>
+                <li><a href="/view/portugues.php">Português</a></li>
+                <li><a href="/view/ingles.php">Inglês</a></li>
+                <li><a href="/view/espanhol.php">Espanhol</a></li>
+                <li><a href="/view/frances.php">Francês</a></li>
+                <li><a href="../view/createquestion.php">Perguntar</a></li>
+            </ul>
+        </nav>
+
 <!-- array(1) {
      [0]=>
     array(5) {
@@ -75,46 +89,53 @@
   }
 } -->
 
-    <main class="form">
-   <?php if ( !empty( $perfilUS ) ) {
+   
+        
 
-           foreach ( $perfilUS as $dado );
+            <section class="sec-user">
 
-           //    print_r($dado);
-           //    exit();
-
-       ?>
-
-        <p><strong>Nome:</strong><?php echo $dado["nomeus"] ?></br></p>
-        <br>
-        <p><strong>País:</strong>                                                                                                                                                                                                                                                                                 <?php echo $dado["nome"] ?></br></p>
-        <br>
-        <p><strong>Tipo de usuário:</strong><?php echo $dado["nomet"] ?></br></p>
-<?php
-    }
-?>
-    </main>
-    <main class="form">
-    <?php
-        // publicacçoes do usuario
-        require_once '../php/dao/DiscursaoDAO.php';
-        $discursaoDAO = new DiscursaoDAO();
-        $publicacao   = $discursaoDAO->publicacao( $idUS );
-        if ( !empty( $publicacao ) ) {
-        foreach ( $publicacao as $public ) {?>
-    <a href="../view/questionpage.php?id=<?=$public['idD']?>"><strong>titulo:</strong><?php echo $public["titulo"] ?></br></a>
-     <br>
-    <p><strong>País:</strong>                                                                                                                                                                                                                                                 <?php echo $public["descricao"] ?></br></p>
-    <br>
-    <p><strong>Tipo de usuário:</strong><?php echo $public["nome"] ?></br></p>
-
-    <?php }}
-    ?>
-
-    </main>
+                <div class="user-post">
+                <h1 class="post-head">Postagens do usuário</h1>
+                <?php
+                    // publicacçoes do usuario
+                    require_once '../php/dao/DiscursaoDAO.php';
+                    $discursaoDAO = new DiscursaoDAO();
+                    $publicacao   = $discursaoDAO->publicacao( $idUS );
+                    if ( !empty( $publicacao ) ) {
+                    foreach ( $publicacao as $public ) {?>
+                <div class="link"><a href="../view/questionpage.php?id=<?=$public['idD']?>"><?php echo $public["titulo"] ?></br></a></div>
+                <br>
+                </strong><?php echo $public["descricao"] ?>
+            <br>
+                <div class="date"><?php echo $novaData = date( 'd/m/Y H:m:s', strtotime( $public["data"])) ?></br></div>
+                <div class="idioma"><strong>Idioma: </strong><?php echo $public["nomeidi"] ?></br></div>
+               <hr> <?php }}
+                ?>
+                </div>
+            
+              </section>  
+       
+    <aside class="sidebar">
+        <div class="users">
+            <div class="user-info">
+               <?php if ( !empty( $perfilUS ) ) {
+                   foreach ( $perfilUS as $dado );
+                   //    print_r($dado);
+                   //    exit();
+               ?>
+                <p><strong>Nome:</strong><?php echo $dado["nomeus"] ?></br></p>
+                <br>
+                <p><strong>País:</strong>                                                                                                                                                                                                                                                                                 <?php echo $dado["nome"] ?></br></p>
+                <br>
+                <p><strong>Tipo de usuário:</strong><?php echo $dado["nomet"] ?></br></p>
+            <?php
+            }
+            ?>
+        
+    </aside>
 
  
-
+</div>
 </body>
 
 </html>

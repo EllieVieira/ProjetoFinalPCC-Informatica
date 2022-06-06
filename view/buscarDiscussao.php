@@ -112,7 +112,7 @@
                                         ?>
 
                     <div class="aviso">
-                        <h4>Não há questões aqui!</h4>
+                        <h4>Nada encontrado!</h4>
                     </div>
                     <?php
                         }

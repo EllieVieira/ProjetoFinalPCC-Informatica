@@ -217,7 +217,7 @@ echo "<div class='ativo'>", $discursao["ATIVO"], "</div><br>"; ?>
                 <div class="answers-box">
                     <h1 class="responder">Responder</h1>
                     <form action="../php/controller/3respostaController.php" method="POST">
-                        <input type="text" name="descricao" id="descricao" placeholder="Ajude seu colega! :D" autocomplete="off" maxlength="100" required>
+                        <input type="text" name="descricao" id="descricao" placeholder="Ajude seu colega! :D" autocomplete="off" maxlength="500" required>
                         <input type="hidden" name="discursao_id" id="discursao_id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
                         <input type="submit" value="Responder" class="submit">
                     </form>

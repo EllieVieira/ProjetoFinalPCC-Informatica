@@ -86,7 +86,6 @@
             </div>
 
         </main>
-<<<<<<< HEAD
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="/view/teste/Trumbowyg-main/dist/trumbowyg.min.js"></script>
 
@@ -107,10 +106,6 @@
             autogrow: true
             });
         </script>
-=======
-        
-        
->>>>>>> 0f24d7fa202102c4aa9c1b6fdb6e4653022b8737
 
 </body>
 
