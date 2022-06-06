@@ -1,0 +1,201 @@
+@font-face {
+    font-family: Lancult;
+    src: url(../fonts/fontlan.otf);
+  }
+  
+  @font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto-Regular.ttf);
+  }
+  
+  :root {
+    --color-01: #ffffff;
+    --color-02: #7ebfdd;
+    --color-03: #68D4F6;
+    --color-04: #4c7ac8;
+    --color-05: #cbdddc;
+    --color-06: #3a4d4bb0;
+    --color-07: #000000;
+    --color-08: #1720a0;
+  
+  
+    --font-lancult: "Lancult";
+    --font-site: "Roboto";
+  }
+  
+  
+  ::selection {
+    background-color: var(--color-08);
+    color: var(--color-05);
+  }
+  
+  html,
+  body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0px;
+    background-color: 
+      #ffffff;
+    width: 100%;
+    font-family: var(--font-site);
+    position: relative;
+    color: #000000;
+  }
+  
+  .submit-star{
+    width: 100px;
+    padding: 0;
+  }
+  
+  h1.title a {
+    margin: 0 50px;
+    text-decoration: none;
+    list-style-type: none;
+  }
+  
+  .header {
+    height: auto;
+    display: flex;
+    align-items: center;
+    color: var(--color-07);
+    width: 100%;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    border-bottom: 2px solid var(--color-04);
+  }
+  
+  .mod-session {
+    display: block;
+    margin: 0 50px;
+  }
+  
+  .modify a:hover , button a:hover{
+    color: var(--color-08);
+    transition-duration: 0.5s;
+    cursor: pointer;
+    width: 200px;
+    height: 30px;
+  }
+  
+  .btn-p{
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 20px 50px 10px;
+  }
+  
+  
+  .btn-p a{
+    color: var(--color-01);
+  }
+  
+  .session-welcome {
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: right;
+  }
+  
+  .btn-prof, .btn-sair, button {
+    display: inline-block;
+    color: var(--color-01);
+    background-color: var(--color-04);
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 5px;
+    width: 200px;
+  }
+  
+  .btn-prof, .btn-sair{
+    width: 100px;
+    height: 20px;
+    text-align: center;
+  }
+  
+  .btn-prof a, .btn-sair a{
+    color: var(--color-01);
+    
+  }
+  
+  .container {
+    display: flex;
+    color: var(--color-07);
+    margin-right: 50px;
+  }
+  
+  .nav {
+    background-color: var(--color-02);
+    list-style-type: none;
+    border-radius: 10px;
+    margin: 20px 20px 0 50px;
+    width: 20%;
+    height: 50%;
+    position: sticky;
+    top: 20px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    font-family: var(--font-lancult);
+  }
+  
+  nav ul li{
+    color: var(--color-07);
+  }
+  
+  nav ul li a{
+    padding: 10px;
+    color: var(--color-07);
+    display: block;
+    text-decoration: none;
+    transition: .3s;
+    text-transform: uppercase;
+  }
+  
+  nav ul li:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    border-right: 5px solid var(--color-04);
+    
+  }
+  
+  nav a:hover{
+    color: var(--color-08);
+    
+  }
+  
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+  
+.user-info, .user-post {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--color-04);
+    width: 70%;
+    background-color: var(--color-04);
+    
+    border-radius: 30px;
+    margin: 20px 0 5px 0;
+}
+
+.post-head{
+    background-image: linear-gradient(to left, var(--color-02), var(--color-03), rgb(0, 26, 56));
+    font-size: 20px;
+    color: var(--color-01);
+    border-radius: 5px;
+    border-bottom: 5px solid rgb(0, 26, 56);
+    text-indent: 10px;
+    width: 100%;
+  
+  }
+
+
+

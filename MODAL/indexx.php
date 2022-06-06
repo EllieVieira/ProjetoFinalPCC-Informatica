@@ -16,8 +16,13 @@
                 <span>Deseja excluir?</span>
                 <hr>
                 <div class="btns">
-                    <button class="btnOK" onclick="closeModal()">Sim</button>
-                    <button class="btnClose" onclick="closeModal()">Não</button>
+                    <!-- <button class="btnOK" onclick="closeModal()">Sim</button> -->
+                    <!-- <button class="btnClose" onclick="closeModal()">Não</button> -->
+
+                    <a href="../php/controller/3excluirResposta.php?id=<?=$resposta['id']?>" class="btnOK">Deletar resposta</a>
+  
+                    <a href="../php/controller/2excluirDiscursao.php?id=<?=$discursao['ID']?>" class="btnClose" onclick="closeModal()">Cancelar</a>
+                    
                 </div>
             </div>
         </div>

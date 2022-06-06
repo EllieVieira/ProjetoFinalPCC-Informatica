@@ -34,7 +34,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0px;
-  background-color: 
+  background-color:
     #ffffff;
   width: 100%;
   font-family: var(--font-site);
@@ -42,7 +42,7 @@ body {
   color: #000000;
 }
 
-.submit-star{
+.submit-star {
   width: 100px;
   padding: 0;
 }
@@ -70,7 +70,8 @@ h1.title a {
   margin: 0 50px;
 }
 
-.modify a:hover , button a:hover{
+.modify a:hover,
+button a:hover {
   color: var(--color-08);
   transition-duration: 0.5s;
   cursor: pointer;
@@ -78,14 +79,14 @@ h1.title a {
   height: 30px;
 }
 
-.btn-p{
+.btn-p {
   display: flex;
   flex-direction: row-reverse;
   margin: 20px 50px 10px;
 }
 
 
-.btn-p a{
+.btn-p a {
   color: var(--color-01);
 }
 
@@ -95,7 +96,9 @@ h1.title a {
   text-align: right;
 }
 
-.btn-prof, .btn-sair, button {
+.btn-prof,
+.btn-sair,
+button {
   display: inline-block;
   color: var(--color-01);
   background-color: var(--color-04);
@@ -106,15 +109,17 @@ h1.title a {
   width: 200px;
 }
 
-.btn-prof, .btn-sair{
+.btn-prof,
+.btn-sair {
   width: 100px;
   height: 20px;
   text-align: center;
 }
 
-.btn-prof a, .btn-sair a{
+.btn-prof a,
+.btn-sair a {
   color: var(--color-01);
-  
+
 }
 
 .container {
@@ -141,11 +146,11 @@ nav ul {
   font-family: var(--font-lancult);
 }
 
-nav ul li{
+nav ul li {
   color: var(--color-07);
 }
 
-nav ul li a{
+nav ul li a {
   padding: 10px;
   color: var(--color-07);
   display: block;
@@ -154,16 +159,16 @@ nav ul li a{
   text-transform: uppercase;
 }
 
-nav ul li:hover{
+nav ul li:hover {
   background-color: rgba(255, 255, 255, 0.5);
   width: 100%;
   border-right: 5px solid var(--color-04);
-  
+
 }
 
-nav a:hover{
+nav a:hover {
   color: var(--color-08);
-  
+
 }
 
 .main {
@@ -175,7 +180,7 @@ nav a:hover{
   flex-wrap: wrap;
 }
 
-fieldset{
+fieldset {
   border: 1px solid var(--color-05);
   border-radius: 5px;
   background-color: var(--color-02);
@@ -183,7 +188,8 @@ fieldset{
   width: 100%;
 }
 
-h2{
+h2,
+.link {
   font-family: var(--font-lancult);
 }
 
@@ -192,13 +198,15 @@ h2:hover{
   transition: 0.5s;
 }
 
-a{
+a {
   text-decoration: none;
   color: var(--color-07);
 }
 
-
-
+.link a:hover {
+  color: var(--color-08);
+  transition: 0.5s;
+}
 
 input,
 textarea,
@@ -219,7 +227,8 @@ select {
   width: 90%;
 }
 
-.imagem, .select-idioma{
+.imagem,
+.select-idioma {
   width: 40%;
   margin: 15px 25px;
 }
@@ -246,22 +255,46 @@ input.submit {
   border: 2px solid var(--color-05);
 }
 
-
-form{
+form {
   width: 100%;
 }
 
-.questions, .answers {
+.questions,
+.answers,
+.sec-user,
+.users {
   background-color: var(--color-02);
   margin: 20px 0;
   padding: 10px;
   border-radius: 10px;
   width: 100%;
-  
+}
+
+.sec-user {
+  width: 50%;
+}
+
+.users {
+  width: 100%;
+  background-color: var(--color-02);
+  padding: 10px;
+  border: 10px groove var(--color-03);
+}
+
+.user-info {
+  font-family: Lancult;
+  font-size: 16px;
+  list-style-type: none;
+  border-radius: 10px;
+  margin: 20px 20px 0 20px;
+  height: 50%;
+  position: sticky;
+  top: 20px;
 
 }
 
-div.all, .disc-ativo{
+div.all,
+.disc-ativo {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -269,40 +302,46 @@ div.all, .disc-ativo{
   width: 100%;
 }
 
-.question-box, .answers-box {
+.question-box,
+.answers-box {
   text-align: left;
   height: 100%;
   width: 100%;
-  
 }
 
-.desc{
+.desc {
   width: 100%;
   float: left;
-
 }
 
-.buttons-edit-del, .questions-buttons, .btn-resposta{
+.buttons-edit-del,
+.questions-buttons,
+.btn-resposta {
   float: right;
 }
 
-div.title-disc{
+.btn-qu-edit, .btn-qu-del{
+   
+}
+
+div.title-disc {
   font-size: 24px;
   text-transform: capitalize;
   font-weight: bold;
 }
 
-.user{
+.user {
   font-weight: bold;
   text-decoration: none;
 }
 
-.user a:hover{
+.user a:hover {
   color: var(--color-08);
   text-decoration: underline;
 }
 
-div.date, .ativo {
+div.date,
+.ativo {
   text-align: right;
   font-size: 12px;
 }
@@ -313,21 +352,21 @@ div.name {
   text-shadow: 2px 2px 2px var(--color-05);
 }
 
-.disc-ativo{
+.disc-ativo {
   display: flex;
   flex-direction: column;
 
 }
 
 
-.answer-head{
-  background-image: linear-gradient(to left, var(--color-02), var(--color-03), rgb(0, 26, 56));
+.answer-head,
+.post-head {
+  background-image: linear-gradient(to left, var(--color-02), var(--color-03), rgb(0, 34, 56));
   font-size: 20px;
   color: var(--color-01);
   border-radius: 5px;
   border-bottom: 5px solid rgb(0, 26, 56);
   text-indent: 10px;
-
 }
 
 .question-posted {
@@ -341,7 +380,7 @@ div.name {
   height: 20px;
 }
 
-.questions-buttons a{
+.questions-buttons a {
   text-align: right;
 }
 
@@ -355,15 +394,25 @@ div.name {
   top: 20px;
 }
 
-.responder{
+.responder {
   font-size: 20px;
 }
 
-.msg-aval{
+.msg-aval {
   color: var(--color-01);
   background-color: #020b8169;
   text-align: center;
   margin: 10px;
+}
+
+.link {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.idioma {
+  text-align: right;
+
 }
 
 footer {
@@ -393,18 +442,21 @@ footer {
 }
 
 
+
+
 @media screen and (max-width: 700px) {
   h1.title {
     margin: 20px;
     font-size: 24px;
   }
 
-  .imagem, .select-idioma{
+  .imagem,
+  .select-idioma {
     width: 40%;
     margin: 5px 5px;
   }
 
-  input.submit{
+  input.submit {
     width: 80%;
   }
 
@@ -414,7 +466,7 @@ footer {
 
   .container {
     flex-wrap: wrap;
-    
+
   }
 
   .nav {
@@ -430,6 +482,4 @@ footer {
   .sidebar {
     width: 100%;
   }
-  }
-
-  
+}

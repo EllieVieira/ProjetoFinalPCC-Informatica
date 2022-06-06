@@ -5,13 +5,13 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Lancult Town</title>
+    <title>Inicio - The Lancult Town</title>
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/normalise.css">
     <link rel="stylesheet" href="../css/home.css">
@@ -39,7 +39,7 @@
                     if ( !isset( $_SESSION["login"] ) ) {
                         header( "Location: ../view/signin.php" );
                     }
-                    echo "Bem Vindo, {$_SESSION["login"]}!";
+                    echo "Bem Vindo, {$cliente["NOME"]}!";
                     if ( isset( $_GET['logout'] ) ) {
                         unset( $_SESSION['login'] );
                         session_destroy();
@@ -98,8 +98,8 @@
                     if ( !isset( $_SESSION["login"] ) ) {?>
                 </div>
                     <div class="questions-buttons">
-                        <a href="../view/editquestion.php?id=<?=$dado['id']?>">Editar</a>
-                        <a href="../php/controller/2excluirDiscursao.php?id=<?=$dado['id']?>">Deletar questão</a>
+                        <div class="btn-qu-edit"><a href="../view/editquestion.php?id=<?=$dado['id']?>">Editar</a></div>
+                        <div class="btn-qu-del"><a href="../php/controller/2excluirDiscursao.php?id=<?=$dado['id']?>">Deletar questão</a></div>
                     </div>
                         <?php
                             }
@@ -139,9 +139,7 @@
             </section>
 
     </div>
-    <footer>
-        <strong>The Lancult Town</strong>
-    </footer>
+   
     </div>
 
 </body>

@@ -11,7 +11,7 @@ $usuarios_id= $_POST["usuarios_id"];
 
 $valorAvaliacao = $_POST ["avaliacaoselect" . $numEstrela];
 $resposta = $_POST["pontuacao"];
-$votos= $_POST["votos"];
+// $votos= $_POST["votos"];
 
 
 // print_r($votos);
@@ -26,12 +26,16 @@ $votos= $_POST["votos"];
 
         //Salvar no banco
 
-        $result_avaliacoes = "update respostas set votos= ($votos) where id = '$resposta_id '";
-        $result_avaliacoes = mysqli_query($conn, $result_avaliacoes);
+        // $sql = "update respostas set votos= ($votos) where id = '$resposta_id '";
+        // $result_avaliacoes = mysqli_query($conn, $sql);
 
-        $result_avaliacoes = "update respostas set PONTUACAO= (($resposta + $valorAvaliacao) / ($votos)) where id = '$resposta_id '";
-        $result_avaliacoes = mysqli_query($conn, $result_avaliacoes);
-        
+        // var_dump($sql);
+
+        // $sql = "update respostas set PONTUACAO= (($resposta + $valorAvaliacao) / ($votos)) where id = '$resposta_id '";
+        // $result_avaliacoes = mysqli_query($conn, $sql);
+        // var_dump($sql);
+        // die;
+
 //         echo "<pre>";
 //         print_r(($resposta + $valorAvaliacao) / ($votos)); "</pre";
 // die();
@@ -41,8 +45,8 @@ $votos= $_POST["votos"];
         // $result_avaliacoes = "update respostas set PONTUACAO= (($resposta + $valorAvaliacao) / 2)where id = '$resposta_id '";
         // $result_avaliacoes = mysqli_query($conn, $result_avaliacoes);
 
-        // $result_avaliacoes = "update respostas set PONTUACAO='$valorAvaliacao' where id = '$resposta_id '";
-        // $result_avaliacoes = mysqli_query($conn, $result_avaliacoes);     
+        $result_avaliacoes = "update respostas set PONTUACAO='$valorAvaliacao' where id = '$resposta_id '";
+        $result_avaliacoes = mysqli_query($conn, $result_avaliacoes);     
 
         if(isset($conn)){
             $_SESSION['msg'] = "Avaliação cadastrada com sucesso";

@@ -5,13 +5,13 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Lancult Town</title>
+    <title>Francês - The Lancult Town</title>
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/normalise.css">
     <link rel="stylesheet" href="../css/home.css">
@@ -38,7 +38,7 @@
                     if ( !isset( $_SESSION["login"] ) ) {
                         header( "Location: ../view/signin.php" );
                     }
-                    echo "Bem Vindo, {$_SESSION["login"]}!";
+                    echo "Bem Vindo, {$cliente["NOME"]}!";
                     if ( isset( $_GET['logout'] ) ) {
                         unset( $_SESSION['login'] );
                         session_destroy();
@@ -76,14 +76,6 @@
             </ul>
         </nav>
         
-            <?php if ( isset( $_GET['msg'] ) ) {?>
-            <fieldset>
-                <div class="question-posted">
-                    <?php echo $_GET['msg']; ?>
-                </div>
-
-            </fieldset>
-            <?php }?>
             <section class="questions">
                 <div class="question-box">
                     <?php

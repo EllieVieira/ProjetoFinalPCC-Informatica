@@ -135,7 +135,7 @@ main>form {
 }
 
 form {
-    background-color: var(--color-04);
+    background-color: var(--color-02);
     padding: 20px;
     border-radius: 30px;
 }
@@ -176,7 +176,7 @@ input.submit{
     border-radius: 15px;
     font-size: 20px;
     font-weight: bold;
-    color: var(--color-04);
+    color: var(--color-02);
 }
 
 .submit:hover {
