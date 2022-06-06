@@ -5,13 +5,13 @@ date_default_timezone_set('America/Sao_Paulo');
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change Profile</title>
+    <title>Perfil</title>
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/normalise.css">
     <link rel="stylesheet" href="../css/change profile.css">
@@ -40,7 +40,7 @@ date_default_timezone_set('America/Sao_Paulo');
                             if ( !isset( $_SESSION["login"] ) ) {
                                 header( "Location: ../view/signin.php" );
                             }
-                            echo "Bem Vindo, {$_SESSION["login"]}!";
+                            echo "Bem Vindo, {$cliente["NOME"]}!";
                             if ( isset( $_GET['logout'] ) ) {
                                 unset( $_SESSION['login'] );
                                 session_destroy();
@@ -55,7 +55,7 @@ date_default_timezone_set('America/Sao_Paulo');
 
     <main class="form">
         <form action="../php/controller/1alterarClienteController.php" method="POST">
-            <h1 id="page-title">Editar Perfil</h1>
+            <h1 id="page-title">Perfil</h1>
             <?php
             if (!empty($perfil)) {
 

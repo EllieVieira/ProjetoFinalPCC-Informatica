@@ -4,13 +4,13 @@
     date_default_timezone_set( 'America/Sao_Paulo' );
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>The Lancult Town</title>
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/normalise.css">
     <link rel="stylesheet" href="../css/home.css">
@@ -77,7 +77,7 @@
                     if ( !isset( $_SESSION["login"] ) ) {
                         header( "Location: ../view/signin.php" );
                     }
-                    echo "Bem Vindo, {$_SESSION["login"]}!";
+                    echo "Bem Vindo, {$cliente["NOME"]}!";
                     if ( isset( $_GET['logout'] ) ) {
                         unset( $_SESSION['login'] );
                         session_destroy();
@@ -112,8 +112,10 @@
                         <?php
                             if ( $discursao["USUARIOS_ID"] == $idCliente ) {
                             ?>
+                            
                             <!-- ------------------------------------------ -->
                             <div class="buttons-edit-del">
+                                <a href="../view/editquestion.php?id=<?=$discursao['ID']?>">
                             <button class="btnOpenModal" onclick="openModal()">editar</button>
                             <div class= "modal-container">
                                 <div class="modal">
@@ -122,9 +124,9 @@
                                  <span>Deseja excluir?</span>
                                 <hr>
                                 <div class="btns">
-                                <a href="../view/editquestion.php?id=<?=$discursao['ID']?>" class="btnOK" >Confirmar</a>
+                                <a href="../php/controller/3excluirResposta.php?id=<?=$resposta['id']?>" class="btnOK">Deletar resposta</a>
                                 <a class="btnClose" onclick="closeModal()">cancelar</a>
-                                     
+
                                  </div>
                              </div>
                         </div>
@@ -150,37 +152,32 @@ echo "<div class='ativo'>", $discursao["ATIVO"], "</div><br>"; ?>
                                 $numEstrela = 1;
                                 foreach ( $respostaR as $resposta ) {
                                 ?>
-                    <div class="questions-buttons">
+
+
+
+<div class="questions-buttons">
                             <?php if ( $resposta["usuarios_id"] == $idCliente ) {
                                         # code...
                                         ?>
                     </div>
-                    <button class="btnOpenModal" onclick="openModal()">editar</button>
-                          <div class="modal-container">
-                          <div class="modal">
-                                <h2>Info</h2>
-                            <hr>
-                            <span>Deseja excluir?</span>
-                                <hr>
-                                <div class="btns">
-                                        <!-- <button class="btnOK" onclick="closeModal()">Sim</button> -->
-                                        <!-- <button class="btnClose" onclick="closeModal()">Não</button> -->
-                                        <a href="../view/editquestion.php?id=<?=$discursao['ID']?>" class="btnOK" >confirmar</a>
-                                        <a  class="btnClose" onclick="closeModal()">cancelar</a>
-                                </div>
-                            </div>
-                              <!-- <a href="../view/editrespost.php?id=<*//$resposta['id']*">Editar</a> -->
-                               <!-- <a href="../php/controller/3excluirResposta.php?id="*//$resposta['id']*">Deletar resposta</a> -->
+                          <div class="btn-resposta">
+                              <a href="../view/editrespost.php?id=<?=$resposta['id']?>">Editar</a>
+                               <a href="../php/controller/3excluirResposta.php?id=<?=$resposta['id']?>">Deletar resposta</a>
                           </div>
-                          
-                          <?php }
+                        <?php }
                         ?>
+               
+
+
+                          
+                          
+
                 <div>
                     <?php
                         echo "<div class='desc'>", $resposta['descricao'], "<br><br>";
-                        echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $resposta["data"] ) ), "</div><br>";
-                        echo "<div class='name'>", $nomes['nome'], "</div><br>";
-                        ?>
+                                echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $resposta["data"] ) ), "</div><br>";
+                                echo "<div class='name'>", $nomes['nome'], "</div><br>";
+                            ?>
                 </div>
                 <!-- Estrelas da Avaliação -->
                 <div class="estrelas">
@@ -222,26 +219,27 @@ echo "<div class='ativo'>", $discursao["ATIVO"], "</div><br>"; ?>
                                 </form> -->
                                 <div class="msg-aval">
                                     <?php
-                                            if ( isset( $_GET['num'] ) ) {
-                                                # code...
-                                                        if ( isset( $_GET['msg'] ) && $numEstrela == $_GET['num'] ) {
-                                                            echo $_GET['msg'];
-                                                            //unset($_SESSION['msg']);
-                                                        }
+                                        if ( isset( $_GET['num'] ) ) {
+                                                    # code...
+                                                    if ( isset( $_GET['msg'] ) && $numEstrela == $_GET['num'] ) {
+                                                        echo $_GET['msg'];
+                                                        //unset($_SESSION['msg']);
                                                     }
-                                                    ?>
+                                                }
+                                            ?>
                                     </div>
                                     <hr>
                                 </div>
                                 <?php
-                                $numEstrela += 1;
-                            }
-                                }
+                                    $numEstrela += 1;
+                                        }
+                                    }
                                 ?>
+                   
                     </div>
                 </section>
             </main>
-            
+
             <sidebar class="sidebar">
                 <section class="answers">
                     <div class="answers-box">
@@ -254,10 +252,10 @@ echo "<div class='ativo'>", $discursao["ATIVO"], "</div><br>"; ?>
                 </div>
             </section>
         </sidebar>
-        
-        
-        
+
+
+
         <script src="../MODAL/js.js"></script>
     </body>
-    
+
     </html>

@@ -5,13 +5,13 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Editar Resposta</title>
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/normalise.css">
     <link rel="stylesheet" href="../css/change profile.css">
@@ -49,7 +49,7 @@
                     if ( !isset( $_SESSION["login"] ) ) {
                         header( "Location: ../view/signin.php" );
                     }
-                    echo "Bem Vindo, {$_SESSION["login"]}!";
+                    echo "Bem Vindo, {$cliente["NOME"]}!";
                     if ( isset( $_GET['logout'] ) ) {
                         unset( $_SESSION['login'] );
                         session_destroy();
@@ -74,7 +74,7 @@
             <form action="../php/controller/3alterarRrespostaController.php" method="POST">
                 <h2>Editar resposta</h2>
                 <input type="hidden" name="id" id="id" autocomplete="off" value="<?php echo $resposta["ID"] ?>">
-                <textarea name="descricao" id="descricao" cols="90" rows="4" autocomplete="off" maxlength="500" required><?php echo $resposta["DESCRICAO"] ?></textarea>
+                <textarea name="descricao" id="descricao" cols="90" rows="4" autocomplete="off" maxlength="500"><?php echo $resposta["DESCRICAO"] ?></textarea>
                <input type="submit" value="Editar resposta" class="submit">
 
 
