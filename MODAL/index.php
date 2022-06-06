@@ -16,14 +16,15 @@
                 <span>Deseja excluir?</span>
                 <hr>
                 <div class="btns">
-                    <!-- <button class="btnOK" onclick="closeModal()">Sim</button> -->
-                    <!-- <button class="btnClose" onclick="closeModal()">Não</button> -->
-                    <a href="../view/editquestion.php?id=<?=$discursao['ID']?>" class="btnOK" >Editar</a>
-                    <a href="../php/controller/2excluirDiscursao.php?id=<?=$discursao['ID']?>" class="btnClose" onclick="closeModal()">Deletar questão</a>
+                    <a href="../php/controller/2excluirDiscursao.php?id=<?=$discursao['ID']?>" class="btnOK" >Editar</a>
+                    <a class="btnClose" onclick="closeModal()">Deletar questão</a>
                     
                 </div>
             </div>
         </div>
         <script src="js.js"></script>
+
+        <!-- <button class="btnOK" onclick="closeModal()">Sim</button> -->
+                    <!-- <button class="btnClose" onclick="closeModal()">Não</button> -->
 </body>
 </html>

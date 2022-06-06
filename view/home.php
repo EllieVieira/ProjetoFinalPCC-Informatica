@@ -139,9 +139,7 @@
             </section>
 
     </div>
-    <footer>
-        <strong>The Lancult Town</strong>
-    </footer>
+   
     </div>
 
 </body>

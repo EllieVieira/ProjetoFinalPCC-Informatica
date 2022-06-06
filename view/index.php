@@ -27,7 +27,7 @@
         </div>
         <div class="right">
             <h1 id="page">Aprenda um novo idioma</h1>
-            <p>Release your questions. Have your answers.</p>
+            
             <a href="signup.php">Cadastre-se</a>
         </div>
     </main>
