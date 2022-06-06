@@ -26,8 +26,8 @@
 
     <div class="error-login">
         <?php
-            if ( isset( $_GET['msg'] ) ) {
-                echo $_GET['msg'];
+            if ( isset( $_GET['eee'] ) ) {
+                echo $_GET['eee'];
             }
         ?>
     </div>
@@ -36,6 +36,7 @@
         <strong>The Lancult Town</strong>
     </footer>
 
+  
 </body>
 
 </html>

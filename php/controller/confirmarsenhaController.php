@@ -18,8 +18,10 @@ if ( $password == $password2 ) {
     if ( $loginDAO->update( $clienteDTO ) ) {
         header( "Location: ../../view/home.php" );
     }
-    {
-        echo "error";
+}else {
+        $eee = "Usuario não encontrado";
+        header("Location: /php/controller/confirmarsenhaController.php?eee={eee}");
     }
-}
+
+
 ?>

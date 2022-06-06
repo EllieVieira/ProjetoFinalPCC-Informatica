@@ -58,8 +58,19 @@
 
 
     <div class="btn-p">
-        <button class="btn-pergunta"><a href="../view/createquestion.php">Perguntar</a></button>
+       <button class="btn-pergunta"><a href="../view/createquestion.php">Perguntar</a></button>
+       <form action="buscarDiscussao.php">
+                        <input type="text" name="discussao" size="50" placeholder="Pesquisar discussão">
+                    </form>
+    
     </div>
+
+    <?php if ( isset( $_GET['msg'] ) ) {?>
+            
+            <div class="question-posted">
+                <?php echo $_GET['msg']; ?>
+            </div>
+            <?php }?>
 
         <div class="container">
 
@@ -73,7 +84,8 @@
             </ul>
         </nav>
 
-    </div>
+        <section class="questions">
+                <div class="question-box">
     <!-- dados encontrados  -->
         <?php if ( !empty( $resultados ) ) {
                 foreach ( $resultados as $res ) {
@@ -105,9 +117,12 @@
                     <?php
                         }
                     ?>
-    
     </div>
+                    </div>
+</section>
+    
 
 </body>
+
 
 </html>

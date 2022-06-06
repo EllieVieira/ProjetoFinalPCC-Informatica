@@ -1,4 +1,4 @@
-7<?php
+<?php
     require_once '../php/dao/conexao/classe_cadastro.php';
     $p = new con( "lancult_bd", "localhost", "root", "" );
     date_default_timezone_set( 'America/Sao_Paulo' );
@@ -72,10 +72,10 @@
 
         <main class="form">
             <form action="../php/controller/3alterarRrespostaController.php" method="POST">
-                <h2>Editar pergunta</h2>
+                <h2>Editar resposta</h2>
                 <input type="hidden" name="id" id="id" autocomplete="off" value="<?php echo $resposta["ID"] ?>">
-                <textarea name="descricao" id="descricao" cols="90" rows="4" autocomplete="off" maxlength="500"><?php echo $resposta["DESCRICAO"] ?></textarea>
-               <input type="submit" value="Editar Pergunta" class="submit">
+                <textarea name="descricao" id="descricao" cols="90" rows="4" autocomplete="off" maxlength="500" required><?php echo $resposta["DESCRICAO"] ?></textarea>
+               <input type="submit" value="Editar resposta" class="submit">
 
 
             </form>
@@ -87,7 +87,7 @@
 
         </main>
         
-
+       
 </body>
 
 </html>

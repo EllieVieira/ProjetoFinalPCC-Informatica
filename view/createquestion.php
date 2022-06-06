@@ -54,8 +54,7 @@
         </div>
     </header>
 
-    <main class="main">
-        <div class="question-posted">
+    <div class="question-posted">
             <?php
                 //Ellie põe uma div na parte superior da caixa pergunta :C
                 if ( isset( $_GET['msg'] ) ) {
@@ -63,6 +62,8 @@
                 }
             ?>
         </div>
+    <main class="main">
+        
             <main class="form">
                     <form action="../php/controller/2discursaoController.php" method="POST">
                         <h2>Qual a sua pergunta?</h2>
@@ -83,6 +84,7 @@
             </div>
 
         </main>
+        
         
 
 </body>

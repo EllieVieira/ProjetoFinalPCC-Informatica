@@ -58,29 +58,33 @@
         <form action="../php/controller/1alterarClienteController.php" method="POST">
             <h1 id="page-title">Editar Perfil</h1>
             <input type="hidden" name="id" value="<?php echo $cliente["ID"] ?>">
-            <label for="nome">Nome:</label>
+            <label for="nome"><strong>Nome:</strong></label>
             <input type="text" name="nome" id="nome" value="<?php echo $cliente["NOME"] ?>">
-            <label for="email">Email:</label>
+            <label for="email"><strong>Email:</strong></label>
             <input type="email" name="email" id="email" value="<?php echo $cliente["EMAIL"] ?>">
-            <label for="password">Mudar ou confirmar sua senha:</label>
+            <label for="password"><strong>Mudar ou confirmar sua senha:</strong></label>
             <input type="password" name="password" id="password" required>
 
             <div class="selects">
-                <label for="paises_id">País:</label>
-                <select name="paises_id" id="paises_id" required>
-                    <option value="1"<?php echo $cliente['PAISES_ID'] == 1 ? 'selected' : ''; ?>>Brazil</option>
-                                <option value="2"<?php echo $cliente["PAISES_ID"] == 2 ? 'selected' : ''; ?>>UK</option>
-                                <option value="3"<?php echo $cliente["PAISES_ID"] == 3 ? 'selected' : ''; ?>>USA</option>
-                                <option value="4"<?php echo $cliente["PAISES_ID"] == 4 ? 'selected' : ''; ?>>SPAIN</option>
-                                <option value="5"<?php echo $cliente["PAISES_ID"] == 5 ? 'selected' : ''; ?>>FRENCH</option>
-                </select><br>
-                <label for="tipo_id">Você é?</label>
-                <select name="tipo_id" id="tipo_id" required>
-                    <option></option>
-                    <option value="1"<?php echo $cliente['TIPO_ID'] == 1 ? 'selected' : ''; ?>>Estudante</option>
-                    <option value="2"<?php echo $cliente['TIPO_ID'] == 2 ? 'selected' : ''; ?>>Professor</option>
-                    <option value="3"<?php echo $cliente['TIPO_ID'] == 3 ? 'selected' : ''; ?>>Nativo</option>
-                </select>
+                <div>
+                    <label for="paises_id"><strong>País:</strong></label>
+                    <select name="paises_id" id="paises_id" required>
+                        <option value="1"<?php echo $cliente['PAISES_ID'] == 1 ? 'selected' : ''; ?>>Brasil</option>
+                                    <option value="2"<?php echo $cliente["PAISES_ID"] == 2 ? 'selected' : ''; ?>>Reino Unido</option>
+                                    <option value="3"<?php echo $cliente["PAISES_ID"] == 3 ? 'selected' : ''; ?>>EUA</option>
+                                    <option value="4"<?php echo $cliente["PAISES_ID"] == 4 ? 'selected' : ''; ?>>Espanha</option>
+                                    <option value="5"<?php echo $cliente["PAISES_ID"] == 5 ? 'selected' : ''; ?>>França</option>
+                    </select><br>
+                </div>
+                <div>
+                    <label for="tipo_id"><strong>Você é?</strong></label>
+                    <select name="tipo_id" id="tipo_id" required>
+                        <option></option>
+                        <option value="1"<?php echo $cliente['TIPO_ID'] == 1 ? 'selected' : ''; ?>>Estudante</option>
+                        <option value="2"<?php echo $cliente['TIPO_ID'] == 2 ? 'selected' : ''; ?>>Professor</option>
+                        <option value="3"<?php echo $cliente['TIPO_ID'] == 3 ? 'selected' : ''; ?>>Nativo</option>
+                    </select>
+                </div>
             </div>
             <input type="submit" name="alterar" id="alterar" value="Editar Perfil" class="submit">
             <button class="btn btn-delete"><a href="../php/controller/1excluirClienteController.php" name="delete" id="delete" value="delete-account">Excluir Conta</a></button>
@@ -88,7 +92,7 @@
 
     </main>
 
-    
+  
 </body>
 
 </html>
