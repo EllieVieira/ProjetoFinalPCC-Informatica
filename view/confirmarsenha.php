@@ -16,7 +16,7 @@
     session_start();
     require_once '../php/dao/LoginDAO.php'; //excluirClienteController.php
     $idCliente = $_SESSION["idlogin"];
-    var_dump( $idCliente );
+    // var_dump( $idCliente );
 
 ?>
     <main class="form">
@@ -34,15 +34,13 @@
 
     <div class="error-login">
         <?php
-            if ( isset( $_GET['msg'] ) ) {
-                echo $_GET['msg'];
+            if ( isset( $_GET['eee'] ) ) {
+                echo $_GET['eee'];
             }
         ?>
     </div>
 
-    <footer class="foot">
-        <strong>The Lancult Town</strong>
-    </footer>
+ 
 
 </body>
 

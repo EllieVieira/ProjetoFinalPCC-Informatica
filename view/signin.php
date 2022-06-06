@@ -33,7 +33,9 @@
         ?>
     </div>
 
-   
+    <footer>
+    The Lancult Town
+</footer>
 
 </body>
 

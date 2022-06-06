@@ -128,12 +128,10 @@
 
                 </div>
             </section>
-      
-        <aside class="sidebar"></aside>
-
     </div>
   
-    </div>
+    
+
 
 </body>
 

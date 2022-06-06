@@ -135,7 +135,7 @@ main>form {
 }
 
 form {
-    background-color: var(--color-03);
+    background-color: var(--color-04);
     padding: 20px;
     border-radius: 30px;
 }
@@ -161,13 +161,13 @@ select {
 }
 
 .selects {
-    padding: 10px;
+    padding: 5px;
+    display: flex;
 }
 
 .selects>div {
-    display: inline;
-    padding-left: 20px;
-    margin: auto;
+  display: inline;
+  margin: auto;
 }
 
 input.submit{
@@ -176,7 +176,7 @@ input.submit{
     border-radius: 15px;
     font-size: 20px;
     font-weight: bold;
-    color: var(--color-03);
+    color: var(--color-04);
 }
 
 .submit:hover {
@@ -199,14 +199,24 @@ input.submit{
   }
 
   .btn-delete a{
-      color: var(--color-04);
+    color: var(--color-04);
     text-decoration: none;
   }
   
   .btn-delete a:hover {
     color: var(--color-05);
-    transition-duration: 0.5s;
     cursor: pointer;
+  }
+
+  .question-posted {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    transition: 0.5s;
+    height: 20px;
   }
 
 footer {

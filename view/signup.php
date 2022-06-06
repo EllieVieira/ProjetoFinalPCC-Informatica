@@ -14,9 +14,9 @@
 <body>
     <div class="error-signup">
         <?php
-        if (isset($_GET['msg'])) {
-            echo $_GET['msg'];
-        }
+            if ( isset( $_GET['msg'] ) ) {
+                echo $_GET['msg'];
+            }
         ?>
     </div>
 
@@ -57,6 +57,9 @@
 
     </main>
 
+    <footer>
+    The Lancult Town
+</footer>
 
 </body>
 

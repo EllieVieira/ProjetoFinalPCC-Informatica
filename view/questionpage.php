@@ -225,6 +225,7 @@ echo "<div class='ativo'>", $discursao["ATIVO"], "</div><br>"; ?>
             </section>
         </sidebar>
 
+     
 
 </body>
 
