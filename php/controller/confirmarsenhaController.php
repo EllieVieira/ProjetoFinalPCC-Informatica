@@ -21,5 +21,8 @@ if ( $password == $password2 ) {
     {
         echo "error";
     }
+} else {
+    $msg = "Senhas diferentes!";
+    header( "Location: ../../view/confirmarsenha.php?msg={$msg}" );
 }
 ?>

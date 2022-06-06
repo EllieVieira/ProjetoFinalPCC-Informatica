@@ -2,7 +2,8 @@
 require_once "../dao/LoginDAO.php";
 session_start();
 
-$email    = $_POST["email"];
+$email = $_POST["email"];
+
 $password = md5( $_POST["password"] );
 
 $loginDAO = new loginDAO();

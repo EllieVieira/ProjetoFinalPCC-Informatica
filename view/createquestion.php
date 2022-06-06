@@ -15,6 +15,8 @@
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/normalise.css">
     <link rel="stylesheet" href="../css/change profile.css">
+    <link rel="stylesheet" href="/view/teste/Trumbowyg-main/dist/ui/trumbowyg.css">
+
 </head>
 
 <body>
@@ -67,7 +69,7 @@
                     <form action="../php/controller/2discursaoController.php" method="POST">
                         <h2>Qual a sua pergunta?</h2>
                         <input type="text" name="titulo" id="titulo" placeholder="Título" autocomplete="off" maxlength="100" required>
-                        <textarea name="descricao" id="descricao" cols="90" rows="4" autocomplete="off" maxlength="500" value="<?php echo $discursao["DESCRICAO"] ?>" placeholder="Descrição(Opcional)" spellcheck="true"></textarea>
+                        <textarea name="descricao" id="trumbowyg-editor" value="<?php echo $discursao["DESCRICAO"] ?>" placeholder="Descrição(Opcional)" spellcheck="true"></textarea>
                         <!-- <input type="file" name="imagem" id="imagem" class="imagem"> -->
                         <select name="idiomas_id" id="idiomas_id" class="select-idioma" required>
                             <option value="0">Selecionar Idioma:</option>
@@ -83,7 +85,26 @@
             </div>
 
         </main>
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="/view/teste/Trumbowyg-main/dist/trumbowyg.min.js"></script>
+
+        <script>
+            $('#trumbowyg-editor').trumbowyg({
+            btns: [['viewHTML'],
+        ['undo', 'redo'], // Only supported in Blink browsers
+        ['formatting'],
+        ['strong', 'em', 'del'],
+        ['superscript', 'subscript'],
+        ['link'],
+        ['insertImage'],
+        ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+        ['unorderedList', 'orderedList'],
+        ['horizontalRule'],
+        ['removeformat'],
+        ['fullscreen']],
+            autogrow: true
+            });
+        </script>
 
 </body>
 
