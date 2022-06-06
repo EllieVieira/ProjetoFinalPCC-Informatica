@@ -26,7 +26,7 @@
             <input type="hidden" name="id" id="id" placeholder="id" value="<?php echo $idCliente ?>">
             <input type="password" name="senha" id="senha" placeholder="senha">
             <input type="password" name="confirmar" id="confirmar" placeholder="confirmar">
-            <input type="submit" name="signin" id="signin" value="Entrar" class="submit">
+            <input type="submit" name="signin" id="signin" value="Recuperar Senha" class="submit">
 
         </form>
 

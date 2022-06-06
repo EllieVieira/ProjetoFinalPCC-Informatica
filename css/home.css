@@ -277,13 +277,16 @@ form {
 .users {
   width: 100%;
   background-color: var(--color-02);
+  padding: 10px;
+  border: 10px groove var(--color-03);
 }
 
 .user-info {
+  font-family: Lancult;
+  font-size: 20px;
   list-style-type: none;
   border-radius: 10px;
-  margin: 20px 20px 0 50px;
-  width: 20%;
+  margin: 20px 20px 0 20px;
   height: 50%;
   position: sticky;
   top: 20px;
@@ -311,13 +314,16 @@ div.all,
 .desc {
   width: 100%;
   float: left;
-
 }
 
 .buttons-edit-del,
 .questions-buttons,
 .btn-resposta {
   float: right;
+}
+
+.btn-qu-edit, .btn-qu-del{
+   
 }
 
 div.title-disc {

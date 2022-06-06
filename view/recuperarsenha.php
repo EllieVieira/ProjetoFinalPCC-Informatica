@@ -18,7 +18,7 @@
             <h1>Recuperar senha</h1>
             <input type="text" name="nome" id="nome" placeholder="Nome">
             <input type="email" name="email" id="email" placeholder="Email">
-            <input type="submit" name="signin" id="signin" value="Entrar" class="submit">
+            <input type="submit" name="signin" id="signin" value="Confirmar" class="submit">
 
         </form>
 

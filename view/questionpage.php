@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/avaliacao.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../MODAL/css.css">
     <!-- <style>
         .avaliacao{
   display: flex;
@@ -111,8 +112,23 @@
                         <?php
                             if ( $discursao["USUARIOS_ID"] == $idCliente ) {
                             ?>
+                            <!-- ------------------------------------------ -->
                             <div class="buttons-edit-del">
-                                <a href="../view/editquestion.php?id=<?=$discursao['ID']?>">Editar</a>
+                            <button class="btnOpenModal" onclick="openModal()">editar</button>
+                            <div class= "modal-container">
+                                <div class="modal">
+                                <h2>Info</h2>
+                                <hr>
+                                 <span>Deseja excluir?</span>
+                                <hr>
+                                <div class="btns">
+                                <a href="../view/editquestion.php?id=<?=$discursao['ID']?>" class="btnOK" >Confirmar</a>
+                                <a class="btnClose" onclick="closeModal()">cancelar</a>
+                                     
+                                 </div>
+                             </div>
+                        </div>
+                        <!-- ---------------------------------------------------------- -->
                                 <a href="../php/controller/2excluirDiscursao.php?id=<?=$discursao['ID']?>">Deletar questão</a><br>
                             </div>
                         <?php
@@ -139,23 +155,37 @@ echo "<div class='ativo'>", $discursao["ATIVO"], "</div><br>"; ?>
                                         # code...
                                         ?>
                     </div>
-                          <div class="btn-resposta">
-                              <a href="../view/editrespost.php?id=<?=$resposta['id']?>">Editar</a>
-                               <a href="../php/controller/3excluirResposta.php?id=<?=$resposta['id']?>">Deletar resposta</a>
+                    <button class="btnOpenModal" onclick="openModal()">editar</button>
+                          <div class="modal-container">
+                          <div class="modal">
+                                <h2>Info</h2>
+                            <hr>
+                            <span>Deseja excluir?</span>
+                                <hr>
+                                <div class="btns">
+                                        <!-- <button class="btnOK" onclick="closeModal()">Sim</button> -->
+                                        <!-- <button class="btnClose" onclick="closeModal()">Não</button> -->
+                                        <a href="../view/editquestion.php?id=<?=$discursao['ID']?>" class="btnOK" >confirmar</a>
+                                        <a  class="btnClose" onclick="closeModal()">cancelar</a>
+                                </div>
+                            </div>
+                              <!-- <a href="../view/editrespost.php?id=<*//$resposta['id']*">Editar</a> -->
+                               <!-- <a href="../php/controller/3excluirResposta.php?id="*//$resposta['id']*">Deletar resposta</a> -->
                           </div>
-                        <?php }
+                          
+                          <?php }
                         ?>
                 <div>
                     <?php
                         echo "<div class='desc'>", $resposta['descricao'], "<br><br>";
-                                echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $resposta["data"] ) ), "</div><br>";
-                                echo "<div class='name'>", $nomes['nome'], "</div><br>";
-                              ?>
+                        echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $resposta["data"] ) ), "</div><br>";
+                        echo "<div class='name'>", $nomes['nome'], "</div><br>";
+                        ?>
                 </div>
-                                <!-- Estrelas da Avaliação -->
-                                <div class="estrelas">
+                <!-- Estrelas da Avaliação -->
+                <div class="estrelas">
                                     <form action="../php/controller/avaliacao.php?numEstrela=<?=$numEstrela?>" method="POST" enctype="multipart/form-data">
-                                        <input type="hidden" name="resposta_id" id="resposta_id" autocomplete="off" value="<?php echo $resposta["id"] ?>">
+                                    <input type="hidden" name="resposta_id" id="resposta_id" autocomplete="off" value="<?php echo $resposta["id"] ?>">
                                         <input type="hidden" name="discursao_id" id="discursao_id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
                                         <input type="hidden" name="id_cliente" id="id_cliente" autocomplete="off" value="<?php echo $idCliente ?>">
                                         <input type="hidden" name="usuarios_id" id="usuarios_id" autocomplete="off" value="<?php echo $resposta["usuarios_id"] ?>">
@@ -189,34 +219,34 @@ echo "<div class='ativo'>", $discursao["ATIVO"], "</div><br>"; ?>
                                         <option value='5' name="estrela">5</option>
                                     </select>
                                     <input type="submit" value="Avaliar" name="submit-star">
-                                    </form> -->
-                                    <div class="msg-aval">
-                                        <?php
+                                </form> -->
+                                <div class="msg-aval">
+                                    <?php
                                             if ( isset( $_GET['num'] ) ) {
-                                                        # code...
+                                                # code...
                                                         if ( isset( $_GET['msg'] ) && $numEstrela == $_GET['num'] ) {
                                                             echo $_GET['msg'];
                                                             //unset($_SESSION['msg']);
                                                         }
                                                     }
-                                                ?>
+                                                    ?>
                                     </div>
                                     <hr>
                                 </div>
-                            <?php
+                                <?php
                                 $numEstrela += 1;
-                                    }
+                            }
                                 }
-                            ?>
+                                ?>
                     </div>
                 </section>
             </main>
-
-        <sidebar class="sidebar">
-            <section class="answers">
-                <div class="answers-box">
-                    <h1 class="responder">Responder</h1>
-                    <form action="../php/controller/3respostaController.php" method="POST">
+            
+            <sidebar class="sidebar">
+                <section class="answers">
+                    <div class="answers-box">
+                        <h1 class="responder">Responder</h1>
+                        <form action="../php/controller/3respostaController.php" method="POST">
                         <input type="text" name="descricao" id="descricao" placeholder="Ajude seu colega! :D" autocomplete="off" maxlength="500" required>
                         <input type="hidden" name="discursao_id" id="discursao_id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
                         <input type="submit" value="Responder" class="submit">
@@ -224,9 +254,10 @@ echo "<div class='ativo'>", $discursao["ATIVO"], "</div><br>"; ?>
                 </div>
             </section>
         </sidebar>
-
-     
-
-</body>
-
-</html>
+        
+        
+        
+        <script src="../MODAL/js.js"></script>
+    </body>
+    
+    </html>

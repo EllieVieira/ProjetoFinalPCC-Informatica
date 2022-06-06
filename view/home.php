@@ -98,8 +98,8 @@
                     if ( !isset( $_SESSION["login"] ) ) {?>
                 </div>
                     <div class="questions-buttons">
-                        <a href="../view/editquestion.php?id=<?=$dado['id']?>">Editar</a>
-                        <a href="../php/controller/2excluirDiscursao.php?id=<?=$dado['id']?>">Deletar questão</a>
+                        <div class="btn-qu-edit"><a href="../view/editquestion.php?id=<?=$dado['id']?>">Editar</a></div>
+                        <div class="btn-qu-del"><a href="../php/controller/2excluirDiscursao.php?id=<?=$dado['id']?>">Deletar questão</a></div>
                     </div>
                         <?php
                             }

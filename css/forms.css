@@ -131,7 +131,7 @@ main>form {
 }
 
 form {
-    background-color: var(--color-04);
+    background-color: var(--color-02);
     padding: 20px;
     border-radius: 30px;
 }
