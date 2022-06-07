@@ -110,29 +110,15 @@
                         ?>
                         <!-- Informações sobre a pergunta postada! -->
                         <?php
-                            if ( $discursao["USUARIOS_ID"] == $idCliente ) {
+
+                            if ( $discursao["USUARIOS_ID"] == $idCliente || $cliente['PERFIL'] == 'ADMIN' ) {
                             ?>
 
                             <!-- ------------------------------------------ -->
-                            <div class="buttons-edit-del">
-                                <a href="../view/editquestion.php?id=<?=$discursao['ID']?>"></a>
-                            </div>
-       <button class="btnOpenModal" onclick="openModal()">Excluir Questão</button>
-        <div class= "modal-container">
-            <div class="modal">
-                <h2>Info</h2>
-                <hr>
-                <span>Deseja excluir?</span>
-                <hr>
-                <div class="btns">
-                    <a href="../php/controller/2excluirDiscursao.php?id=<?=$discursao['ID']?>" class="btnOK">Deletar questão</a>
-                    <a class="btnClose" onclick="closeModal()">Cancelar</a>
-
-                </div>
-            </div>
-        </div>
-
-
+                            <div class="questions-buttons">
+                    <a href="../view/editquestion.php?id=<?=$discursao['ID']?>">Editar</a>
+                    <a href="../php/controller/2excluirDiscursao.php?id=<?=$discursao['ID']?>">Deletar questão</a>
+                        </div>
                         <?php
                         }?>
                             <div class="disc-ativo">
