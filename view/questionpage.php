@@ -136,8 +136,7 @@
                         <?php
                         }?>
                             <div class="disc-ativo"><?php
-    echo "<div class='title-disc'>", $discursao["TITULO"], "</div><br>";
-echo "<div class='ativo'>", $discursao["ATIVO"], "</div><br>"; ?>
+echo "<div class='title-disc'>", $discursao["TITULO"], "</div><br>"; ?>
                             </div>
                             <?php
                                 echo $discursao["DESCRICAO"], "<br>";
@@ -155,7 +154,7 @@ echo "<div class='ativo'>", $discursao["ATIVO"], "</div><br>"; ?>
 
                     <div class="questions-buttons">
                             <?php if ( $resposta["usuarios_id"] == $idCliente ) {
-                                        
+
                                         ?>
                     </div>
                           <div class="btn-resposta">
@@ -163,7 +162,7 @@ echo "<div class='ativo'>", $discursao["ATIVO"], "</div><br>"; ?>
                                <a href="../php/controller/3excluirResposta.php?id=<?=$resposta['id']?>">Deletar resposta</a>
                           </div>
                         <?php }
-                        ?>
+                                ?>
 
 <!-- <div class="questions-buttons">
                             <?php if ( $resposta["usuarios_id"] == $idCliente ) {
@@ -172,7 +171,7 @@ echo "<div class='ativo'>", $discursao["ATIVO"], "</div><br>"; ?>
                     </div>
                           <div class="btn-resposta">
                               <a href="../view/editrespost.php?id=<?=$resposta['id']?>">Editar</a>
-                               
+
          <button class="btnOpenModal" onclick="openModal()">Excluir Resposta</button>
         <div class= "modal-container">
             <div class="modal">
@@ -183,7 +182,7 @@ echo "<div class='ativo'>", $discursao["ATIVO"], "</div><br>"; ?>
                 <div class="btns">
                 <a href="../php/controller/3excluirResposta.php?id=<?=$resposta['id']?>" class="btnOK" >Deletar resposta</a>
                     <a class="btnClose" onclick="closeModal()">Cancelar</a>
-                    
+
                 </div>
             </div>
         </div>

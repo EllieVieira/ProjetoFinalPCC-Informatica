@@ -166,9 +166,9 @@ class DiscursaoDAO {
     }
     public function publicacao( $idUS ) {
         $res = array();
-        $cmd = $this->pdo->prepare( "SELECT discursao.id as idD, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome, usuarios.id, idiomas.nome as nomeidi FROM lancult_bd.discursao 
-        INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id 
-        INNER JOIN idiomas ON idiomas.id = discursao.idiomas_id where usuarios.id = :idd and discursao.idiomas_id" );
+        $cmd = $this->pdo->prepare( "SELECT discursao.id as idD, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome, usuarios.id, idiomas.nome as nomeidi FROM lancult_bd.discursao
+        INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id
+        INNER JOIN idiomas ON idiomas.id = discursao.idiomas_id where usuarios.id = :idd and discursao.ativo = 1" );
         $cmd->bindValue( ':idd', $idUS );
         $cmd->execute();
         $res = $cmd->fetchAll( PDO::FETCH_ASSOC );

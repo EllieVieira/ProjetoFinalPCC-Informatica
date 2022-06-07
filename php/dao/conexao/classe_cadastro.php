@@ -15,9 +15,7 @@ Class Con {
 
     public function buscarDados() {
         $res = array();
-        $cmd = $this->pdo->query( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, discursao.ativo,usuarios.nome, usuarios.id as usuid, idiomas.nome as nomei FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id
-
-    INNER JOIN idiomas ON idiomas.id = discursao.idiomas_id where discursao.idiomas_id ORDER BY discursao.id DESC" );
+        $cmd = $this->pdo->query( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, discursao.ativo,usuarios.nome, usuarios.id as usuid, idiomas.nome as nomei FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id INNER JOIN idiomas ON idiomas.id = discursao.idiomas_id where  discursao.ativo = 1 ORDER BY discursao.id DESC" );
         $res = $cmd->fetchAll( PDO::FETCH_ASSOC );
         return $res;
     }

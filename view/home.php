@@ -105,6 +105,7 @@
                             }
                             if ( !empty( $dados ) ) {
                                 foreach ( $dados as $dado ) {
+                                    var_dump( $dado );
                                 ?>
                         <div class="all">
                             <div class="title-name">
@@ -139,7 +140,7 @@
             </section>
 
     </div>
-   
+
     </div>
 
 </body>
