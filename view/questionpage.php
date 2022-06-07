@@ -137,7 +137,7 @@
                         }?>
                             <div class="disc-ativo">
                                 <?php
-echo "<div class='title-disc'>", $discursao["TITULO"], "</div><br>"; ?>
+                                echo "<div class='title-disc'>", $discursao["TITULO"], "</div><br>"; ?>
                             </div>
                             <?php
                                 echo $discursao["DESCRICAO"], "<br>";
@@ -197,7 +197,7 @@ echo "<div class='title-disc'>", $discursao["TITULO"], "</div><br>"; ?>
                     <?php
                         echo "<div class='desc'>", $resposta['descricao'], "<br><br>";
                                 echo "<div class='date'>", $novaData = date( 'd/m/Y H:m:s', strtotime( $resposta["data"] ) ), "</div><br>";
-                                echo "<div class='name'>", $nomes['nome'], "</div><br>";
+                                echo "<div class='name'>", $resposta['nome'], "</div><br>";
                             ?>
                 </div>
                 <!-- Estrelas da Avaliação -->
@@ -267,7 +267,7 @@ echo "<div class='title-disc'>", $discursao["TITULO"], "</div><br>"; ?>
                         <h1 class="responder">Responder</h1>
                         <form action="../php/controller/3respostaController.php" method="POST">
                         <textarea name="descricao" id="descricao" cols="90" rows="4" autocomplete="off" maxlength="500" placeholder="Ajude seu colega! :D" required></textarea>
-                        
+
                         <input type="hidden" name="discursao_id" id="discursao_id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
                         <input type="submit" value="Responder" class="submit">
                     </form>
