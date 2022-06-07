@@ -234,13 +234,12 @@ select {
 }
 
 input.submit {
-  margin: 30px 0 10px 0;
+  margin:  0 10px 0;
   background-color: var(--color-07);
-  border-radius: 20px;
+  border-radius: 10px;
   font-weight: bold;
   text-decoration: none;
   color: var(--color-02);
-  padding: 10px 50px;
   cursor: pointer;
   display: block;
   margin: auto;
@@ -320,9 +319,6 @@ div.all,
   float: right;
 }
 
-.btn-qu-edit, .btn-qu-del{
-   
-}
 
 div.title-disc {
   font-size: 24px;

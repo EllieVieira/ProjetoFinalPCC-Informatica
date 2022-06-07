@@ -22,6 +22,11 @@
         session_start();
         require_once '../php/dao/ClienteDAO.php'; //excluirClienteController.php
         $idCliente = $_SESSION["idlogin"];
+
+        require_once '../php/dao/ClienteDAO.php'; //excluirClienteController.php
+        $idCliente  = $_SESSION["idlogin"];
+        $clienteDAO = new ClienteDAO();
+        $cliente    = $clienteDAO->findById( $idCliente ); // $cliente -> id do usuario logado.
     ?>
 
     <header class="header">

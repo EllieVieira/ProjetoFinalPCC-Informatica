@@ -135,7 +135,8 @@
 
                         <?php
                         }?>
-                            <div class="disc-ativo"><?php
+                            <div class="disc-ativo">
+                                <?php
 echo "<div class='title-disc'>", $discursao["TITULO"], "</div><br>"; ?>
                             </div>
                             <?php
@@ -265,7 +266,8 @@ echo "<div class='title-disc'>", $discursao["TITULO"], "</div><br>"; ?>
                     <div class="answers-box">
                         <h1 class="responder">Responder</h1>
                         <form action="../php/controller/3respostaController.php" method="POST">
-                        <input type="text" name="descricao" id="descricao" placeholder="Ajude seu colega! :D" autocomplete="off" maxlength="500" required>
+                        <textarea name="descricao" id="descricao" cols="90" rows="4" autocomplete="off" maxlength="500" placeholder="Ajude seu colega! :D" required></textarea>
+                        
                         <input type="hidden" name="discursao_id" id="discursao_id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
                         <input type="submit" value="Responder" class="submit">
                     </form>

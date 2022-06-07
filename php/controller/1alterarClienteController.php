@@ -23,5 +23,5 @@ $clienteDTO->setId($id);
 $clienteDAO = new ClienteDAO();
 
 if ($clienteDAO->update($clienteDTO)) {
-    header("Location: ../../view/home.php");
+    header("Location: ../../view/profile.php");
 }
