@@ -97,6 +97,7 @@ CREATE TABLE `respostas` (
   `DATA` datetime DEFAULT current_timestamp(),
   `PONTUACAO` tinyint(4) NOT NULL DEFAULT 1,
   `DISCURSAO_ID` int(11) NOT NULL,
+   `ATIVO` enum('ATIVO','INATIVO') DEFAULT 'ATIVO',
   `USUARIOS_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

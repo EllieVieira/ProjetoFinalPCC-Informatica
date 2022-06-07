@@ -10,7 +10,8 @@ class loginDAO {
 
     public function findByEmailPassword( $email, $password ) {
         try {
-            $sql = "SELECT * FROM usuarios " .
+            $login = array();
+            $sql   = "SELECT * FROM usuarios " .
                 "WHERE email = ? and password = ?";
             $stmt = $this->pdo->prepare( $sql );
             $stmt->bindValue( 1, $email );
