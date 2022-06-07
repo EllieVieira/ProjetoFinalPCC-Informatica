@@ -1,8 +1,8 @@
 <?php
 
 $servidor = "localhost";
-$usuario = "root";
-$senha = "";
-$dbname = "lancult_bd";
+$usuario  = "root";
+$senha    = "";
+$dbname   = "lancult_bd";
 
-$conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
+$conn = mysqli_connect( $servidor, $usuario, $senha, $dbname );

@@ -24,6 +24,11 @@
         $idCliente  = $_SESSION["idlogin"];
         $clienteDAO = new ClienteDAO();
         $cliente    = $clienteDAO->findById( $idCliente );
+
+        require_once '../php/dao/DiscursaoDAO.php';
+        $discursaoDAO = new DiscursaoDAO();
+        $dados        = $clienteDAO->buscarDados();
+        var_dump( $dados );
     ?>
 
     <header class="header">
@@ -50,13 +55,38 @@
                     }
 
                 ?>
+
             </div>
         </div>
     </header>
+                    <div>
+                    <?php
+                        foreach ( $dados as $dado ) {
+
+                        ?>
+                     <table border="1px">
+                     <tr>
+                        <td>Nome</td>
+                    <td>Email</td>
+                    <td>Data Cadastramento</td>
+                    <td>Estados</td>
+            </tr>
+                        <tr>
+                            <td><?php echo $dado["NOME"]; ?></td>
+                            <td><?php echo $dado["EMAIL"]; ?></td>
+                            <td><?php echo $dado["DATA_CADASTRAMENTO"]; ?></td>
+                            <td><?php echo $dado["STATUS"]; ?></td>
+                            <td><a>Editar</a></td>
+                            <td><a>Excluir</a></td>
+
+                        </tr>
+
+        </table>
+                  <?php }?>
+                    </div>
 
 
 
-                    </form>
 
     </div>
 

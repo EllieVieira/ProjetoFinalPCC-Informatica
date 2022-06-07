@@ -13,6 +13,7 @@
 
 <body>
     <main class="form">
+    <?php session_start();?>
 
         <form action="../php/controller/loginController.php" method="post">
             <h1>Entrar</h1>
@@ -27,6 +28,7 @@
 
     <div class="error-login">
         <?php
+
             if ( isset( $_GET['msg'] ) ) {
                 echo $_GET['msg'];
             }

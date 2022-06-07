@@ -13,11 +13,11 @@ if ( !empty( $login ) ) {
     $_SESSION["login"]   = $login["NOME"];
     $_SESSION["idlogin"] = $login["ID"];
 
-    if ( $login["PERFIL"] == 'ADMIN' ) {
-        header( "Location: ../../view/Principal.php" );
-    } else {
-        header( "Location: ../../view/home.php" );
-    }
+    // if ( $login["PERFIL"] == 'ADMIN' ) {
+    // header( "Location: ../../view/Principal.php" );
+
+    header( "Location: ../../view/home.php" );
+    // }
 
 } else {
     $msg = "Email ou senha incorreto!";
