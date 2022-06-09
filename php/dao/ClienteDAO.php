@@ -40,7 +40,7 @@ class ClienteDAO {
 
     public function buscarDados() {
         $res = array();
-        $cmd = $this->pdo->query( "SELECT * FROM lancult_bd.usuarios ORDER BY id DESC" );
+        $cmd = $this->pdo->query( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.ativo, usuarios.email, usuarios.nome, usuarios.perfil, usuarios.data_cadastramento, usuarios.id as identificacao FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id where discursao.id and usuarios. id ORDER BY id DESC" );
         $res = $cmd->fetchAll( PDO::FETCH_ASSOC );
         return $res;
     }

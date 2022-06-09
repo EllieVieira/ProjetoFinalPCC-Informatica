@@ -1,5 +1,5 @@
 <?php
-    require_once '../php/dao/conexao/classe_cadastro.php';
+    require_once '../../php/dao/conexao/classe_cadastro.php';
     $p = new con( "lancult_bd", "localhost", "root", "" );
     date_default_timezone_set( 'America/Sao_Paulo' );
 ?>
@@ -13,14 +13,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio - The Lancult Town</title>
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../css/normalise.css">
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../../css/normalise.css">
+    <link rel="stylesheet" href="../../css/home.css">
 </head>
 
 <body>
     <?php
         session_start();
-        require_once '../php/dao/ClienteDAO.php'; //excluirClienteController.php
+        require_once '../../php/dao/ClienteDAO.php'; //excluirClienteController.php
         $idCliente  = $_SESSION["idlogin"];
         $clienteDAO = new ClienteDAO();
         $cliente    = $clienteDAO->findById( $idCliente );
@@ -31,22 +31,22 @@
         <div class="mod-session">
             <div class="modify">
 
-                <div class="btn-prof"><a href="../view/profile.php?id=<?php echo $cliente["ID"] ?>">Meu Perfil</a></div>
+                <div class="btn-prof"><a href="../../view/profile.php?id=<?php echo $cliente["ID"] ?>">Meu Perfil</a></div>
                 <div class="btn-sair"><a href="?logout">Sair</a></div>
             </div>
             <div class="session-welcome">
                 <?php
                     if ( !isset( $_SESSION["login"] ) ) {
-                        header( "Location: ../view/signin.php" );
+                        header( "Location: ../../view/signin.php" );
                     }
                     if ( $cliente["PERFIL"] == 'USUARIO' ) {
-                        header( "Location: ../view/home.php" );
+                        header( "Location: ../../view/home.php" );
                     }
                     echo "Bem Vindo, {$cliente["NOME"]}!";
                     if ( isset( $_GET['logout'] ) ) {
                         unset( $_SESSION['login'] );
                         session_destroy();
-                        header( 'Location: ../view/signin.php' );
+                        header( 'Location: ../../view/signin.php' );
                     }
 
                 ?>
