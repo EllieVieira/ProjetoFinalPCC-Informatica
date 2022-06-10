@@ -149,7 +149,7 @@ class DiscursaoDAO {
 
     // Function BuscarDados -> pega dados das discussões de acordo com seu id.
     public function buscarDados( $idDiscursao ) {
-        $cmd = $this->pdo->prepare( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome, usuarios.perfil, usuarios.data_cadastramento FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id where discursao.id = :idDiscursao" );
+        $cmd = $this->pdo->prepare( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome, usuarios.perfil, usuarios.data_cadastramento, usuarios.status FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id where discursao.id = :idDiscursao" );
         $cmd->bindValue( ':idDiscursao', $idDiscursao );
         $cmd->execute();
         $res = $cmd->fetch( PDO::FETCH_ASSOC );

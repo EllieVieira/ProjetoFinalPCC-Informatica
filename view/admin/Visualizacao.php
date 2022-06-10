@@ -27,9 +27,11 @@
         $cliente    = $clienteDAO->findById( $idCliente );
 
         require_once '../../php/dao/DiscursaoDAO.php';
-        $discursaoDAO = new DiscursaoDAO();
+        $DiscursaoDAO = new DiscursaoDAO();
         $dados        = $clienteDAO->buscarDados();
-        var_dump( $dados );
+        $idDiscursao = $_GET['id'];
+        $usu = $DiscursaoDAO->buscarDados($idDiscursao);
+        var_dump( $usu );
 
     ?>
     <!-- =================================XXXXXXX========================================== -->
@@ -63,68 +65,38 @@
             </div>
         </div>
     </header>
-    <div>
-        <?php
-                        foreach ( $dados as $dado ) {
 
-                        ?>
-        <table border="1px">
-            <tr>
-                <td>id</td>
-                <td>Nome</td>
-                <td>Email</td>
-                <td>Data de envio</td>
-                <td>Idioma</td>
-                <td>Status</td>
-                <td colspan="2">Análise</td>
-            </tr>
-            <tr>
-                <td><?php echo $dado["id"]; ?></td>
-                <td><?php echo $dado["nome"]; ?></td>
-                <td><?php echo $dado["email"]; ?></td>
-                <td><?php echo $novaData = date( 'd/m/Y H:m:s', strtotime( $dado["data"] ) ); ?></td>
-                <td><?php //echo $dado["idiomas_id"];
-                                        if ( $dado["idiomas_id"] == 1 ) {
-                                            echo "Português";
-                                        } elseif ( $dado["idiomas_id"] == 2 ) {
-                                            echo "Inglês";
-                                        } elseif ( $dado["idiomas_id"] == 3 ) {
-                                            echo "Espanhol";
-                                        } elseif ( $dado["idiomas_id"] == 4 ) {
-                                            echo "Francês";
-                                    }
-                                    ?></td>
-                <td><?php echo $dado["ativo"]; ?></td>
-                <td><a href="../admin/Visualizacao.php?id=<?=$dado['id']?>">Visualizar</a></td>
-                <td><a href="../../php/controller/2excluirDiscursao.php?id=<?=$dado['id']?>">Excluir</a></td>
+    <main class="main">
+        <div class="question-posted">
+            <?php
+                if ( isset( $_GET['msg'] ) ) {
+                    echo $_GET['msg'];
+                }
+            ?>
+        </div>
 
-            </tr>
+        <main class="form">
+            <form action="../php/controller/2alterarDiscursaoController.php" method="POST">
+                <h2>Editar pergunta</h2>
+                <input type="hidden" name="id" id="id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
+                <input type="text" name="titulo" id="titulo" autocomplete="off" maxlength="100"
+                    value="<?php echo $usu["titulo"] ?>" required>
+                <textarea name="descricao" id="descricao" cols="90" rows="4" autocomplete="off"
+                    maxlength="500"><?php echo $usu["descricao"] ?></textarea>
 
-        </table>
-        <?php }?>
-    </div>
+                <select name="idiomas_id" id="idiomas_id" value="<?php echo $discursao["IDIOMAS_ID"] ?>">
+                    <option value="1" <?php echo $usu["idiomas_id"] == 1 ? 'selected' : ''; ?>>Português</option>
+                    <option value="2" <?php echo $usu["idiomas_id"] == 2 ? 'selected' : ''; ?>>Inglês</option>
+                    <option value="3" <?php echo $usu["idiomas_id"] == 3 ? 'selected' : ''; ?>>Espanhol</option>
+                    <option value="4" <?php echo $usu["idiomas_id"] == 4 ? 'selected' : ''; ?>>Francês</option>
+                </select>
+                <input type="submit" value="Editar questão" class="submit">
+            </form>
+            </div>
+            </div>
 
+        </main>
 
-
-
-    </div>
-
-    <div class="container">
-
-        <nav class="nav">
-            <ul>
-                <li><a href="Usuarios.php">Usuarios</a></li>
-                <li><a href="Discussoes.php">Discussões</a></li>
-                <li><a href="Respostas.php">Respostas</a></li>
-                <li><a href="Avaliação.php">Avaliação</a></li>
-            </ul>
-        </nav>
-
-
-
-    </div>
-
-    </div>
 
 </body>
 
