@@ -39,7 +39,7 @@
                     if ( isset( $_SESSION["login"] ) and $cliente["PERFIL"] == "ADMIN" ) {
                         header( "Location: ../view/admin/Principal.php" );
                     }
-                    var_dump( $cliente );
+                    // var_dump( $cliente );
                     // echo $cliente["PERFIL"];
                     if ( !isset( $_SESSION["login"] ) ) {
                         header( "Location: ../view/signin.php" );

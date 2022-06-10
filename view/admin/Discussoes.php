@@ -72,13 +72,15 @@
                     <td>Nome</td>
                     <td>Email</td>
                     <td>Data de envio</td>
-                    <td>Estados</td>
+                    <td>Idioma</td>
                     <td>Status</td>
+                    <td colspan="2">Análise</td>
             </tr>
                         <tr>
                             <td><?php echo $dado["id"]; ?></td>
                             <td><?php echo $dado["nome"]; ?></td>
                             <td><?php echo $dado["email"]; ?></td>
+                            <td> <td><?php echo $dado["titulo"]; ?></td>
                             <td><?php echo $novaData = date( 'd/m/Y H:m:s', strtotime( $dado["data"] ) ); ?></td>
                             <td><?php //echo $dado["idiomas_id"];
                                         if ( $dado["idiomas_id"] == 1 ) {
@@ -92,8 +94,8 @@
                                     }
                                     ?></td>
                             <td><?php echo $dado["ativo"]; ?></td>
-                            <td><a>Editar</a></td>
-                            <td><a>Excluir</a></td>
+                            <td><a href="">Visualizar</a></td>
+                            <td><a href="../../php/controller/2excluirDiscursao.php?id=<?=$dado['id']?>">Excluir</a></td>
 
                         </tr>
 
