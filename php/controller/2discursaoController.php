@@ -12,6 +12,7 @@ $titulo      = $_POST["titulo"];
 $descrição = $_POST["descricao"];
 $data        = date( 'Y-m-d H:m:s' );
 //$imagem = $_FILES['imagem'];
+$status      = 2;
 $usuarios_id = $_SESSION["idlogin"];
 $idiomas_id  = $_POST["idiomas_id"];
 
@@ -22,8 +23,9 @@ $discursaoDTO = new DiscursaoDTO();
 $discursaoDTO->setTitulo( $titulo );
 $discursaoDTO->setDescricao( $descrição );
 $discursaoDTO->setData( $data );
-$discursaoDTO->setImagem( isset( $imagem ) && $imagem["error"] == 0 ? $upload->getNome( $imagem ) : null );
+// $discursaoDTO->setImagem( isset( $imagem ) && $imagem["error"] == 0 ? $upload->getNome( $imagem ) : null );
 $discursaoDTO->setUsuarios_Id( $usuarios_id );
+$discursaoDTO->setStatus( $status );
 $discursaoDTO->setIdiomas_Id( $idiomas_id );
 
 $discursaoDAO = new DiscursaoDAO();

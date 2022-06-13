@@ -24,19 +24,21 @@
         require_once '../../php/dao/ClienteDAO.php'; //excluirClienteController.php
         $idCliente  = $_SESSION["idlogin"];
         $clienteDAO = new ClienteDAO();
-        $cliente    = $clienteDAO->findById( $idCliente );
+        $cliente    = $clienteDAO->findById( $idCliente ); ///dados do usúario logado
 
         require_once '../../php/dao/DiscursaoDAO.php';
         $DiscursaoDAO = new DiscursaoDAO();
-        $dados        = $clienteDAO->buscarDados();
-        $idDiscursao = $_GET['id'];
-        $usu = $DiscursaoDAO->buscarDados($idDiscursao);
-        var_dump( $usu );
+        $idDiscursao  = $_GET['id'];
+        $usu          = $DiscursaoDAO->buscarDados( $idDiscursao ); ///dados da discussão
+
+        $idUS     = $usu["usu"];
+        $perfilUS = $clienteDAO->buscarDadosPerfilUS( $idUS );
+        var_dump( $perfilUS );
 
     ?>
     <!-- =================================XXXXXXX========================================== -->
     <header class="header">
-        <h1 class="title"><a href="../view/home.php"><img src="/images/logotipo.png" alt="Lancult Town" width="200x"
+        <h1 class="title"><a href="../home.php"><img src="/images/logotipo.png" alt="Lancult Town" width="200x"
                     height="80px"></a></h1>
         <div class="mod-session">
             <div class="modify">
@@ -65,8 +67,9 @@
             </div>
         </div>
     </header>
+    <!-- =================================XXXXXXX========================================== -->
 
-    <main class="main">
+    <main class="">
         <div class="question-posted">
             <?php
                 if ( isset( $_GET['msg'] ) ) {
@@ -75,28 +78,46 @@
             ?>
         </div>
 
-        <main class="form">
-            <form action="../php/controller/2alterarDiscursaoController.php" method="POST">
+        <main class="">
+            <form action="../../php/controller/adm/4alterarDiscussao.php" method="POST">
                 <h2>Editar pergunta</h2>
-                <input type="hidden" name="id" id="id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
+                <input type="hidden" name="id" id="id" autocomplete="off" value="<?php echo $_GET["id"] ?>">
                 <input type="text" name="titulo" id="titulo" autocomplete="off" maxlength="100"
                     value="<?php echo $usu["titulo"] ?>" required>
                 <textarea name="descricao" id="descricao" cols="90" rows="4" autocomplete="off"
-                    maxlength="500"><?php echo $usu["descricao"] ?></textarea>
+                    maxlength="500"><?php echo strip_tags( $usu["descricao"] ) ?></textarea>
 
-                <select name="idiomas_id" id="idiomas_id" value="<?php echo $discursao["IDIOMAS_ID"] ?>">
-                    <option value="1" <?php echo $usu["idiomas_id"] == 1 ? 'selected' : ''; ?>>Português</option>
-                    <option value="2" <?php echo $usu["idiomas_id"] == 2 ? 'selected' : ''; ?>>Inglês</option>
-                    <option value="3" <?php echo $usu["idiomas_id"] == 3 ? 'selected' : ''; ?>>Espanhol</option>
-                    <option value="4" <?php echo $usu["idiomas_id"] == 4 ? 'selected' : ''; ?>>Francês</option>
+                <select name="idiomas_id" id="idiomas_id" value="<?php echo $usu["IDIOMAS_ID"] ?>">
+                    <option value="1"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <?php echo $usu["idiomas_id"] == 1 ? 'selected' : ''; ?>>Português</option>
+                    <option value="2"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <?php echo $usu["idiomas_id"] == 2 ? 'selected' : ''; ?>>Inglês</option>
+                    <option value="3"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <?php echo $usu["idiomas_id"] == 3 ? 'selected' : ''; ?>>Espanhol</option>
+                    <option value="4"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <?php echo $usu["idiomas_id"] == 4 ? 'selected' : ''; ?>>Francês</option>
                 </select>
+                <input type="radio" name="ativo" id="at" value="1"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <?php echo $usu["ativo"] == 'ATIVO' ? 'checked' : ''; ?>>
+                <label for="at">Ativo</label><br>
+                <input type="radio" name="ativo" id="in" value="2"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <?php echo $usu["ativo"] == 'INATIVO' ? 'checked' : ''; ?>>
+                <label for="in">Inativo</label><br>
                 <input type="submit" value="Editar questão" class="submit">
             </form>
-            </div>
-            </div>
-
         </main>
+        <aside class="sidebar">
+        <div class="users">
+            <div class="user-info">
+               <?php if ( !empty( $perfilUS ) ) {
+                       foreach ( $perfilUS as $dado );
+                       //    print_r($dado);
+                       //    exit();
+                   ?>
+                <p><strong>Nome: </strong><?php echo $dado["nomeus"] ?></br></p>
+                <br>
+                <p><strong>País: </strong>                                                                                                                                                                                                                                                                                                                                                                                                                  <?php echo $dado["nome"] ?></br></p>
+                <br>
+                <p><strong>Tipo de usuário: </strong><?php echo $dado["nomet"] ?></br></p>
+            <?php
+                }
+            ?>
 
+    </aside>
 
 </body>
 

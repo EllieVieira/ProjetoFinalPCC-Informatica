@@ -74,7 +74,7 @@
                 <input type="hidden" name="id" id="id" autocomplete="off" value="<?php echo $discursao["ID"] ?>">
                 <input type="text" name="titulo" id="titulo" autocomplete="off" maxlength="100" value="<?php echo $discursao["TITULO"] ?>" required>
                 <textarea name="descricao" id="descricao" cols="90" rows="4" autocomplete="off" maxlength="500"><?php echo $discursao["DESCRICAO"] ?></textarea>
-                
+
                 <select name="idiomas_id" id="idiomas_id" value="<?php echo $discursao["IDIOMAS_ID"] ?>">
                     <option value="1"<?php echo $discursao["IDIOMAS_ID"] == 1 ? 'selected' : ''; ?>>Português</option>
                     <option value="2"<?php echo $discursao["IDIOMAS_ID"] == 2 ? 'selected' : ''; ?>>Inglês</option>
@@ -87,7 +87,7 @@
             </div>
 
         </main>
-       
+
 
 </body>
 

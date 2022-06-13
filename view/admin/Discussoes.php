@@ -65,14 +65,15 @@
     </header>
     <div>
         <?php
-                        foreach ( $dados as $dado ) {
+            foreach ( $dados as $dado ) {
 
-                        ?>
+            ?>
         <table border="1px">
             <tr>
                 <td>id</td>
                 <td>Nome</td>
                 <td>Email</td>
+                <td>Titulo</td>
                 <td>Data de envio</td>
                 <td>Idioma</td>
                 <td>Status</td>
@@ -82,18 +83,19 @@
                 <td><?php echo $dado["id"]; ?></td>
                 <td><?php echo $dado["nome"]; ?></td>
                 <td><?php echo $dado["email"]; ?></td>
+                <td><?php echo strip_tags( substr( $dado["titulo"], 0, 20 ) ) ?></td>
                 <td><?php echo $novaData = date( 'd/m/Y H:m:s', strtotime( $dado["data"] ) ); ?></td>
                 <td><?php //echo $dado["idiomas_id"];
-                                        if ( $dado["idiomas_id"] == 1 ) {
-                                            echo "Português";
-                                        } elseif ( $dado["idiomas_id"] == 2 ) {
-                                            echo "Inglês";
-                                        } elseif ( $dado["idiomas_id"] == 3 ) {
-                                            echo "Espanhol";
-                                        } elseif ( $dado["idiomas_id"] == 4 ) {
-                                            echo "Francês";
-                                    }
-                                    ?></td>
+                            if ( $dado["idiomas_id"] == 1 ) {
+                                echo "Português";
+                            } elseif ( $dado["idiomas_id"] == 2 ) {
+                                echo "Inglês";
+                            } elseif ( $dado["idiomas_id"] == 3 ) {
+                                echo "Espanhol";
+                            } elseif ( $dado["idiomas_id"] == 4 ) {
+                                echo "Francês";
+                        }
+                        ?></td>
                 <td><?php echo $dado["ativo"]; ?></td>
                 <td><a href="../admin/Visualizacao.php?id=<?=$dado['id']?>">Visualizar</a></td>
                 <td><a href="../../php/controller/2excluirDiscursao.php?id=<?=$dado['id']?>">Excluir</a></td>

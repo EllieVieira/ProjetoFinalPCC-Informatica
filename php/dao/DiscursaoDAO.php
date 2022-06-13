@@ -20,7 +20,7 @@ class DiscursaoDAO {
             $stmt->bindValue( ":imagem", $discursaoDTO->getImagem() );
             $stmt->bindValue( ":usuarios_id", $discursaoDTO->getUsuarios_Id() );
             $stmt->bindValue( ":idiomas_id", $discursaoDTO->getIdiomas_Id() );
-            $stmt->bindValue( ":ativo", true );
+            $stmt->bindValue( ":ativo", $discursaoDTO->getStatus() );
             return $stmt->execute();
         } catch ( PDOException $e ) {
             echo "Erro ao cadastrar: ", $e->getMessage();
@@ -97,7 +97,29 @@ class DiscursaoDAO {
             echo 'Erro ao atualizar o discursao: ', $e->getMessage();
         }
     }
+    public function updateADM( discursaoDTO $discursaoDTO ) {
+        try {
+            // echo "<pre>";
+            // print_r($discursaoDTO);
+            // echo "</pre>";
+            // exit();
+            $sql = "UPDATE discursao SET "
+                . "titulo=?, descricao=?, idiomas_id= ?, ativo = ? "
+                . "WHERE id= ?";
 
+            $stmt = $this->pdo->prepare( $sql );
+            $stmt->bindValue( 1, $discursaoDTO->getTitulo() );
+            $stmt->bindValue( 2, $discursaoDTO->getDescricao() );
+            $stmt->bindValue( 3, $discursaoDTO->getIdiomas_id() );
+            $stmt->bindValue( 4, $discursaoDTO->getStatus() );
+            $stmt->bindValue( 5, $discursaoDTO->getId() );
+
+            return $stmt->execute();
+
+        } catch ( PDOException $e ) {
+            echo 'Erro ao atualizar o discursao: ', $e->getMessage();
+        }
+    }
     // public function buscarDados() {
     // $res = array();
     // $cmd = $this->pdo->query( "SELECT * FROM lancult_bd.discursao ORDER BY id DESC" );
@@ -149,7 +171,7 @@ class DiscursaoDAO {
 
     // Function BuscarDados -> pega dados das discussões de acordo com seu id.
     public function buscarDados( $idDiscursao ) {
-        $cmd = $this->pdo->prepare( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome, usuarios.perfil, usuarios.data_cadastramento, usuarios.status FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id where discursao.id = :idDiscursao" );
+        $cmd = $this->pdo->prepare( "SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, discursao.ativo, usuarios.nome, usuarios.perfil, usuarios.data_cadastramento, usuarios.status, usuarios.id as usu FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id where discursao.id = :idDiscursao" );
         $cmd->bindValue( ':idDiscursao', $idDiscursao );
         $cmd->execute();
         $res = $cmd->fetch( PDO::FETCH_ASSOC );
