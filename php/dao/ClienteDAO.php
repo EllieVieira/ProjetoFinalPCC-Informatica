@@ -102,7 +102,7 @@ class ClienteDAO {
 
     public function buscarDadosC() {
         $res = array();
-        $cmd = $this->pdo->query( "SELECT usuarios.id, usuarios.paises_id, usuarios.tipo_id FROM lancult_bd.usuarios  WHERE usuarios.id" );
+        $cmd = $this->pdo->query( "SELECT * FROM lancult_bd.usuarios  WHERE usuarios.id" );
         $res = $cmd->fetchAll( PDO::FETCH_ASSOC );
         return $res;
     }
