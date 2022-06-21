@@ -116,8 +116,35 @@
 
                             <!-- ------------------------------------------ -->
                             <div class="questions-buttons">
-                    <a href="../view/editquestion.php?id=<?=$discursao['ID']?>">Editar</a>
-                    <a href="../php/controller/2excluirDiscursao.php?id=<?=$discursao['ID']?>">Deletar questão</a>
+                                <!-- ------------------------------------------ -->
+                                <a onclick="openModal()">Editar</a></button>
+                                <div class= "modal-container1">
+                                        <div class="modal">
+                                            <h2>Editar pergunta</h2>
+                                            <hr>
+                                            <span>Você tem certeza que deseja editar?</span>
+                                            <hr>
+                                            <div class="btns">
+                                                <button class="btnOK" ><a href="../view/editquestion.php?id=<?=$discursao['ID']?>">Sim</a></button>
+                                                <button class="btnClose" onclick="closeModal()"><a>Não</a></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <!-- ------------------------------------------ -->
+                                <a  onclick="openModal2()">Deletar questão</a></button>
+                                <div class= "modal-container2">
+                                        <div class="modal">
+                                            <h2>Excluir pergunta</h2>
+                                            <hr>
+                                            <span>Você tem certeza que deseja excluir?</span>
+                                            <hr>
+                                            <div class="btns">
+                                                <button class="btnOK" ><a href="../php/controller/2excluirDiscursao.php?id=<?=$discursao['ID']?>">Sim</a></button>
+                                                <button class="btnClose" onclick="closeModal()"><a>Não</a></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <!--  --------------------------------------------->
                         </div>
                         <?php
                         }?>
@@ -145,8 +172,35 @@
                                         ?>
                     </div>
                           <div class="btn-resposta">
-                              <a href="../view/editrespost.php?id=<?=$resposta['id']?>">Editar</a>
-                               <a href="../php/controller/3excluirResposta.php?id=<?=$resposta['id']?>">Deletar resposta</a>
+                            <!--  -->
+                              <a onclick="openModal3()">Editar</a>
+                                <div class= "modal-container3">
+                                        <div class="modal">
+                                            <h2>Editar resposta</h2>
+                                            <hr>
+                                            <span>Você tem certeza que deseja editar?</span>
+                                            <hr>
+                                            <div class="btns">
+                                                <button class="btnOK" ><a href="../view/editrespost.php?id=<?=$resposta['id']?>">Sim</a></button>
+                                                <button class="btnClose" onclick="closeModal()"><a>Não</a></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            <!--  -->
+                            <a onclick="openModal4()">Excluir</a>
+                                <div class= "modal-container4">
+                                        <div class="modal">
+                                            <h2>Excluir resposta</h2>
+                                            <hr>
+                                            <span>Você tem certeza que deseja excluir?</span>
+                                            <hr>
+                                            <div class="btns">
+                                                <button class="btnOK" ><a href="../php/controller/3excluirResposta.php?id=<?=$resposta['id']?>">Sim</a></button>
+                                                <button class="btnClose" onclick="closeModal()"><a>Não</a></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                               <!--  -->
                           </div>
                         <?php }
                                 ?>

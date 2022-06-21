@@ -1,7 +1,7 @@
 const modal = document.querySelector('.modal-container1')
 const moda2 = document.querySelector('.modal-container2')
 const moda3 = document.querySelector('.modal-container3')
-const moda4 = document.querySelector('.modal-container4')
+
 function openModal() {
   modal.classList.add('active')
 }
@@ -10,9 +10,6 @@ function openModal2() {
 }
 function openModal3() {
   moda3.classList.add('active')
-}
-function openModal4() {
-  moda4.classList.add('active')
 }
 function closeModal() {
   modal.classList.remove('active')

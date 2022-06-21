@@ -1,7 +1,6 @@
 <?php
 
-class ClienteDTO
-{
+class ClienteDTO {
     private $id;
     private $nome;
     private $email;
@@ -9,75 +8,70 @@ class ClienteDTO
     private $data_cadastramento;
     private $paises_id;
     private $tipo_id;
+    private $status;
 
+    public function getStatus() {
+        return $this->status;
+    }
 
-    public function getId()
-    {
+    public function setStatus( $status ) {
+        $this->status = $status;
+
+        return $this;
+    }
+    public function getId() {
         return $this->id;
     }
 
-    public function setId($id)
-    {
+    public function setId( $id ) {
         $this->id = $id;
 
         return $this;
     }
 
-    public function getNome()
-    {
+    public function getNome() {
         return $this->nome;
     }
-    public function setNome($nome)
-    {
+    public function setNome( $nome ) {
         $this->nome = $nome;
     }
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
-    public function setEmail($email)
-    {
+    public function setEmail( $email ) {
         $this->email = $email;
     }
-    public function getpassword()
-    {
+    public function getpassword() {
         return $this->password;
     }
-    public function setpassword($password)
-    {
+    public function setpassword( $password ) {
         $this->password = $password;
     }
 
-    public function getData_Cadastramento()
-    {
+    public function getData_Cadastramento() {
         return $this->data_cadastramento;
     }
-    public function setData_Cadastramento($data_cadastramento)
-    {
+    public function setData_Cadastramento( $data_cadastramento ) {
         $this->data_cadastramento = $data_cadastramento;
 
         return $this;
     }
 
-    public function getPaises_id()
-    {
+    public function getPaises_id() {
         return $this->paises_id;
     }
 
-    public function setPaises_id($paises_id)
-    {
+    public function setPaises_id( $paises_id ) {
         $this->paises_id = $paises_id;
 
         return $this;
     }
 
-    public function getTipo_id()
-    {
+    public function getTipo_id() {
         return $this->tipo_id;
     }
 
-    public function setTipo_id($tipo_id)
-    {
+    public function setTipo_id( $tipo_id ) {
         $this->tipo_id = $tipo_id;
 
         return $this;

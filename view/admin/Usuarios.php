@@ -80,12 +80,11 @@
                 <td><?php echo $dado["ID"]; ?></td>
                 <td><?php echo $dado["NOME"]; ?></td>
                 <td><?php echo $dado["EMAIL"]; ?></td>
-                <td><?php echo $dado["DATA_CADASTRAMENTO"]; ?></td>
+                <td><?php echo $novaData = date( 'd/m/Y H:m:s', strtotime( $dado["DATA_CADASTRAMENTO"] ) ); ?></td>
                 <td><?php echo $dado["STATUS"]; ?></td>
                 <td><?php echo $dado["PERFIL"]; ?></td>
 
-                <td><a href="../admin/Visualizacao.php?id=<?=$dado['ID']?>">Visualizar</a></td>
-                <td><a href="../../php/controller/2excluirDiscursao.php?id=<?=$dado['ID']?>">Excluir</a></td>
+                <td><a href="../admin/VisualizacaoUsu.php?id=<?=$dado['ID']?>">Visualizar</a></td>
         <?php }?>
     </div>
 

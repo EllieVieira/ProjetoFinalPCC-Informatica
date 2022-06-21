@@ -68,11 +68,40 @@ class ClienteDAO {
             echo 'Erro ao listar um cliente: ', $e->getMessage();
         }
     }
+    public function updateBasic( ClienteDTO $clienteDTO ) {
+        try {
+            $sql = "UPDATE usuarios SET "
+                . "email=?, nome=?, status=?"
+                . "WHERE id= ?";
+            $stmt = $this->pdo->prepare( $sql );
+            $stmt->bindValue( 1, $clienteDTO->getEmail() );
+            $stmt->bindValue( 2, $clienteDTO->getNome() );
+            $stmt->bindValue( 3, $clienteDTO->getStatus() );
+            $stmt->bindValue( 4, $clienteDTO->getId() );
+            return $stmt->execute();
+        } catch ( PDOException $e ) {
+            echo 'Erro ao atualizar o cliente: ', $e->getMessage();
+        }
+    }
+
+    public function updateUsu( ClienteDTO $clienteDTO ) {
+        try {
+            $sql = "UPDATE usuarios SET "
+                . "status=?"
+                . "WHERE id= ?";
+            $stmt = $this->pdo->prepare( $sql );
+            $stmt->bindValue( 1, $clienteDTO->getStatus() );
+            $stmt->bindValue( 2, $clienteDTO->getId() );
+            return $stmt->execute();
+        } catch ( PDOException $e ) {
+            echo 'Erro ao atualizar o cliente: ', $e->getMessage();
+        }
+    }
 
     public function update( ClienteDTO $clienteDTO ) {
         try {
             $sql = "UPDATE usuarios SET "
-                . "nome=?, email=?, password=?, paises_id=?,tipo_id=? "
+                . "nome=?, email=?, password=?, paises_id=?, tipo_id=? "
                 . "WHERE id= ?";
             $stmt = $this->pdo->prepare( $sql );
             $stmt->bindValue( 1, $clienteDTO->getNome() );
@@ -108,6 +137,17 @@ class ClienteDAO {
     }
     public function buscarDadosPerfilUS( $idUS ) {
         $res = array();
+        $cmd = $this->pdo->prepare( "SELECT usuarios.id, usuarios.nome as nomeus, usuarios.paises_id, usuarios.email, usuarios.tipo_id, paises.nome, tipo.nome as nomet FROM lancult_bd.usuarios
+        INNER JOIN paises ON paises.id = usuarios.paises_id
+        INNER JOIN tipo ON tipo.id = usuarios.tipo_id where usuarios.id = :idUS" );
+        $cmd->bindValue( ':idUS', $idUS );
+        $cmd->execute();
+        $res = $cmd->fetchAll( PDO::FETCH_ASSOC );
+        return $res;
+
+    }
+    public function buscarDadosPerfilUSc( $idUS ) {
+        $res = array();
         $cmd = $this->pdo->prepare( "SELECT usuarios.id, usuarios.nome as nomeus, usuarios.paises_id, usuarios.tipo_id, paises.nome, tipo.nome as nomet FROM lancult_bd.usuarios
         INNER JOIN paises ON paises.id = usuarios.paises_id
         INNER JOIN tipo ON tipo.id = usuarios.tipo_id where usuarios.id = :idUS" );
@@ -117,7 +157,6 @@ class ClienteDAO {
         return $res;
 
     }
-
     public function buscarDiscussao( $nome ) {
         // SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome, usuarios.id FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id where discursao.descricao like
         $cmd = $this->pdo->prepare( " SELECT discursao.id, discursao.titulo, discursao.descricao, discursao.idiomas_id, discursao.data, discursao.imagem, usuarios.nome,  usuarios.id as usuid FROM lancult_bd.discursao INNER JOIN usuarios ON usuarios.id = discursao.usuarios_id where discursao.titulo like :nome" );

@@ -66,7 +66,7 @@
     <div>
         <?php
             foreach ( $dados as $dado ) {
-
+                $teste = $dado['id'];
             ?>
         <table border="1px">
             <tr>
@@ -97,8 +97,8 @@
                         }
                         ?></td>
                 <td><?php echo $dado["ativo"]; ?></td>
-                <td><a href="../admin/Visualizacao.php?id=<?=$dado['id']?>">Visualizar</a></td>
-                <td><a href="../../php/controller/2excluirDiscursao.php?id=<?=$dado['id']?>">Excluir</a></td>
+                <td><a href="../admin/Visualizacao.php?id=<?=$teste?>">Visualizar</a></td>
+                <td><a href="../../php/controller/2excluirDiscursao.php?id=<?=$teste?>">Excluir</a></td>
 
             </tr>
 
