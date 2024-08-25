@@ -17,6 +17,14 @@ body {
     height: 100%;
 }
 
+body {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    background-color: var(--color-01);
+    background-image: linear-gradient(45deg, #95f0e8, #7ebfdd, #b9e5fa, #80c0dd, #95f0e8);
+}
+
 :root {
     --color-01: #ffffff;
   --color-02: #7ebfdd;

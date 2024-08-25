@@ -85,7 +85,8 @@
                 <td><?php echo $dado["PERFIL"]; ?></td>
 
                 <td><a href="../admin/VisualizacaoUsu.php?id=<?=$dado['ID']?>">Visualizar</a></td>
-        <?php }?>
+        <?php
+        }?>
     </div>
 
 </body>

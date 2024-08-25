@@ -14,7 +14,6 @@ body {
     margin: 0px;
     padding: 0px;
     background-color: var(--color-01);
-    height: 100%;
     background-image: linear-gradient(45deg, #95f0e8, #7ebfdd, #b9e5fa, #80c0dd, #95f0e8);
 }
 
@@ -26,7 +25,6 @@ body {
     --color-05: #02978b;
     --color-06: #3a4d4bb0;
     --color-07: #000000;
-
     --font-lancult: 'Lancult';
     --font-site: 'Roboto';
 
